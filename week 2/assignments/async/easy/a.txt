@@ -1,1 +1,1 @@
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+In Node.js, the fs module, which stands for "file system," provides an API for interacting with the file system. This module allows you to perform various file-related operations, such as reading from or writing to files, creating directories, and more.
