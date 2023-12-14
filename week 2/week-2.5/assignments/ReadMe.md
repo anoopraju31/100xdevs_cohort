@@ -1,10 +1,10 @@
 # Assigment - Your Logic is like a doctor
 
 #### Request Methods
-1. **GET** - Going for a consultation to get a check up
-2. **POST** - Going to get a new kidney inserted
-3. **PUT** - Going to get a kidney replaced
-4. **DELETE** - Going to get a kidney removed
+1. **GET** - User can check how many kidneys they have and their health
+2. **POST** - User can add a new kidney
+3. **PUT** - User can replace a kidney, make it healthy
+4. **DELETE** - User can remove a kidney
 
 #### Status Codes
 1. **200** - Everthing went fine
