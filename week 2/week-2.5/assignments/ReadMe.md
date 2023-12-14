@@ -11,3 +11,4 @@
 2. **404** - Doctor is not in the hospital
 3. **500** - Mid surgery light went away
 4. **411** - input were incorrect, wrong person came to surgery
+5. **403** - You were not allowed in the hospital
