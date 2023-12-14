@@ -58,6 +58,14 @@ app.put('/', (req, res) => {
 	})
 })
 
+app.delete('/', (req, res) => {
+	users[0].kidneys = users[0].kidneys.filter((kidney) => kidney.healthy)
+
+	res.json({
+		message: 'Successfully removed all the unhealthy kidney!',
+	})
+})
+
 app.listen(PORT, () => {
 	console.log(`Server Started at port ${PORT}`)
 })
