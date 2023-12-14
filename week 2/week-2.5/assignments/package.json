@@ -1,0 +1,15 @@
+{
+  "name": "assignments",
+  "version": "1.0.0",
+  "description": "1. **GET** - User can check how many kidneys they have and their health\r 2. **POST** - User can add a new kidney\r 3. **PUT** - User can replace a kidney, make it healthy\r 4. **DELETE** - User can remove a kidney",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
