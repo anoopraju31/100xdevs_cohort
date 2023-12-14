@@ -14,6 +14,8 @@ const users = [
 	},
 ]
 
+app.use(express.json())
+
 app.get('/', (req, res) => {
 	const johnsKidneys = users[0].kidneys
 	const numberOfKidneys = johnsKidneys.length
@@ -31,6 +33,18 @@ app.get('/', (req, res) => {
 		numberOfKidneys,
 		numberOfHealthyKidneys,
 		numberOfUnHealthyKidneys,
+	})
+})
+
+app.post('/', (req, res) => {
+	const { isHealthy } = req.body
+
+	users[0].kidneys.push({
+		healthy: isHealthy,
+	})
+
+	res.json({
+		message: 'Successfully added new kidney!',
 	})
 })
 
