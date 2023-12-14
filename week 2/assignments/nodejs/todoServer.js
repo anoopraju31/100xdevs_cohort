@@ -39,78 +39,123 @@
 
   Testing the server - run `npm run test-todoServer` command in terminal
  */
+
 const express = require('express')
 const bodyParser = require('body-parser')
 const { v4: uuidv4 } = require('uuid')
+const fs = require('fs/promises')
 
 const app = express()
 
-const todos = []
-
 app.use(bodyParser.json())
 
-app.get('/todos', (req, res) => {
-	res.status(200).json(todos)
+async function getTodos() {
+	try {
+		const data = await fs.readFile('todos.json', 'utf-8')
+		const todos = await JSON.parse(data)
+
+		return todos
+	} catch (error) {
+		console.error(error.message)
+		throw new Error('Unable to read and parse todos.json')
+	}
+}
+
+app.get('/todos', async (req, res) => {
+	try {
+		const todos = await getTodos()
+
+		res.status(200).json(todos)
+	} catch (error) {
+		res.sendStatus(500)
+	}
 })
 
-app.post('/todos', (req, res) => {
-	const { title, description } = req.body
-	const id = uuidv4()
-	const todo = {
-		id,
-		title,
-		completed: false,
-		description,
+app.post('/todos', async (req, res) => {
+	try {
+		const { title, description } = req.body
+		const todos = await getTodos()
+
+		const id = uuidv4()
+		const todo = {
+			id,
+			title,
+			completed: false,
+			description,
+		}
+
+		todos.push(todo)
+
+		const stringifiedTodos = JSON.stringify(todos)
+
+		await fs.writeFile('todos.json', stringifiedTodos, 'utf-8')
+
+		res.status(201).json({ id })
+	} catch (error) {
+		res.sendStatus(500)
 	}
-
-	todos.push(todo)
-
-	res.status(201).json({ id })
 })
 
-app.get('/todos/:id', (req, res) => {
-	const id = req.params.id
-	const matchingTodos = todos.filter((todo) => todo.id === id)
+app.get('/todos/:id', async (req, res) => {
+	try {
+		const id = req.params.id
+		const todos = await getTodos()
+		const matchingTodos = todos.filter((todo) => todo.id === id)
 
-	if (!matchingTodos.length) {
-		return res.sendStatus(404)
+		if (!matchingTodos.length) return res.sendStatus(404)
+
+		res.status(200).json(matchingTodos[0])
+	} catch (error) {
+		res.sendStatus(500)
 	}
-
-	res.status(200).json(matchingTodos[0])
 })
 
-app.put('/todos/:id', (req, res) => {
-	const id = req.params.id
-	const { title, completed, description } = req.body
-	const matchingTodos = todos.filter((todo) => todo.id === id)
+app.put('/todos/:id', async (req, res) => {
+	try {
+		const id = req.params.id
+		const { title, completed, description } = req.body
+		const todos = await getTodos()
+		const matchingTodos = todos.filter((todo) => todo.id === id)
 
-	if (!matchingTodos.length) {
-		return res.sendStatus(404)
+		if (!matchingTodos.length) return res.sendStatus(404)
+
+		todos[id] = {
+			id,
+			title: title ? title : matchingTodos[0].title,
+			completed: completed ? completed : matchingTodos[0].completed,
+			description: description ? description : matchingTodos[0].description,
+		}
+
+		const stringifiedTodos = JSON.stringify(todos)
+
+		await fs.writeFile('todos.json', stringifiedTodos, 'utf-8')
+
+		res.status(200).json({
+			todo: matchingTodos[0],
+		})
+	} catch (error) {
+		res.sendStatus(500)
 	}
-
-	todos[id] = {
-		id,
-		title: title ? title : matchingTodos[0].title,
-		completed: completed ? completed : matchingTodos[0].completed,
-		description: description ? description : matchingTodos[0].description,
-	}
-
-	res.status(200).json({
-		todo: matchingTodos[0],
-	})
 })
 
-app.delete('/todos/:id', (req, res) => {
-	const id = req.params.id
-	const matchingTodos = todos.filter((todo) => todo.id === id)
+app.delete('/todos/:id', async (req, res) => {
+	try {
+		const id = req.params.id
+		const todos = await getTodos()
+		const matchingTodos = todos.filter((todo) => todo.id === id)
 
-	if (!matchingTodos.length) {
-		return res.sendStatus(404)
+		if (!matchingTodos.length) return res.sendStatus(404)
+
+		todos.splice(id, 1)
+
+		const stringifiedTodos = JSON.stringify(todos)
+
+		await fs.writeFile('todos.json', stringifiedTodos, 'utf-8')
+
+		res.sendStatus(200)
+	} catch (error) {
+		res.sendStatus(500)
 	}
-
-	todos.splice(id, 1)
-
-	res.sendStatus(200)
 })
 
 module.exports = app
