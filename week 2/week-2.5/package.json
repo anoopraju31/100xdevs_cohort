@@ -1,0 +1,19 @@
+{
+  "name": "express-class",
+  "version": "1.0.0",
+  "description": "express tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "express",
+    "http-server",
+    "node.js"
+  ],
+  "author": "Anoop Raju",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
