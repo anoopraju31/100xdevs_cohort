@@ -49,6 +49,13 @@ app.post('/', (req, res) => {
 })
 
 app.put('/', (req, res) => {
+	if (!isThereAtleastOneUnhealthyKidney()) {
+		res.status(411).json({
+			status: 411,
+			message: 'All kidneys are healthy!',
+		})
+	}
+
 	for (let i = 0; i < users[0].kidneys.length; i++) {
 		users[0].kidneys[i].healthy = true
 	}
