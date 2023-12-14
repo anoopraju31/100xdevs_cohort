@@ -59,12 +59,32 @@ app.put('/', (req, res) => {
 })
 
 app.delete('/', (req, res) => {
+	if (!isThereAtleastOneUnhealthyKidney()) {
+		res.status(411).json({
+			status: 411,
+			message: 'All kidneys are healthy!',
+		})
+	}
+
 	users[0].kidneys = users[0].kidneys.filter((kidney) => kidney.healthy)
 
 	res.json({
 		message: 'Successfully removed all the unhealthy kidney!',
 	})
 })
+
+function isThereAtleastOneUnhealthyKidney() {
+	let alleastOneUnhealthyKidney = false
+
+	for (let i = 0; i < users[0].kidneys.length; i++) {
+		if (!users[0].kidneys[i].healthy) {
+			alleastOneUnhealthyKidney = true
+			break
+		}
+	}
+
+	return alleastOneUnhealthyKidney
+}
 
 app.listen(PORT, () => {
 	console.log(`Server Started at port ${PORT}`)
