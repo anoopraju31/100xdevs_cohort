@@ -39,11 +39,78 @@
 
   Testing the server - run `npm run test-todoServer` command in terminal
  */
-  const express = require('express');
-  const bodyParser = require('body-parser');
-  
-  const app = express();
-  
-  app.use(bodyParser.json());
-  
-  module.exports = app;
+const express = require('express')
+const bodyParser = require('body-parser')
+const { v4: uuidv4 } = require('uuid')
+
+const app = express()
+
+const todos = []
+
+app.use(bodyParser.json())
+
+app.get('/todos', (req, res) => {
+	res.status(200).json(todos)
+})
+
+app.post('/todos', (req, res) => {
+	const { title, description } = req.body
+	const id = uuidv4()
+	const todo = {
+		id,
+		title,
+		completed: false,
+		description,
+	}
+
+	todos.push(todo)
+
+	res.status(201).json({ id })
+})
+
+app.get('/todos/:id', (req, res) => {
+	const id = req.params.id
+	const matchingTodos = todos.filter((todo) => todo.id === id)
+
+	if (!matchingTodos.length) {
+		return res.sendStatus(404)
+	}
+
+	res.status(200).json(matchingTodos[0])
+})
+
+app.put('/todos/:id', (req, res) => {
+	const id = req.params.id
+	const { title, completed, description } = req.body
+	const matchingTodos = todos.filter((todo) => todo.id === id)
+
+	if (!matchingTodos.length) {
+		return res.sendStatus(404)
+	}
+
+	todos[id] = {
+		id,
+		title: title ? title : matchingTodos[0].title,
+		completed: completed ? completed : matchingTodos[0].completed,
+		description: description ? description : matchingTodos[0].description,
+	}
+
+	res.status(200).json({
+		todo: matchingTodos[0],
+	})
+})
+
+app.delete('/todos/:id', (req, res) => {
+	const id = req.params.id
+	const matchingTodos = todos.filter((todo) => todo.id === id)
+
+	if (!matchingTodos.length) {
+		return res.sendStatus(404)
+	}
+
+	todos.splice(id, 1)
+
+	res.sendStatus(200)
+})
+
+module.exports = app
