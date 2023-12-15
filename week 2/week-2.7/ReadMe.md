@@ -36,7 +36,7 @@
 | Tracks changes made to a file.                | Provides a web interface to view file changes. |
 
 
-#### Some common terminolgies related to git and github
+#### Some common terminologies related to git and github
 - **Local Repository**
     - Every VCS tool provides a private workplace as a working copy.
     - Developers makes changes in their private workplace and after commit, these changes becomes a part of the repository.
@@ -54,3 +54,22 @@
 **Step 2** - Add these files to the staging area.
 **Step 3** - Perform commit operation that moves the files from the staging area. After push operation, it stores the change permenently to the Git repository. 
 ![Git Workflow](./images//git-workflow.png)
+
+#### Terminologies
+- **Blobs**
+    - Blob stands from **B**inary **L**arge **O**bject.
+    - Each version of a file is represented by blob.
+    - A blob holds the file data but doesn't contain any metadata about the file.
+    - It is a binary file and in Git database, it is named as SHA-1 hash of the file.
+    - In Git, files are not addressed by names.
+    - Everything is content-addressed.
+- **Trees**
+    - Tree is an object which represents a directory.
+    - it holds blobs as well as other sub-directories.
+    - A tree is a binary file that stores references to blobs and trees which are also named as SHA-1 hash of the tree object.
+- **Commits**
+    - Commit holds the current state of the repository. A commit is also named by SHA-1 hash.
+    - Commit object = a node of the linked list.
+    - Every commit object, you can traverse back by looking at the parent pointer to view the history of the commit.
+    - If a commit has multiple parent commits, then that particular commit has been created by merging two branches.
+
