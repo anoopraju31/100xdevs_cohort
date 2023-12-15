@@ -73,3 +73,24 @@
     - Every commit object, you can traverse back by looking at the parent pointer to view the history of the commit.
     - If a commit has multiple parent commits, then that particular commit has been created by merging two branches.
 
+#### Git commands
+- **Clone** - Bring a repository hosted somewhere like github into a folder or your local machine.
+    ``` bash
+    git clone repository-link
+    ```
+- **Add** - track your files and changes in Git.
+    ``` bash
+    git add file-name
+    ```
+- **Commit** - Save your files in Git.
+    ``` bash
+    git commit -m commit-message
+    ```
+- **Push** - Upload your commit to a git repository, like github.
+    ``` bash
+    git push
+    ```
+- **Commit** - Download changes from a remote repository to your local repository.
+    ``` bash
+    git pull
+    ```
