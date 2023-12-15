@@ -16,4 +16,7 @@
     - This let index.html page to have some content that the search engine can scrap on and also used for custom use cases like an email.
     - In SSR, the initial render will happen in the server and the consequent render will on client side.
     - Next.js used the capablities React.js and enhances it with added support for SSR for a better user experience.
-    
+    - SSR also helps in reducing the bundle that being send to the user, it imports all the libraries that are required for the initial render in the server. this means these libraries are not no longer needed  to be send the client or atleast some portion it can be skipped. This greatly reduces the bundle size.
+
+#### SSR
+- SSR is the process initial rendering on server and all the following rendering because of state updates will happen in client side.
