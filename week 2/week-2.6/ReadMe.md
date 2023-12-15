@@ -14,15 +14,27 @@
     const sum = (a, b) => a + b
 ```
 
-#### Map
+#### Map()
 - The **map()** method is used to create a new array by applying a provided function to each element of the original array.
 
 ``` javascript
     // Given an array, return a new array in which every value is multiplied by 2.
     // [1, 2, 3, 4, 5] >>> [2, 4, 6, 8, 10]
-    
+
     const arr = [1, 2, 3, 4, 5]
     const newArr = arr.map(e => e * 2)
 
     console.log(newArr) // [2, 4, 6, 8, 10]
+```
+
+#### Filter()
+- The filter() method is used to create a new array containing elements from the original array that satisfy a specified condition defined by a provided function.
+
+``` javascript
+    // Given an array return a new array containing all the even numbers.
+    
+    const arr = [1, 2, 3, 4, 5]
+    const filtered = arr.filter(e => e % 2 === 0)
+
+    console.log(filtered) // [2, 4]
 ```
