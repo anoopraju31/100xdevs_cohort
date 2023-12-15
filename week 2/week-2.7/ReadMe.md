@@ -36,7 +36,7 @@
 | Tracks changes made to a file.                | Provides a web interface to view file changes. |
 
 
-### Some common terminolgies related to git and github
+#### Some common terminolgies related to git and github
 - **Local Repository**
     - Every VCS tool provides a private workplace as a working copy.
     - Developers makes changes in their private workplace and after commit, these changes becomes a part of the repository.
@@ -48,3 +48,9 @@
     - Send a change to another repository(may require permission).
 - **pull**
     - Grab a change from a repository.
+
+#### Basic workflow of Git
+**Step 1** - Modify a file from the working directory.
+**Step 2** - Add these files to the staging area.
+**Step 3** - Perform commit operation that moves the files from the staging area. After push operation, it stores the change permenently to the Git repository. 
+![Git Workflow](./images//git-workflow.png)
