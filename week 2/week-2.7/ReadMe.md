@@ -34,3 +34,17 @@
 | Used for Version Control.                     | Used for hosting Git Repositories.             |
 | Installed locally on Computer.                | Cloud based.                                   |
 | Tracks changes made to a file.                | Provides a web interface to view file changes. |
+
+
+### Some common terminolgies related to git and github
+- **Local Repository**
+    - Every VCS tool provides a private workplace as a working copy.
+    - Developers makes changes in their private workplace and after commit, these changes becomes a part of the repository.
+    - Git takes it one step further by providing them a private copy of the whole repository.
+    - Users can perform many operations with this repository such as add file, remove file, rename file, move file commit changes and many more.
+- **Working Directory and Staging Area or index**
+    - An intermediate area where commit can be formatted and review before completing the commit.
+- **push**
+    - Send a change to another repository(may require permission).
+- **pull**
+    - Grab a change from a repository.
