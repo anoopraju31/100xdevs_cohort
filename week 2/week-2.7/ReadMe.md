@@ -20,3 +20,17 @@
         - Even if the main server goes down we can restore the repository from any of the team members.
         - In Distributed Version Control, the server doesn't have to online everytime to make changes, we can keep pushing the code to local copy of the repository we have push to the main repository whenever it is online and other members in the team can the pull the change made.
         - examples: Git, Mercurial
+
+#### Git
+- Git is free and open source version control system.
+- It is scalable, super fast and cheap branching and merging.
+
+#### What is Github?
+- Github is a web-based hosting service for igt repositories.
+- We can use git without github, but not vise versa.
+
+|                    Git                        |                 Github                         |
+|-----------------------------------------------|------------------------------------------------|
+| Used for Version Control.                     | Used for hosting Git Repositories.             |
+| Installed locally on Computer.                | Cloud based.                                   |
+| Tracks changes made to a file.                | Provides a web interface to view file changes. |
