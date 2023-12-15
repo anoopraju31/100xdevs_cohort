@@ -82,6 +82,10 @@
     ``` bash
     git add file-name
     ```
+    **Note**: this add only the selected file to the staging area. if you want to add all modified files use the command below
+    ``` bash
+    git add .
+    ```
 - **Commit** - Save your files in Git.
     ``` bash
     git commit -m commit-message
