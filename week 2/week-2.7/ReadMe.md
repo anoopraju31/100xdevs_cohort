@@ -1,12 +1,11 @@
 # Git/Github
 
-
 #### What is version control system?
 - A system that keep track of our files or projects.
 - it allows you to revert selected files to a previous state, revert the entire project to a previous state, compare changes over time, see who last modified someting so that we can know what might be causing a problem or what is the issue, who made it, and when with the details.
 
 #### Types of Version Control Systems (VCS)
-- There are 2 types VCS
+- There are 2 types VCS:
     1. Centralized Version Control 
         ![Centralized Version Control](./images/centralizedversion_control.png)
         - Helps us backup, track and synchronize files
@@ -35,7 +34,6 @@
 | Installed locally on Computer.                | Cloud based.                                   |
 | Tracks changes made to a file.                | Provides a web interface to view file changes. |
 
-
 #### Some common terminologies related to git and github
 - **Local Repository**
     - Every VCS tool provides a private workplace as a working copy.
@@ -53,7 +51,7 @@
 **Step 1** - Modify a file from the working directory.
 **Step 2** - Add these files to the staging area.
 **Step 3** - Perform commit operation that moves the files from the staging area. After push operation, it stores the change permenently to the Git repository. 
-![Git Workflow](./images//git-workflow.png)
+![Git Workflow](./images/git-workflow.png)
 
 #### Terminologies
 - **Blobs**
