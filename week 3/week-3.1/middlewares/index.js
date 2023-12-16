@@ -2,6 +2,9 @@ const express = require('express')
 
 const app = express()
 const PORT = 5500
+let numberOfRequests = 0
+// * app.use() middleware will be applicable to all the routes that comes after the middlware
+app.use(express.json())
 
 function userMiddleware(req, res, next) {
 	const username = req.headers.username
@@ -21,6 +24,13 @@ function kidneyCheck(req, res, next) {
 
 	next()
 }
+
+function calculateNumberOfRequests(req, res, next) {
+	numberOfRequests++
+	next()
+}
+
+app.use(calculateNumberOfRequests)
 
 app.get('/health-checkup', userMiddleware, kidneyCheck, function (req, res) {
 	res.json({
