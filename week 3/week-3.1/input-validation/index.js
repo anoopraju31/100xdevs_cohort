@@ -7,6 +7,32 @@ const schema = zod.array(zod.number())
 
 app.use(express.json())
 
+function validateCredentials(credentials) {
+	const { email, password } = credentials
+	const credentialSchema = zod.object({
+		email: zod.string().email(),
+		password: zod.string().min(8),
+	})
+
+	const res = credentialSchema.safeParse({ email, password })
+
+	return res
+}
+
+app.post('/login', (req, res) => {
+	const { email, password } = req.body
+	const validationResponse = validateCredentials({ email, password })
+
+	if (!validationResponse.success)
+		return res.status(400).json({
+			message: 'Invalid Credentials',
+		})
+
+	res.status(200).json({
+		message: 'successfully logged in',
+	})
+})
+
 app.post('/health-checkup', function (req, res) {
 	// kidneys = [1, 2]
 	const kidneys = req.body.kidneys
