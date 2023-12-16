@@ -1,49 +1,24 @@
 const express = require('express')
+const zod = require('zod')
 
 const app = express()
 const PORT = 5500
-let numberOfRequests = 0
+const schema = zod.array(zod.number())
 
-// * app.use() middleware will be applicable to all the routes that comes after the middlware
 app.use(express.json())
 
-function userMiddleware(req, res, next) {
-	const username = req.headers.username
-	const password = req.headers.password
+app.post('/health-checkup', function (req, res) {
+	// kidneys = [1, 2]
+	const kidneys = req.body.kidneys
+	const response = schema.safeParse(kidneys)
 
-	if (username != 'harkirat' || password != 'pass')
-		return res.status(400).json({ msg: 'Somethings up with your inputs' })
+	if (!response.success) {
+		res.status(411).json({
+			msg: 'input is invalid',
+		})
+	}
 
-	next()
-}
-
-function kidneyCheck(req, res, next) {
-	const kidneyId = req.query.kidneyId
-
-	if (kidneyId != 1 && kidneyId != 2)
-		return res.status(400).json({ msg: 'Somethings up with your inputs' })
-
-	next()
-}
-
-function calculateNumberOfRequests(req, res, next) {
-	numberOfRequests++
-	next()
-}
-
-app.use(calculateNumberOfRequests)
-
-app.get('/health-checkup', userMiddleware, kidneyCheck, function (req, res) {
-	res.json({
-		msg: 'Your kidney is fine!',
-	})
-})
-
-// Global Catches
-app.use((err, req, res, next) => {
-	res.json({
-		message: 'Sorry, something is up with our server.',
-	})
+	res.send({ response })
 })
 
 app.listen(PORT, () => {
