@@ -1,0 +1,14 @@
+{
+  "name": "input-validation",
+  "version": "1.0.0",
+  "description": "input validation tutorials",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anoop Raju",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

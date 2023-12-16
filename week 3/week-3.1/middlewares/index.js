@@ -38,6 +38,13 @@ app.get('/health-checkup', userMiddleware, kidneyCheck, function (req, res) {
 	})
 })
 
+// Global Catches
+app.use((err, req, res, next) => {
+	res.json({
+		message: 'Sorry, something is up with our server.',
+	})
+})
+
 app.listen(PORT, () => {
 	console.log(`Server started at port ${PORT}.`)
 })
