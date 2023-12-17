@@ -1,0 +1,20 @@
+{
+  "name": "2_find_the_average_time_the_server_istaking_to_handle_requests",
+  "version": "1.0.0",
+  "description": "Calculate the average time the server is taking to handle requests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Express.js",
+    "Node.js",
+    "HTTP-Server",
+    "Middlewares"
+  ],
+  "author": "Anoop Raju",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
