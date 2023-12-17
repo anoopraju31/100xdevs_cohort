@@ -237,17 +237,17 @@
 
 ``` javascript
 
-    z.bigint().gt(5n);
-    z.bigint().gte(5n); // alias `.min(5n)`
-    z.bigint().lt(5n);
-    z.bigint().lte(5n); // alias `.max(5n)`
+    zod.bigint().gt(5n);
+    zod.bigint().gte(5n); // alias `.min(5n)`
+    zod.bigint().lt(5n);
+    zod.bigint().lte(5n); // alias `.max(5n)`
 
-    z.bigint().positive(); // > 0n
-    z.bigint().nonnegative(); // >= 0n
-    z.bigint().negative(); // < 0n
-    z.bigint().nonpositive(); // <= 0n
+    zod.bigint().positive(); // > 0n
+    zod.bigint().nonnegative(); // >= 0n
+    zod.bigint().negative(); // < 0n
+    zod.bigint().nonpositive(); // <= 0n
 
-    z.bigint().multipleOf(5n); // Evenly divisible by 5n.
+    zod.bigint().multipleOf(5n); // Evenly divisible by 5n.
 
 ```
 
@@ -256,7 +256,7 @@
 
 ``` javascript
 
-    const isNaN = z.nan({
+    const isNaN = zod.nan({
         required_error: "isNaN is required",
         invalid_type_error: "isNaN must be not a number",
     });
@@ -268,9 +268,37 @@
 
 ``` javascript
     
-    const isActive = z.boolean({
+    const isActive = zod.boolean({
     required_error: "isActive is required",
     invalid_type_error: "isActive must be a boolean",
     });
+
+```
+
+## Dates
+- Use **zod.date()** to validate Date instances.
+
+``` javascript
+    zod.date().safeParse(new Date()); // success: true
+    zod.date().safeParse("2022-01-12T00:00:00.000Z"); // success: false
+
+```
+- We can customize certain error messages when creating a date schema.
+
+``` javascript
+    
+    const myDateSchema = zod.date({
+        required_error: "Please select a date and time",
+        invalid_type_error: "That's not a date!",
+    });
+
+```
+
+- Zod provides a handful of date-specific validations.
+
+``` javascript
+
+    zod.date().min(new Date("1900-01-01"), { message: "Too old" });
+    zod.date().max(new Date(), { message: "Too young!" });
 
 ```
