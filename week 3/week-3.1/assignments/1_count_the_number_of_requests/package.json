@@ -1,0 +1,20 @@
+{
+  "name": "1_count_the_number_of_requests",
+  "version": "1.0.0",
+  "description": "a middleware that counts the number of requests in an express HTTP server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Express.js",
+    "Node.js",
+    "HTTP-Server",
+    "Middleware"
+  ],
+  "author": "Anoop Raju",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
