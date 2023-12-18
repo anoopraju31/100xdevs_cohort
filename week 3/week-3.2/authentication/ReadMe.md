@@ -24,3 +24,9 @@
 - There are two main types of encryption: 
     1. Symmetric Encryption: In symmetric encryption, the same key is used for both encryption and decryption.
     2. Asymmetric Encryption: Asymmetric encryption uses a pair of keys: a public key for encryption and a private key for decryption.
+
+
+#### Json Web Tokens (JWT)
+- Its neither encryption nor hashing it is actually a digital Signature.
+- Anyone can see the original output given the signature.
+- Signature can be verified using a password.
