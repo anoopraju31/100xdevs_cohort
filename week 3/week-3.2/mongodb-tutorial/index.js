@@ -11,6 +11,16 @@ app.get('/', (req, res) => {
 	})
 })
 
+app.post('/signup', (req, res) => {
+	const username = req.body.username
+	const password = req.body.password
+
+	res.json({
+		username,
+		password,
+	})
+})
+
 app.post('/signin', (req, res) => {
 	const username = req.body.username
 	const password = req.body.password
