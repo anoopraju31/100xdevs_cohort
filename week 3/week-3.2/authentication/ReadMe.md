@@ -30,3 +30,38 @@
 - Its neither encryption nor hashing it is actually a digital Signature.
 - Anyone can see the original output given the signature.
 - Signature can be verified using a password.
+
+##### Local Storage
+- Local storage refers to a web storage solution that allows websites to store data locally on a user's device.
+- This storage mechanism is part of the web storage API and provides a way for web applications to store data persistently on a user's browser.
+- There are two main types of local storage in web development:
+    1. LocalStorage:
+        - This is a simple key-value pair storage system. 
+        - It stores data as strings and has a larger storage capacity compared to cookies. 
+        - The data stored in localStorage remains accessible even after the user closes the browser window or navigates away from the website.
+
+        ``` javascript
+
+            // Store data
+            localStorage.setItem('key', 'value');
+
+            // Retrieve data
+            var storedValue = localStorage.getItem('key');
+
+
+        ```
+    
+    2. SessionStorage: 
+        - Similar to localStorage, sessionStorage is a key-value pair storage system. 
+        - The key difference is that data stored in sessionStorage is only accessible for the duration of the page session. 
+        - Once the user closes the browser tab or window, the data is deleted.
+
+        ``` javascript
+        
+            // Store data
+            sessionStorage.setItem('key', 'value');
+
+            // Retrieve data
+            var storedValue = sessionStorage.getItem('key');
+
+        ```
