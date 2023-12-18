@@ -1,0 +1,24 @@
+{
+  "name": "mongodb-tutorial",
+  "version": "1.0.0",
+  "description": "integrating mongodb with express backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Express.js",
+    "Node.js",
+    "JWT",
+    "HTTP-Server",
+    "MongoDB",
+    "Mongoose"
+  ],
+  "author": "Anoop Raju",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.0.3"
+  }
+}
