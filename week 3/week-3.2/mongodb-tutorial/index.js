@@ -1,4 +1,18 @@
 const express = require('express')
+const mongoose = require('mongoose')
+require('dotenv').config()
+
+mongoose.connect(process.env.MONGODB_CONNECTION_URL)
+
+const User = mongoose.model('Users', {
+	name: String,
+	username: String,
+	password: String,
+})
+
+function userExists(username, password) {
+	// Should check in the database
+}
 
 const app = express()
 const PORT = 5500
@@ -12,10 +26,20 @@ app.get('/', (req, res) => {
 })
 
 app.post('/signup', (req, res) => {
+	const name = req.body.name
 	const username = req.body.username
 	const password = req.body.password
 
+	const user = new User({
+		name,
+		username,
+		password,
+	})
+
+	user.save()
+
 	res.json({
+		name,
 		username,
 		password,
 	})
