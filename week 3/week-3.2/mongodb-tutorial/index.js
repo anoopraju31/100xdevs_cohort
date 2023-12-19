@@ -10,10 +10,6 @@ const User = mongoose.model('Users', {
 	password: String,
 })
 
-function userExists(username, password) {
-	// Should check in the database
-}
-
 const app = express()
 const PORT = 5500
 
@@ -25,10 +21,18 @@ app.get('/', (req, res) => {
 	})
 })
 
-app.post('/signup', (req, res) => {
+app.post('/signup', async (req, res) => {
 	const name = req.body.name
 	const username = req.body.username
 	const password = req.body.password
+
+	const existingUser = await User.findOne({ username })
+
+	if (existingUser) {
+		return res.status(400).json({
+			message: 'username already exists',
+		})
+	}
 
 	const user = new User({
 		name,
@@ -39,9 +43,7 @@ app.post('/signup', (req, res) => {
 	user.save()
 
 	res.json({
-		name,
-		username,
-		password,
+		message: 'user created successfully',
 	})
 })
 
