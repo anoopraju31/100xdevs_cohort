@@ -15,6 +15,12 @@ const app = express()
 const PORT = 5500
 const jwtSecret = process.env.JWT_SECRET
 
+async function userExists(username) {
+	const existingUser = await User.findOne({ username })
+
+	return existingUser
+}
+
 app.use(express.json())
 
 app.get('/', (req, res) => {
@@ -28,7 +34,7 @@ app.post('/signup', async (req, res) => {
 	const username = req.body.username
 	const password = req.body.password
 
-	const existingUser = await User.findOne({ username })
+	const existingUser = await userExists(username)
 
 	if (existingUser) {
 		return res.status(400).json({
@@ -53,22 +59,22 @@ app.post('/signin', async (req, res) => {
 	const username = req.body.username
 	const password = req.body.password
 
-	const existingUser = await User.findOne({ username })
+	const user = await userExists(username)
 
-	if (!existingUser) {
+	if (!user) {
 		return res.status(400).json({
 			message: 'username does not exists',
 		})
 	}
 
-	if (existingUser.password !== password) {
+	if (user.password !== password) {
 		return res.status(400).json({
 			message: 'invalid password',
 		})
 	}
 
-	const name = existingUser.name
-	const id = existingUser._id
+	const name = user.name
+	const id = user._id
 
 	const token = jwt.sign({ name, username, id }, jwtSecret)
 
