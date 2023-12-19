@@ -83,6 +83,27 @@ app.post('/signin', async (req, res) => {
 	})
 })
 
+app.get('/protected-route', (req, res) => {
+	const token = req.headers.authorization
+
+	try {
+		const decoded = jwt.verify(token, jwtSecret)
+		const username = decoded.username
+		const name = decoded.name
+		const id = decoded.id
+
+		res.json({
+			username,
+			name,
+			id,
+		})
+	} catch (err) {
+		return res.status(403).json({
+			msg: 'Invalid token',
+		})
+	}
+})
+
 app.listen(PORT, () => {
 	console.log(`Server started at port ${PORT}.`)
 })
