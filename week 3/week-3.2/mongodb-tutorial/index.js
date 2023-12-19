@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
 mongoose.connect(process.env.MONGODB_CONNECTION_URL)
@@ -12,6 +13,7 @@ const User = mongoose.model('Users', {
 
 const app = express()
 const PORT = 5500
+const jwtSecret = process.env.JWT_SECRET
 
 app.use(express.json())
 
@@ -47,13 +49,31 @@ app.post('/signup', async (req, res) => {
 	})
 })
 
-app.post('/signin', (req, res) => {
+app.post('/signin', async (req, res) => {
 	const username = req.body.username
 	const password = req.body.password
 
+	const existingUser = await User.findOne({ username })
+
+	if (!existingUser) {
+		return res.status(400).json({
+			message: 'username does not exists',
+		})
+	}
+
+	if (existingUser.password !== password) {
+		return res.status(400).json({
+			message: 'invalid password',
+		})
+	}
+
+	const name = existingUser.name
+	const id = existingUser._id
+
+	const token = jwt.sign({ name, username, id }, jwtSecret)
+
 	res.json({
-		username,
-		password,
+		token,
 	})
 })
 
