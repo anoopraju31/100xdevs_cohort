@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+require('dotenv').config()
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_CONNECTION_URL)
@@ -7,11 +8,13 @@ mongoose.connect(process.env.MONGODB_CONNECTION_URL)
 const AdminSchema = new mongoose.Schema({
 	username: String,
 	password: String,
+	courses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
 })
 
 const UserSchema = new mongoose.Schema({
 	username: String,
 	password: String,
+	courses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
 })
 
 const CourseSchema = new mongoose.Schema({
@@ -19,6 +22,7 @@ const CourseSchema = new mongoose.Schema({
 	description: String,
 	price: Number,
 	imageLink: String,
+	author: { type: mongoose.Schema.Types.ObjectId, ref: 'Course' },
 })
 
 const Admin = mongoose.model('Admin', AdminSchema)

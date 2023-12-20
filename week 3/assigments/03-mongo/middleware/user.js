@@ -1,6 +1,25 @@
-function userMiddleware(req, res, next) {
-    // Implement user auth logic
-    // You need to check the headers and validate the user from the user DB. Check readme for the exact headers to be expected
+const { userExists } = require('../utills')
+
+async function userMiddleware(req, res, next) {
+	const username = req.headers.username
+	const password = req.headers.password
+
+	const user = await userExists(username)
+
+	if (!user) {
+		return res.status(400).json({
+			message: 'username does not exists',
+		})
+	}
+
+	if (user.password !== password) {
+		return res.status(400).json({
+			message: 'invalid password',
+		})
+	}
+
+	req.headers['user-id'] = user._id
+	next()
 }
 
-module.exports = userMiddleware;
+module.exports = userMiddleware

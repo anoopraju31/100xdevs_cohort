@@ -1,18 +1,78 @@
-const { Router } = require("express");
-const adminMiddleware = require("../middleware/admin");
-const router = Router();
+const { Router } = require('express')
+const adminMiddleware = require('../middleware/admin')
+const { Admin, Course } = require('../db')
+const { adminExists } = require('../utills')
+const router = Router()
 
 // Admin Routes
-app.post('/signup', (req, res) => {
-    // Implement admin signup logic
-});
+router.post('/signup', async (req, res) => {
+	const username = req.body.username
+	const password = req.body.password
 
-app.post('/courses', adminMiddleware, (req, res) => {
-    // Implement course creation logic
-});
+	try {
+		const isAdminExisits = await adminExists(username)
 
-app.get('/courses', adminMiddleware, (req, res) => {
-    // Implement fetching all courses logic
-});
+		if (isAdminExisits)
+			return res.status(400).json({
+				message: 'username already exists',
+			})
 
-module.exports = router;
+		const admin = new Admin({
+			username,
+			password,
+		})
+
+		await admin.save()
+
+		res.json({ message: 'Admin created successfully' })
+	} catch (error) {
+		console.error(error)
+
+		res.status(500).json({ message: 'something went wrong' })
+	}
+})
+
+router.post('/courses', adminMiddleware, async (req, res) => {
+	const { title, description, price, imageLink } = req.body
+	const author = req.headers['admin-id']
+
+	try {
+		const admin = await Admin.findById(author)
+		const course = new Course({
+			title,
+			description,
+			price,
+			imageLink,
+			author,
+		})
+
+		const newCourse = await course.save()
+
+		admin.courses.push(newCourse._id)
+		await admin.save()
+
+		res.json({
+			message: 'Course created successfully',
+			courseId: newCourse._id,
+		})
+	} catch (error) {
+		console.error(error)
+
+		res.status(500).json({ message: 'something went wrong' })
+	}
+})
+
+router.get('/courses', adminMiddleware, async (req, res) => {
+	const author = req.headers['admin-id']
+	try {
+		const admin = await Admin.findById(author).populate('courses').exec()
+
+		res.json(admin.courses)
+	} catch (error) {
+		console.error(error)
+
+		res.status(500).json({ message: 'something went wrong' })
+	}
+})
+
+module.exports = router
