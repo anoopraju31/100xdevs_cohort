@@ -1,10 +1,13 @@
 const { Router } = require('express')
-const adminMiddleware = require('../middleware/admin')
+// const adminMiddleware = require('../middleware/admin')
 const zod = require('zod')
+const jwt = require('jsonwebtoken')
 const { adminExists } = require('../utills')
 const { Admin } = require('../db')
+require('dotenv').config()
 
 const router = Router()
+const secret = process.env.JWT_SECRET
 const credentialSchema = zod.object({
 	email: zod.string().email(),
 	password: zod.string().min(8),
@@ -16,9 +19,9 @@ router.post('/signup', async (req, res) => {
 	const password = req.body.password
 
 	try {
-		const isAdminExisits = await adminExists(username)
+		const isAdminExists = await adminExists(username)
 
-		if (isAdminExisits)
+		if (isAdminExists)
 			return res.status(400).json({
 				message: 'username already exists',
 			})
@@ -48,7 +51,33 @@ router.post('/signup', async (req, res) => {
 	}
 })
 
-// router.post('/signin', async (req, res) => {})
+router.post('/signin', async (req, res) => {
+	try {
+		const username = req.body.username
+		const password = req.body.password
+
+		const admin = await adminExists(username)
+
+		if (!admin)
+			return res.status(400).json({
+				message: 'username does not exists',
+			})
+
+		if (admin.password !== password)
+			return res.status(400).json({ message: 'Invalid Password' })
+
+		const token = jwt.sign({ username }, secret)
+
+		res.json({
+			messsage: 'user login successfully',
+			token,
+		})
+	} catch (error) {
+		console.error(error)
+
+		res.status(500).json({ message: 'something went wrong' })
+	}
+})
 
 // router.post('/courses', adminMiddleware, (req, res) => {
 // 	// Implement course creation logic
