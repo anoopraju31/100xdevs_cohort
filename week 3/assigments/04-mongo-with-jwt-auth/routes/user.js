@@ -101,9 +101,38 @@ router.get('/courses', async (req, res) => {
 	}
 })
 
-// router.post('/courses/:courseId', userMiddleware, (req, res) => {
-// 	// Implement course purchase logic
-// })
+router.post('/courses/:courseId', userMiddleware, async (req, res) => {
+	const courseId = req.params.courseId
+	const userId = req.headers['user-id']
+
+	try {
+		const course = await Course.findById(courseId)
+
+		if (!course)
+			return res.status(404).json({
+				message: 'course not found',
+			})
+
+		const user = await User.findById(userId)
+
+		const userCourse = user.courses.find((course) => course == courseId)
+
+		if (userCourse)
+			return res
+				.status(400)
+				.json({ message: 'You have already purchased to course' })
+
+		user.courses.push(course._id)
+
+		await user.save()
+
+		res.json({ message: 'Course purchased successfully' })
+	} catch (error) {
+		console.error(error)
+
+		res.status(500).json({ message: 'something went wrong' })
+	}
+})
 
 // router.get('/purchasedCourses', userMiddleware, (req, res) => {
 // 	// Implement fetching purchased courses logic
