@@ -8,7 +8,9 @@ function adminMiddleware(req, res, next) {
 		const secret = process.env.JWT_SECRET
 		const token = authorization.split(' ')[1]
 
-		jwt.verify(token, secret)
+		const decoded = jwt.verify(token, secret)
+
+		req.headers['admin-id'] = decoded.id
 
 		next()
 	} catch (error) {

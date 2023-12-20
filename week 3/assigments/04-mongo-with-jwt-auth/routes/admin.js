@@ -66,7 +66,7 @@ router.post('/signin', async (req, res) => {
 		if (admin.password !== password)
 			return res.status(400).json({ message: 'Invalid Password' })
 
-		const token = jwt.sign({ username }, secret)
+		const token = jwt.sign({ username, id: admin._id }, secret)
 
 		res.json({
 			messsage: 'user login successfully',
@@ -85,7 +85,8 @@ router.post('/signin', async (req, res) => {
 
 router.get('/courses', adminMiddleware, (req, res) => {
 	// Implement fetching all courses logic
-	res.json({ message: 'ok' })
+	const author = req.headers['admin-id']
+	res.json({ message: 'ok', author })
 })
 
 module.exports = router
