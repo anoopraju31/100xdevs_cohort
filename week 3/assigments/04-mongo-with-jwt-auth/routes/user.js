@@ -3,7 +3,7 @@ const zod = require('zod')
 const jwt = require('jsonwebtoken')
 const userMiddleware = require('../middleware/user')
 const { userExists } = require('../utills')
-const { User } = require('../db')
+const { User, Course } = require('../db')
 require('dotenv').config()
 
 const router = Router()
@@ -89,9 +89,17 @@ router.post('/signin', async (req, res) => {
 	}
 })
 
-// router.get('/courses', (req, res) => {
-// 	// Implement listing all courses logic
-// })
+router.get('/courses', async (req, res) => {
+	try {
+		const courses = await Course.find()
+
+		res.json(courses)
+	} catch (error) {
+		console.error(error)
+
+		res.status(500).json({ message: 'something went wrong' })
+	}
+})
 
 // router.post('/courses/:courseId', userMiddleware, (req, res) => {
 // 	// Implement course purchase logic
