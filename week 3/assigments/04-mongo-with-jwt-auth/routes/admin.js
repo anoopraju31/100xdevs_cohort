@@ -1,5 +1,5 @@
 const { Router } = require('express')
-// const adminMiddleware = require('../middleware/admin')
+const adminMiddleware = require('../middleware/admin')
 const zod = require('zod')
 const jwt = require('jsonwebtoken')
 const { adminExists } = require('../utills')
@@ -83,8 +83,9 @@ router.post('/signin', async (req, res) => {
 // 	// Implement course creation logic
 // })
 
-// router.get('/courses', adminMiddleware, (req, res) => {
-// 	// Implement fetching all courses logic
-// })
+router.get('/courses', adminMiddleware, (req, res) => {
+	// Implement fetching all courses logic
+	res.json({ message: 'ok' })
+})
 
 module.exports = router
