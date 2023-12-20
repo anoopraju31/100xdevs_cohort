@@ -102,10 +102,9 @@ router.get('/courses', async (req, res) => {
 })
 
 router.post('/courses/:courseId', userMiddleware, async (req, res) => {
-	const courseId = req.params.courseId
-	const userId = req.headers['user-id']
-
 	try {
+		const courseId = req.params.courseId
+		const userId = req.headers['user-id']
 		const course = await Course.findById(courseId)
 
 		if (!course)
@@ -134,8 +133,20 @@ router.post('/courses/:courseId', userMiddleware, async (req, res) => {
 	}
 })
 
-// router.get('/purchasedCourses', userMiddleware, (req, res) => {
-// 	// Implement fetching purchased courses logic
-// })
+router.get('/purchasedCourses', userMiddleware, async (req, res) => {
+	try {
+		const userId = req.headers['user-id']
+		const courses = await User.findById(userId).populate('courses').exec()
+
+		if (!courses)
+			return res.json({ message: "Sorry, you don't have any course" })
+
+		res.json(courses.courses)
+	} catch (error) {
+		console.error(error)
+
+		res.status(500).json({ message: 'something went wrong' })
+	}
+})
 
 module.exports = router
