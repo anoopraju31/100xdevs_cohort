@@ -3,7 +3,7 @@ const adminMiddleware = require('../middleware/admin')
 const zod = require('zod')
 const jwt = require('jsonwebtoken')
 const { adminExists } = require('../utills')
-const { Admin } = require('../db')
+const { Admin, Course } = require('../db')
 require('dotenv').config()
 
 const router = Router()
@@ -12,13 +12,18 @@ const credentialSchema = zod.object({
 	email: zod.string().email(),
 	password: zod.string().min(8),
 })
+const CourseSchema = zod.object({
+	title: zod.string().min(4),
+	description: zod.string().min(4),
+	price: zod.number().nonnegative().finite(),
+	imageLink: zod.string().url(),
+})
 
 // Admin Routes
 router.post('/signup', async (req, res) => {
-	const username = req.body.username
-	const password = req.body.password
-
 	try {
+		const username = req.body.username
+		const password = req.body.password
 		const isAdminExists = await adminExists(username)
 
 		if (isAdminExists)
@@ -55,6 +60,15 @@ router.post('/signin', async (req, res) => {
 	try {
 		const username = req.body.username
 		const password = req.body.password
+		const isValidCredentials = credentialSchema.safeParse({
+			username,
+			password,
+		})
+
+		if (!isValidCredentials)
+			return res.status(400).json({
+				message: 'Invalid Credentials',
+			})
 
 		const admin = await adminExists(username)
 
@@ -79,9 +93,46 @@ router.post('/signin', async (req, res) => {
 	}
 })
 
-// router.post('/courses', adminMiddleware, (req, res) => {
-// 	// Implement course creation logic
-// })
+router.post('/courses', adminMiddleware, async (req, res) => {
+	try {
+		const { title, description, price, imageLink } = req.body
+		const author = req.headers['admin-id']
+		const isValidCourseDetails = CourseSchema.safeParse({
+			title,
+			description,
+			price,
+			imageLink,
+		})
+
+		if (!isValidCourseDetails)
+			return res.status(400).json({
+				message: 'Invalid Credentials',
+			})
+
+		const admin = await Admin.findById(author)
+		const course = new Course({
+			title,
+			description,
+			price,
+			imageLink,
+			author,
+		})
+
+		const newCourse = await course.save()
+
+		admin.courses.push(newCourse._id)
+		await admin.save()
+
+		res.json({
+			message: 'Course created successfully',
+			courseId: newCourse._id,
+		})
+	} catch (error) {
+		console.error(error)
+
+		res.status(500).json({ message: 'something went wrong' })
+	}
+})
 
 router.get('/courses', adminMiddleware, (req, res) => {
 	// Implement fetching all courses logic
