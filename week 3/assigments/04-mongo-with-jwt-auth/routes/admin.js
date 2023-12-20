@@ -24,13 +24,6 @@ router.post('/signup', async (req, res) => {
 	try {
 		const username = req.body.username
 		const password = req.body.password
-		const isAdminExists = await adminExists(username)
-
-		if (isAdminExists)
-			return res.status(400).json({
-				message: 'username already exists',
-			})
-
 		const isValidCredentials = credentialSchema.safeParse({
 			username,
 			password,
@@ -39,6 +32,13 @@ router.post('/signup', async (req, res) => {
 		if (!isValidCredentials)
 			return res.status(400).json({
 				message: 'Invalid Credentials',
+			})
+
+		const isAdminExists = await adminExists(username)
+
+		if (isAdminExists)
+			return res.status(400).json({
+				message: 'username already exists',
 			})
 
 		const admin = new Admin({
