@@ -1,8 +1,10 @@
 const { Router } = require('express')
 const zod = require('zod')
+const jwt = require('jsonwebtoken')
 const userMiddleware = require('../middleware/user')
 const { userExists } = require('../utills')
 const { User } = require('../db')
+require('dotenv').config()
 
 const router = Router()
 const credentialSchema = zod.object({
@@ -47,19 +49,55 @@ router.post('/signup', async (req, res) => {
 	}
 })
 
-// app.post('/signin', (req, res) => {
-// 	// Implement admin signup logic
-// })
+router.post('/signin', async (req, res) => {
+	try {
+		const username = req.body.username
+		const password = req.body.password
+		const secret = process.env.JWT_SECRET
+		const isValidCredentials = credentialSchema.safeParse({
+			username,
+			password,
+		})
 
-// app.get('/courses', (req, res) => {
+		if (!isValidCredentials)
+			return res.status(400).json({
+				message: 'Invalid Credentials',
+			})
+
+		const user = await userExists(username)
+
+		if (!user)
+			return res.status(400).json({
+				message: 'username does not exists',
+			})
+
+		if (user.password !== password)
+			return res.status(400).json({
+				message: 'invalid password',
+			})
+
+		const token = jwt.sign({ username, id: user._id }, secret)
+
+		res.json({
+			messsage: 'user login successfully',
+			token,
+		})
+	} catch (error) {
+		console.error(error)
+
+		res.status(500).json({ message: 'something went wrong' })
+	}
+})
+
+// router.get('/courses', (req, res) => {
 // 	// Implement listing all courses logic
 // })
 
-// app.post('/courses/:courseId', userMiddleware, (req, res) => {
+// router.post('/courses/:courseId', userMiddleware, (req, res) => {
 // 	// Implement course purchase logic
 // })
 
-// app.get('/purchasedCourses', userMiddleware, (req, res) => {
+// router.get('/purchasedCourses', userMiddleware, (req, res) => {
 // 	// Implement fetching purchased courses logic
 // })
 
