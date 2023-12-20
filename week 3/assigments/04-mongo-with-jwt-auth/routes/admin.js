@@ -134,10 +134,17 @@ router.post('/courses', adminMiddleware, async (req, res) => {
 	}
 })
 
-router.get('/courses', adminMiddleware, (req, res) => {
-	// Implement fetching all courses logic
-	const author = req.headers['admin-id']
-	res.json({ message: 'ok', author })
+router.get('/courses', adminMiddleware, async (req, res) => {
+	try {
+		const author = req.headers['admin-id']
+		const admin = await Admin.findById(author).populate('courses').exec()
+
+		res.json(admin.courses)
+	} catch (error) {
+		console.error(error)
+
+		res.status(500).json({ message: 'something went wrong' })
+	}
 })
 
 module.exports = router
