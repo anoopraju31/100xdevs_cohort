@@ -1,22 +1,61 @@
-const { Router } = require("express");
-const adminMiddleware = require("../middleware/admin");
-const router = Router();
+const { Router } = require('express')
+const adminMiddleware = require('../middleware/admin')
+const zod = require('zod')
+const { adminExists } = require('../utills')
+const { Admin } = require('../db')
+
+const router = Router()
+const credentialSchema = zod.object({
+	email: zod.string().email(),
+	password: zod.string().min(8),
+})
 
 // Admin Routes
-app.post('/signup', (req, res) => {
-    // Implement admin signup logic
-});
+router.post('/signup', async (req, res) => {
+	const username = req.body.username
+	const password = req.body.password
 
-app.post('/signin', (req, res) => {
-    // Implement admin signup logic
-});
+	try {
+		const isAdminExisits = await adminExists(username)
 
-app.post('/courses', adminMiddleware, (req, res) => {
-    // Implement course creation logic
-});
+		if (isAdminExisits)
+			return res.status(400).json({
+				message: 'username already exists',
+			})
 
-app.get('/courses', adminMiddleware, (req, res) => {
-    // Implement fetching all courses logic
-});
+		const isValidCredentials = credentialSchema.safeParse({
+			username,
+			password,
+		})
 
-module.exports = router;
+		if (!isValidCredentials)
+			return res.status(400).json({
+				message: 'Invalid Credentials',
+			})
+
+		const admin = new Admin({
+			username,
+			password,
+		})
+
+		await admin.save()
+
+		res.json({ message: 'Admin created successfully' })
+	} catch (error) {
+		console.error(error)
+
+		res.status(500).json({ message: 'something went wrong' })
+	}
+})
+
+// router.post('/signin', async (req, res) => {})
+
+// router.post('/courses', adminMiddleware, (req, res) => {
+// 	// Implement course creation logic
+// })
+
+// router.get('/courses', adminMiddleware, (req, res) => {
+// 	// Implement fetching all courses logic
+// })
+
+module.exports = router
