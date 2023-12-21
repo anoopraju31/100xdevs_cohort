@@ -8,12 +8,20 @@ function isOldEnough(age) {
 	return age >= 14
 }
 
-app.get('/ride', (req, res) => {
+app.get('/ride1', (req, res) => {
 	const age = parseInt(req.query.age)
 
 	if (isOldEnough(age))
-		return res.json({ message: 'You have successfully riden the ride.' })
-	else return res.json({ message: 'Sorry, you are underaged for this ride.' })
+		return res.json({ message: 'You have successfully riden the ride1.' })
+	else return res.json({ message: 'Sorry, you are underaged for this ride1.' })
+})
+
+app.get('/ride2', (req, res) => {
+	const age = parseInt(req.query.age)
+
+	if (isOldEnough(age))
+		return res.json({ message: 'You have successfully riden the ride2.' })
+	else return res.json({ message: 'Sorry, you are underaged for this ride2.' })
 })
 
 app.listen(PORT, () => {
