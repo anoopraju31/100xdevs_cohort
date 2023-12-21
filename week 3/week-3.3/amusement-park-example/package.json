@@ -1,0 +1,20 @@
+{
+  "name": "middleware-tutorial",
+  "version": "1.0.0",
+  "description": "middleware tutorial - demonstrating with an amussement park example",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Express.js",
+    "Node.js",
+    "Middlewares",
+    "HTTP-Server"
+  ],
+  "author": "Anoop Raju",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
