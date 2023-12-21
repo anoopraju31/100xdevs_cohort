@@ -11,3 +11,4 @@
 
 - **Why make a middleware for functionality? why can't it be done it side one function instead of spliting the responsiblities?**
     - This helps reuse the same logic in multiple locations and keeps the code DRY.
+    - This also allows to what the route intented to do only.
