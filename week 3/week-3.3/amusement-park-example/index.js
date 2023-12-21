@@ -3,25 +3,23 @@ const express = require('express')
 const app = express()
 const PORT = 5500
 
-// * function that returns a boolean if the age of the person is more than 14.
-function isOldEnough(age) {
-	return age >= 14
+function isOldEnoughMiddleware(req, res, next) {
+	const age = parseInt(req.query.age)
+
+	if (age < 14)
+		return res
+			.status(400)
+			.json({ message: 'Sorry, you are underaged for this ride.' })
+
+	next()
 }
 
-app.get('/ride1', (req, res) => {
-	const age = parseInt(req.query.age)
-
-	if (isOldEnough(age))
-		return res.json({ message: 'You have successfully riden the ride1.' })
-	else return res.json({ message: 'Sorry, you are underaged for this ride1.' })
+app.get('/ride1', isOldEnoughMiddleware, (req, res) => {
+	res.json({ message: 'You have successfully riden the ride1.' })
 })
 
-app.get('/ride2', (req, res) => {
-	const age = parseInt(req.query.age)
-
-	if (isOldEnough(age))
-		return res.json({ message: 'You have successfully riden the ride2.' })
-	else return res.json({ message: 'Sorry, you are underaged for this ride2.' })
+app.get('/ride2', isOldEnoughMiddleware, (req, res) => {
+	res.json({ message: 'You have successfully riden the ride2.' })
 })
 
 app.listen(PORT, () => {
