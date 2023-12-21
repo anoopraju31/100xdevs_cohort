@@ -8,3 +8,6 @@
     2. Make changes to the request and the response object.
     3. End the request-response cycle.
     4. Call the next middleware function in the stack.
+
+- **Why make a middleware for functionality? why can't it be done it side one function instead of spliting the responsiblities?**
+    - This helps reuse the same logic in multiple locations and keeps the code DRY.
