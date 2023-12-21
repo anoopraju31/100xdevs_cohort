@@ -17,17 +17,19 @@ setInterval(() => {
 }, 1000)
 
 function rateLimitMiddleware(req, res, next) {
-	const userId = req.headers.host
+	const userId = req.headers['user-id']
 
-	if (!numberOfRequestsForUser.hasOwnProperty(userId)) {
+	if (!numberOfRequestsForUser[userId]) {
 		numberOfRequestsForUser[userId] = 1
 		next()
-	} else if (numberOfRequestsForUser[userId] < 4) {
-		numberOfRequestsForUser[userId] += 1
-		next()
-	} else {
-		res.status(404)
 	}
+
+	numberOfRequestsForUser[userId] += 1
+
+	if (numberOfRequestsForUser[userId] > 5)
+		return res.status(404).json({ message: 'exceeded rate limit' })
+
+	next()
 }
 
 app.use(rateLimitMiddleware)
