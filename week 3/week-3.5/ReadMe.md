@@ -37,15 +37,23 @@
 
 - It represents the web page using a series of objects. The main object is the document object which in turn houses other object which also house their own object, and so on.
 
+
+### DOM Tree
+- The DOM is a tree-like representation of the web page that gets loaded into the browser.
+
 ``` html
     <html>
         <head>
-            <title> My Document </title>
+            <title> My title </title>
         </head>
 
         <body>
-            <h1> Header </h1>
-            <p> Paragraph </p>
+            <h1> My header </h1>
+            <a href='www.google.com'> My link </a>
         </body>
     </html>
 ```
+
+![DOM Tree](./images/dom-tree.gif)
+
+- When a web browser parses an HTML document, it builds a DOM tree and then uses it to display the document.
