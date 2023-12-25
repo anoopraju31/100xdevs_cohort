@@ -10,6 +10,22 @@
 		<br />
 		<input type="text" placeholder="Second Number" id="b" />
 		<br />
-		<button>Calculate Sum</button>
+		<button onclick="add()">Calculate Sum</button>
+		<br />
+		<div id="final-sum"></div>
+
+		<script>
+			const firstInput = document.getElementById('a')
+			const secondInput = document.getElementById('b')
+			const finalSum = document.getElementById('final-sum')
+
+			function add() {
+				const a = parseInt(firstInput.value)
+				const b = parseInt(secondInput.value)
+				const sum = a + b
+
+				finalSum.innerHTML = sum
+			}
+		</script>
 	</body>
 </html>
