@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Class & Id</title>
+		<style>
+			.container {
+				background-color: aqua;
+			}
+
+			#container-3 {
+				background-color: bisque;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- This is OK but its repeating the same styles, not DRY! -->
+		<div style="background-color: red">Hi there</div>
+		<div style="background-color: red">Hi There 2</div>
+
+		<!-- smae style but not repeating -->
+		<div class="container">class container</div>
+		<div class="container">class container 2</div>
+
+		<div class="container" id="container-3">class container 3</div>
+	</body>
+</html>
