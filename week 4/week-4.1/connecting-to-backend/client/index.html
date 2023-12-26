@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Calculate Sum</title>
+	</head>
+	<body>
+		<input type="text" placeholder="First Number" id="a" />
+		<br />
+		<input type="text" placeholder="Second Number" id="b" />
+		<br />
+		<button onclick="add()">Calculate Sum</button>
+		<br />
+		<div id="final-sum"></div>
+
+		<script>
+			const firstInput = document.getElementById('a')
+			const secondInput = document.getElementById('b')
+			const finalSum = document.getElementById('final-sum')
+
+			function add() {
+				fetch(
+					`http://localhost:3000/add?a=${firstInput.value}&b=${secondInput.value}`,
+				)
+					.then((res) => res.json())
+					.then((data) => {
+						const result = data.result
+						finalSum.innerHTML = result
+					})
+			}
+		</script>
+	</body>
+</html>
