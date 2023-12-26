@@ -10,7 +10,7 @@
 		<br />
 		<input type="text" placeholder="Second Number" id="b" />
 		<br />
-		<button onclick="add()">Calculate Sum</button>
+		<button onclick="addAwait()">Calculate Sum</button>
 		<br />
 		<div id="final-sum"></div>
 
@@ -18,16 +18,23 @@
 			const firstInput = document.getElementById('a')
 			const secondInput = document.getElementById('b')
 			const finalSum = document.getElementById('final-sum')
+			const url = () =>
+				`http://localhost:3000/add?a=${firstInput.value}&b=${secondInput.value}`
 
 			function add() {
-				fetch(
-					`http://localhost:3000/add?a=${firstInput.value}&b=${secondInput.value}`,
-				)
+				fetch(url())
 					.then((res) => res.json())
 					.then((data) => {
 						const result = data.result
 						finalSum.innerHTML = result
 					})
+			}
+
+			async function addAwait() {
+				const res = await fetch(url())
+				const data = await res.json()
+				const result = data?.result
+				finalSum.innerHTML = result
 			}
 		</script>
 	</body>
