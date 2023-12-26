@@ -89,3 +89,58 @@ Making dynamic changes is hard -
 ### Why IDs are useful? Classes let us get rid of code repeatition what do IDs do?
 - Ids let us access elements via DOM API.
 - We can use IDd to do CSS, but it is usually used for DOM manipulation in JavaScript.
+
+
+## Debouncing & Thorttling
+- Throttling and debouncing are two techniques used in web development, particularly in handling events like scroll, resize, and input. They help control the rate at which a function is executed, preventing it from being called too frequently and causing performance issues.
+- **Throttling:**
+    - Throttling ensures that a function is not called more than once in a specified time interval, regardless of how many times the event that triggers the function occurs. 
+    - It's useful in scenarios where you want to limit the execution frequency of a function.
+    - example:
+
+        ``` javascript
+        
+            function throttle(func, delay) {
+                let lastCall = 0;
+
+                return function () {
+                const now = new Date().getTime();
+                    if (now - lastCall >= delay) {
+                        func.apply(this, arguments);
+                        lastCall = now;
+                    }
+                };
+            }
+
+            // Example usage
+            const throttledFunction = throttle(myFunction, 200);
+            window.addEventListener('scroll', throttledFunction);
+
+        ```
+    - In this example, myFunction will be called at most once every 200 milliseconds, even if the scroll event occurs more frequently.
+
+- **Debouncing:**
+    - Debouncing, on the other hand, ensures that a function is only called after a certain period of inactivity following the triggering event.
+    - It is useful when you want a function to be called only after the user has stopped taking a particular action.
+    - Here's a basic example in JavaScript using a delay of 200 milliseconds:
+        ``` javascript 
+        
+            function debounce(func, delay) {
+                let timeoutId;
+                return function () {
+                    clearTimeout(timeoutId);
+                    timeoutId = setTimeout(() => {
+                        func.apply(this, arguments);
+                    }, delay);
+                };
+            }
+
+            // Example usage
+            const debouncedFunction = debounce(myFunction, 200);
+            window.addEventListener('input', debouncedFunction);
+
+        ```
+    - In this example, myFunction will be called only if there is no input event for 200 milliseconds, preventing the function from being invoked too frequently during rapid user input.
+
+- Both throttling and debouncing are commonly used in scenarios where performance optimization and a controlled rate of execution are important, such as in handling user input or responsive web design. 
+- The choice between throttling and debouncing depends on the specific requirements of your application.
