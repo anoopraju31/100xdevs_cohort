@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ToDo App</title>
+		<style>
+			.todo {
+				margin-bottom: 10px;
+				display: flex;
+				align-items: center;
+				gap: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<input type="text" placeholder="title" id="title" />
+			<br />
+			<br />
+			<input type="text" placeholder="description" id="description" />
+			<br />
+			<br />
+			<button onclick="addTodoDocument()">Add Todo</button>
+
+			<div id="container"></div>
+		</div>
+
+		<script>
+			const titleInput = document.getElementById('title')
+			const descriptionInput = document.getElementById('description')
+			const container = document.getElementById('container')
+			let todoID = 0
+
+			function addTodo() {
+				container.innerHTML += `
+                <div class="todo">
+                    <h3>${titleInput.value}</h3>
+                    <p> ${descriptionInput.value} </p> 
+                    <button> Mark as Done </button>   
+                </div>
+                `
+				titleInput.value = ''
+				descriptionInput.value = ''
+			}
+
+			// createElement
+			function addTodoDocument() {
+				const outerDiv = document.createElement('div') // <div></div>
+				const titleDiv = document.createElement('div')
+				const descriptionDiv = document.createElement('div')
+				const completeButton = document.createElement('button')
+
+				titleDiv.innerHTML = titleInput.value
+				outerDiv.appendChild(titleDiv)
+
+				descriptionDiv.innerHTML = descriptionInput.value
+				outerDiv.appendChild(descriptionDiv)
+
+				completeButton.innerHTML = 'Mark as Done'
+				completeButton.setAttribute('onclick', `markAsDone(${todoID})`)
+				outerDiv.appendChild(completeButton)
+
+				outerDiv.className = 'todo'
+				outerDiv.setAttribute('id', todoID)
+
+				container.appendChild(outerDiv)
+
+				todoID++
+			}
+
+			function markAsDone(id) {
+				const parent = document.getElementById(id)
+				parent.children[2].innerHTML = 'Done'
+			}
+		</script>
+	</body>
+</html>
