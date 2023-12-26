@@ -1,0 +1,19 @@
+{
+  "name": "simple-interest-calculator",
+  "version": "1.0.0",
+  "description": "An express server that calculate the simple interest",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ExpreessJS",
+    "NodeJS",
+    "HTTP-Server"
+  ],
+  "author": "Anoop Raju",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
