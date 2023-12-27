@@ -1,8 +1,15 @@
+import { useState } from 'react'
 import Form from './components/Form'
 import Header from './components/Header'
 import Tasks from './components/Tasks'
 
 function App() {
+	const [tasks, setTasks] = useState([])
+
+	const handleTask = (task) => {
+		setTasks((prev) => [...prev, task])
+	}
+
 	return (
 		<main className='p-10 bg-gray-100 min-h-screen'>
 			<div className='container mx-auto max-w-3xl'>
@@ -15,10 +22,10 @@ function App() {
 						</h3>
 					</div>
 
-					<Form />
+					<Form handleTask={handleTask} />
 				</section>
 
-				<Tasks />
+				<Tasks tasks={tasks} />
 			</div>
 		</main>
 	)

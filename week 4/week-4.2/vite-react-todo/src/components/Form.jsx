@@ -1,15 +1,27 @@
 import { useState } from 'react'
+import PropTypes from 'prop-types'
+import { v4 as uuidv4 } from 'uuid'
 import FormField from './FormField'
 import Button from './Button'
 
-const Form = () => {
+const Form = (props) => {
 	const [title, setTitle] = useState('')
 	const [description, setDescription] = useState('')
+	const { handleTask } = props
 
 	const handleTitleChange = (e) => setTitle(e.target.value)
 	const handleDescriptionChange = (e) => setDescription(e.target.value)
 	const handleSubmit = (e) => {
 		e.preventDefault()
+
+		const task = {
+			title,
+			description,
+			completed: false,
+			id: uuidv4(),
+		}
+
+		handleTask(task)
 	}
 
 	return (
@@ -35,6 +47,10 @@ const Form = () => {
 			<Button type='submit' title='Add Task' handleClick={handleSubmit} />
 		</form>
 	)
+}
+
+Form.propTypes = {
+	handleTask: PropTypes.func.isRequired,
 }
 
 export default Form
