@@ -1,5 +1,11 @@
+import Task from './Task'
+
 const Tasks = () => {
-	return <div>Tasks</div>
+	return (
+		<section className='grid gap-6 mt-4'>
+			<Task />
+		</section>
+	)
 }
 
 export default Tasks
