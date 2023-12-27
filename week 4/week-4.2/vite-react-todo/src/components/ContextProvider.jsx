@@ -10,11 +10,22 @@ const ContextProvider = (props) => {
 	const deleteTask = (id) => {
 		setTasks((prev) => prev.filter((task) => task.id !== id))
 	}
+	const toggleCompletion = (id) => {
+		const alterTasks = tasks.map((task) => {
+			if (task.id === id) {
+				task.completed = !task.completed
+			}
+
+			return task
+		})
+		setTasks(alterTasks)
+	}
 
 	const data = {
 		tasks,
 		handleTasks,
 		deleteTask,
+		toggleCompletion,
 	}
 	return <AppContext.Provider value={data}>{children}</AppContext.Provider>
 }
