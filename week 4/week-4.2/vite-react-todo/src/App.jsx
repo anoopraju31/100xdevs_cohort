@@ -1,3 +1,4 @@
+import Form from './components/Form'
 import Header from './components/Header'
 
 function App() {
@@ -6,6 +7,16 @@ function App() {
 			<div className='container mx-auto max-w-3xl'>
 				<Header />
 			</div>
+
+			<section className='rounded-lg border bg-card text-card-foreground shadow-sm'>
+				<div className='flex flex-col space-y-1.5 p-6'>
+					<h3 className='font-semibold text-center tracking-tight text-lg'>
+						Add New Task
+					</h3>
+				</div>
+
+				<Form />
+			</section>
 		</main>
 	)
 }
