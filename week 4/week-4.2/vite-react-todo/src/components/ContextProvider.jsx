@@ -6,9 +6,11 @@ const ContextProvider = (props) => {
 	const { children } = props
 	const [tasks, setTasks] = useState([])
 
+	const handleTasks = (task) => setTasks((prev) => [...prev, task])
+
 	const data = {
 		tasks,
-		setTasks,
+		handleTasks,
 	}
 	return <AppContext.Provider value={data}>{children}</AppContext.Provider>
 }

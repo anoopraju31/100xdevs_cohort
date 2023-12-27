@@ -1,16 +1,9 @@
-import { useState } from 'react'
-import Form from './components/Form'
-import Header from './components/Header'
-import Tasks from './components/Tasks'
 import ContextProvider from './components/ContextProvider'
+import Header from './components/Header'
+import Form from './components/Form'
+import Tasks from './components/Tasks'
 
 function App() {
-	const [tasks, setTasks] = useState([])
-
-	const handleTask = (task) => {
-		setTasks((prev) => [...prev, task])
-	}
-
 	return (
 		<ContextProvider>
 			<main className='p-10 bg-gray-100 min-h-screen'>
@@ -24,10 +17,10 @@ function App() {
 							</h3>
 						</div>
 
-						<Form handleTask={handleTask} />
+						<Form />
 					</section>
 
-					<Tasks tasks={tasks} />
+					<Tasks />
 				</div>
 			</main>
 		</ContextProvider>
