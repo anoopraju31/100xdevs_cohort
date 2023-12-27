@@ -12,9 +12,9 @@ const Task = () => {
 			<p className='p-6 text-sm'> description </p>
 
 			<div className='items-center p-6 flex gap-4 justify-end'>
-				<Button title='Mark as done' />
-				<Button title='Edit' />
-				<Button title='Delete' />
+				<Button title='Mark as done' styles='bg-green-500' />
+				<Button title='Edit' styles='bg-gray-300' />
+				<Button title='Delete' styles='bg-red-500' />
 			</div>
 		</div>
 	)
