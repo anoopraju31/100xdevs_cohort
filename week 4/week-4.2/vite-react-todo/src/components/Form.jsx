@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import FormField from './FormField'
+import Button from './Button'
 
 const Form = () => {
 	const [title, setTitle] = useState('')
@@ -7,6 +8,7 @@ const Form = () => {
 
 	const handleTitleChange = (e) => setTitle(e.target.value)
 	const handleDescriptionChange = (e) => setDescription(e.target.value)
+
 	return (
 		<form className='p-6 flex flex-col gap-2'>
 			<FormField
@@ -26,6 +28,8 @@ const Form = () => {
 				value={description}
 				handleChange={handleDescriptionChange}
 			/>
+
+			<Button />
 		</form>
 	)
 }
