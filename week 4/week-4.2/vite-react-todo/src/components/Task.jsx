@@ -5,7 +5,7 @@ import { AppContext } from './ContextProvider'
 
 const Task = (props) => {
 	const { id, title, description, completed } = props
-	const { deleteTask, toggleCompletion } = useContext(AppContext)
+	const { deleteTask, toggleCompletion, editTask } = useContext(AppContext)
 
 	return (
 		<div
@@ -35,7 +35,7 @@ const Task = (props) => {
 				<Button
 					title='Edit'
 					styles='bg-gray-300'
-					handleClick={() => {}}
+					handleClick={() => editTask(id)}
 					type='button'
 				/>
 				<Button
