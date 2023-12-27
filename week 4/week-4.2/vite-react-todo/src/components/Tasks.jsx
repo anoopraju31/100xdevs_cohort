@@ -1,8 +1,10 @@
-import PropTypes from 'prop-types'
+import { useContext } from 'react'
+import { AppContext } from './ContextProvider'
 import Task from './Task'
 
-const Tasks = (props) => {
-	const { tasks } = props
+const Tasks = () => {
+	const { tasks } = useContext(AppContext)
+
 	return (
 		<section className='grid gap-6 mt-4'>
 			{tasks.map((task) => (
@@ -10,10 +12,6 @@ const Tasks = (props) => {
 			))}
 		</section>
 	)
-}
-
-Tasks.propTypes = {
-	tasks: PropTypes.array.isRequired,
 }
 
 export default Tasks
