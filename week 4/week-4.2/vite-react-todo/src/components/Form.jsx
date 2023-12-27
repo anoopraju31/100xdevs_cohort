@@ -10,12 +10,16 @@ const Form = () => {
 		handleTitleChange,
 		handleDescriptionChange,
 		clearTask,
+		isEditForm,
+		handleEditTask,
 	} = useContext(AppContext)
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
 
-		handleTasks(task)
+		if (isEditForm) handleEditTask(task)
+		else handleTasks(task)
+
 		clearTask()
 	}
 
@@ -39,7 +43,11 @@ const Form = () => {
 				handleChange={handleDescriptionChange}
 			/>
 
-			<Button type='submit' title='Add Task' handleClick={handleSubmit} />
+			<Button
+				type='submit'
+				title={isEditForm ? 'Edit Task' : 'Add Task'}
+				handleClick={handleSubmit}
+			/>
 		</form>
 	)
 }
