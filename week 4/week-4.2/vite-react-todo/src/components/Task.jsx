@@ -5,7 +5,7 @@ import { AppContext } from './ContextProvider'
 
 const Task = (props) => {
 	const { id, title, description, completed } = props
-	const { deleteTask } = useContext(AppContext)
+	const { deleteTask, toggleCompletion } = useContext(AppContext)
 
 	return (
 		<div
@@ -26,12 +26,23 @@ const Task = (props) => {
 			</p>
 
 			<div className='items-center p-6 flex gap-4 justify-end'>
-				<Button title='Mark as done' styles='bg-green-500' />
-				<Button title='Edit' styles='bg-gray-300' />
+				<Button
+					title='Mark as done'
+					styles='bg-green-500'
+					handleClick={() => toggleCompletion(id)}
+					type='button'
+				/>
+				<Button
+					title='Edit'
+					styles='bg-gray-300'
+					handleClick={() => {}}
+					type='button'
+				/>
 				<Button
 					title='Delete'
 					styles='bg-red-500'
 					handleClick={() => deleteTask(id)}
+					type='button'
 				/>
 			</div>
 		</div>
