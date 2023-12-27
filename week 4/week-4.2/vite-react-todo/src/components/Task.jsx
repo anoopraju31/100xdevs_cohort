@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types'
 import Button from './Button'
+import { useContext } from 'react'
+import { AppContext } from './ContextProvider'
 
 const Task = (props) => {
 	const { id, title, description, completed } = props
+	const { deleteTask } = useContext(AppContext)
 
 	return (
 		<div
@@ -25,7 +28,11 @@ const Task = (props) => {
 			<div className='items-center p-6 flex gap-4 justify-end'>
 				<Button title='Mark as done' styles='bg-green-500' />
 				<Button title='Edit' styles='bg-gray-300' />
-				<Button title='Delete' styles='bg-red-500' />
+				<Button
+					title='Delete'
+					styles='bg-red-500'
+					handleClick={() => deleteTask(id)}
+				/>
 			</div>
 		</div>
 	)
