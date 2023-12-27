@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="./index.js"></script>
+    <style>
+      .todo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <input type="text" id="title" placeholder="Todo title"></input> <br /><br />
+    <input type="text" id="description" placeholder="Todo description"></input> <br /><br />
+    <button id="submit" onclick="addTodo()">Add todo</button>
+    <br /> <br />
+
+    <div id="todos"></div>
+  </body>
+</html>

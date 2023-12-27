@@ -14,6 +14,7 @@ The goal is the following -
     const todos = [{
         title: "Go to gym",
         description: "Go to gym from 7-8PM",
+        completed: false
         id: 1
     }]
 ```
