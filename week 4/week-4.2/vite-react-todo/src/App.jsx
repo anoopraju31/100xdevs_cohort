@@ -1,5 +1,6 @@
 import Form from './components/Form'
 import Header from './components/Header'
+import Tasks from './components/Tasks'
 
 function App() {
 	return (
@@ -17,6 +18,8 @@ function App() {
 
 				<Form />
 			</section>
+
+			<Tasks />
 		</main>
 	)
 }
