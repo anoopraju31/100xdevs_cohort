@@ -6,7 +6,7 @@ const Tasks = (props) => {
 	return (
 		<section className='grid gap-6 mt-4'>
 			{tasks.map((task) => (
-				<Task key={task.id} />
+				<Task key={task.id} {...task} />
 			))}
 		</section>
 	)
