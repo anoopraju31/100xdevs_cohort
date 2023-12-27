@@ -39,6 +39,13 @@ const ContextProvider = (props) => {
 		})
 		setTasks(alterTasks)
 	}
+	const editTask = (id) => {
+		const filteredTasks = tasks.filter((task) => task.id === id)
+
+		if (!filteredTasks) return
+
+		setTask(filteredTasks[0])
+	}
 
 	const data = {
 		tasks,
@@ -50,6 +57,7 @@ const ContextProvider = (props) => {
 		handleDescriptionChange,
 		addTaskId,
 		clearTask,
+		editTask,
 	}
 	return <AppContext.Provider value={data}>{children}</AppContext.Provider>
 }
