@@ -8,6 +8,9 @@ const Form = () => {
 
 	const handleTitleChange = (e) => setTitle(e.target.value)
 	const handleDescriptionChange = (e) => setDescription(e.target.value)
+	const handleSubmit = (e) => {
+		e.preventDefault()
+	}
 
 	return (
 		<form className='p-6 flex flex-col gap-2'>
@@ -29,7 +32,7 @@ const Form = () => {
 				handleChange={handleDescriptionChange}
 			/>
 
-			<Button />
+			<Button type='submit' title='Add Task' handleClick={handleSubmit} />
 		</form>
 	)
 }
