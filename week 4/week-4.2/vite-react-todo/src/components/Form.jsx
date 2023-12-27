@@ -1,30 +1,22 @@
-import { useContext, useState } from 'react'
-import { v4 as uuidv4 } from 'uuid'
+import { useContext } from 'react'
+import { AppContext } from './ContextProvider'
 import FormField from './FormField'
 import Button from './Button'
-import { AppContext } from './ContextProvider'
 
 const Form = () => {
-	const [title, setTitle] = useState('')
-	const [description, setDescription] = useState('')
-	const { handleTasks } = useContext(AppContext)
+	const {
+		handleTasks,
+		task,
+		handleTitleChange,
+		handleDescriptionChange,
+		clearTask,
+	} = useContext(AppContext)
 
-	const handleTitleChange = (e) => setTitle(e.target.value)
-	const handleDescriptionChange = (e) => setDescription(e.target.value)
 	const handleSubmit = (e) => {
 		e.preventDefault()
 
-		const task = {
-			title,
-			description,
-			completed: false,
-			id: uuidv4(),
-		}
-
 		handleTasks(task)
-
-		setTitle('')
-		setDescription('')
+		clearTask()
 	}
 
 	return (
@@ -34,7 +26,7 @@ const Form = () => {
 				label='Title'
 				placeholder='Enter title'
 				type='text'
-				value={title}
+				value={task.title}
 				handleChange={handleTitleChange}
 			/>
 
@@ -43,7 +35,7 @@ const Form = () => {
 				label='Description'
 				placeholder='Enter description'
 				type='text'
-				value={description}
+				value={task.description}
 				handleChange={handleDescriptionChange}
 			/>
 
