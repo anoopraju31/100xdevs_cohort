@@ -22,6 +22,9 @@ const Form = (props) => {
 		}
 
 		handleTask(task)
+
+		setTitle('')
+		setDescription('')
 	}
 
 	return (
