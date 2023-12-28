@@ -22,3 +22,8 @@
     3. Update Data
     4. Delete Data
 - Popularly know as CRUD
+
+### Mongoose Library
+- Mongoose is a ORM (Object Relation Model) library to talk with the MongoDB.
+- In mongoose first we have to define a schema. even though mongodb is a schemaless, mongoose makes us define a schema for things like autocompletions/ validating data before it goes in the DB to make sure the we are doing things right. 
+- Schemaless DBs can be very dangerous, using schemas in mongo makes it slightly less dangerous.
