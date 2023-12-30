@@ -17,7 +17,7 @@ const Task = (props) => {
 					className={`text-2xl font-semibold leading-none tracking-tight ${
 						completed && 'line-through'
 					}`}>
-					{title} {id}
+					{title}
 				</h3>
 			</div>
 
