@@ -41,14 +41,16 @@ app.put('/completed', async (req, res) => {
 	if (!validation.success)
 		return res.status(411).json({ message: 'You sent the wrong inputs' })
 
-	const todo = await Todo.find({ _id: id })
-
-	todo.completed = true
-	await todo.save()
-
+	await Todo.updateOne(
+		{
+			_id: id,
+		},
+		{
+			completed: true,
+		},
+	)
 	res.json({
-		message: 'Successfully updated todo',
-		todo,
+		msg: 'Todo marked as completed',
 	})
 })
 
