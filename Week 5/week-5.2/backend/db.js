@@ -1,16 +1,21 @@
 const mongoose = require('mongoose')
+require('dotenv').config()
+
+const connectionUri = process.env.MONGO_CONNECTION_URI
+
+mongoose.connect(connectionUri)
 
 const todoSchema = mongoose.Schema({
 	title: {
-		type: string,
+		type: String,
 		required: true,
 	},
 	description: {
-		type: string,
+		type: String,
 		required: true,
 	},
 	completed: {
-		type: boolean,
+		type: Boolean,
 		required: true,
 	},
 })
