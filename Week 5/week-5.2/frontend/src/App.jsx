@@ -1,9 +1,11 @@
 import CreateTodo from './components/CreateTodo'
 
-export const App = () => {
+const App = () => {
 	return (
 		<div>
 			<CreateTodo />
 		</div>
 	)
 }
+
+export default App
