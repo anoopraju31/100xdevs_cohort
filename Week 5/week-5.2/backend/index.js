@@ -1,5 +1,5 @@
 const express = require('express')
-const { createTodo } = require('./type')
+const { createTodo, updateTodo } = require('./type')
 const { Todo } = require('./db')
 
 const app = express()
@@ -34,7 +34,23 @@ app.post('/todo', async (req, res) => {
 	})
 })
 
-app.put('/completed', (req, res) => {})
+app.put('/completed', async (req, res) => {
+	const id = req.body.id
+	const validation = updateTodo.safeParse({ id })
+
+	if (!validation.success)
+		return res.status(411).json({ message: 'You sent the wrong inputs' })
+
+	const todo = await Todo.find({ _id: id })
+
+	todo.completed = true
+	await todo.save()
+
+	res.json({
+		message: 'Successfully updated todo',
+		todo,
+	})
+})
 
 app.listen(PORT, () => {
 	console.log(`Server started at port ${PORT}`)
