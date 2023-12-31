@@ -1,3 +1,9 @@
+import CreateTodo from './components/CreateTodo'
+
 export const App = () => {
-	return <div>App</div>
+	return (
+		<div>
+			<CreateTodo />
+		</div>
+	)
 }
