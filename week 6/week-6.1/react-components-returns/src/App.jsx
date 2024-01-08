@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types'
+import React from 'react'
 
 const App = () => {
 	return (
-		<div>
+		<React.Fragment>
 			<Header title='My name is Anoop Raju.' />
 			<Header title='My name is Hemanth Kumar.' />
-		</div>
+		</React.Fragment>
 	)
 }
 
