@@ -23,3 +23,6 @@
 - When the state get moved to a child component, only that child component gets re-rendered when the state gets updated and not the parent component nor the sibling components.
     ![](images/state-moved-to-child-component.png)
     ![](images/bounded-box-state-moved-to-child-component.png)
+- Another Solution by using **React.memo()**, this will memoize the component and only re-renders when the props or the state of the component changes.
+![](images/state-inparent-component-using-memo-in-child-component.png)
+![](images/bounded-box-state-inparent-component-using-memo-in-child-component.png)
