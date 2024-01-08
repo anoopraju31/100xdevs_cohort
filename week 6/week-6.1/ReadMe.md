@@ -15,3 +15,11 @@
 ### What exactly is re-rendering in react?
 - In React, re-rendering refers to the process of updating the user interface (UI) in response to changes in the application's state or props. 
 - When the state or props of a React component change, React will re-run the component's render method to generate a new virtual DOM representation of the UI. It then compares the new virtual DOM with the previous one to identify the differences (diffing). After identifying the differences, React updates only the parts of the actual DOM that have changed, instead of re-rendering the entire UI.
+- A parent component re-render triggers all children re-rendering
+- React Dev Tools shows a bounding box around the components that are getting re-rendered.
+- Here is an example, where the state is in the parent component and when the state changes the parent component along with all the children components gets re-rendered.
+    ![](images/state-in-parent.png)
+    ![](images/bounded-box-state-in-parent.png)
+- When the state get moved to a child component, only that child component gets re-rendered when the state gets updated and not the parent component nor the sibling components.
+    ![](images/state-moved-to-child-component.png)
+    ![](images/bounded-box-state-moved-to-child-component.png)
