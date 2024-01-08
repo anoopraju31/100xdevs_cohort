@@ -1,12 +1,19 @@
+import { Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
-import React from 'react'
 
 const App = () => {
+	const [title, setTitle] = useState('My name is Anoop Raju.')
+
+	const changeTitle = () => {
+		setTitle(`My Name is ${Math.random()}`)
+	}
+
 	return (
-		<React.Fragment>
-			<Header title='My name is Anoop Raju.' />
+		<Fragment>
+			<button onClick={changeTitle}> update title </button>
+			<Header title={title} />
 			<Header title='My name is Hemanth Kumar.' />
-		</React.Fragment>
+		</Fragment>
 	)
 }
 
