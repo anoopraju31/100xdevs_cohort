@@ -121,3 +121,50 @@ Out of the box react provides us the following hooks:
 6. useReducer
 7. useContext
 8. useLayoutEffect
+
+#### useEffect hook
+The **useEffect** hook in React is a way to perform tasks in your functional components that need to happen after the component has rendered. 
+Here's a simpler breakdown:
+``` jsx
+import React, { useState, useEffect } from 'react';
+
+const MyComponent = () => {
+    // State to store data fetched from an API
+    const [data, setData] = useState(null);
+
+    // useEffect is like a sidekick that does something after the component renders
+    useEffect(() => {
+        // Inside useEffect, you can perform tasks, like fetching data
+
+        // Example: Fetch data from an API
+        fetch('https://api.example.com/data')
+            .then(response => response.json())
+            .then(data => {
+                // Update state with the fetched data
+                setData(data);
+            });
+
+        // Cleanup function (optional): runs when the component is unmounted
+        return () => {
+        // Do cleanup tasks if needed
+        };
+    }, []); // Empty dependency array means the effect runs once after the initial render
+
+    // Render the component based on the fetched data
+    return (
+        <div>
+            {data ? (
+                <p>Data: {data}</p>
+            ) : (
+                <p>Loading...</p>
+            )}
+        </div>
+    );
+}
+```
+In the example above:
+- The **useEffect** hook is used to define the side effect, which in this case is fetching data from an API.
+- The function inside **useEffect** runs after the component has rendered for the first time.
+- The second argument to **useEffect** is an array of dependencies. If any of the dependencies change between renders, the effect will run again. If the array is empty (**[]**), the effect runs only once after the initial render.
+- Inside the effect, you perform the necessary actions (e.g., fetching data) and may also return a cleanup function, which will be executed when the component is unmounted or when the dependencies change.
+- The component renders based on the state, which is updated with the fetched data.
