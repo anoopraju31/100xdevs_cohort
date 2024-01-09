@@ -79,3 +79,33 @@ In this example, each **<li>** element has a **key** attribute set to the **id**
 
 ![](images/todo-app-add-todo.png)
 As we see in the above image only the parent component is getting updated not the todos. React uses the **key** to optimize the rendering process and update only the necessary parts of the UI.
+
+### Wrapper Components 
+In React, a wrapper component refers to any component that wraps around another component. The Purpose of wrapper component is to encapsulate and extend the behaviour or apperance of the wrapped component without modifying its code directly. This is a common pattern in React for code reusability, separation of concerns, and maintaining a clean and modular codebase.
+
+Here is an example for a wrapper component in React:
+``` jsx
+    import React from 'react'
+
+    const App = () => {
+        return (
+            <div>
+                <CardWrapper>
+                    <TextComponent />
+                </CardWrapper>
+                <TextComponent />
+            </div>
+        )
+    }
+
+    const TextComponent = () => {
+        return <div className='text-component'> Hi there </div>
+    }
+
+    const CardWrapper = (props) => {
+        const { children } = props
+        return <div className='wrapper'>{children}</div>
+    }
+
+    export default App
+```
