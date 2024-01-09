@@ -109,3 +109,15 @@ Here is an example for a wrapper component in React:
 
     export default App
 ```
+### Hooks in React
+Hooks in React are functions that allows functional components to use state and life-cycle methods that are previously only available in class components. Usually, hooks are functions whose name starts with **use** (just a naming convension).
+
+Out of the box react provides us the following hooks:
+1. useState
+2. useEffect
+3. useCallback
+4. useMemo
+5. useRef
+6. useReducer
+7. useContext
+8. useLayoutEffect
