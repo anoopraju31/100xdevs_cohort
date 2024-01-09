@@ -1,3 +1,5 @@
+import Button from './Button'
+
 const Form = () => {
 	return (
 		<form className='p-10 '>
@@ -50,6 +52,10 @@ const Form = () => {
 					placeholder='Enter your social media'
 					className='bg-transparent border outline-none border-orange-300 text-orange-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 placeholder:text-orange-800/80'
 				/>
+			</div>
+
+			<div className='mt-6 flex justify-center'>
+				<Button />
 			</div>
 		</form>
 	)
