@@ -37,7 +37,7 @@ const App = () => {
 		],
 	}
 	return (
-		<div>
+		<div className='h-screen flex justify-center items-center'>
 			<BusinessCard {...user} />
 		</div>
 	)
