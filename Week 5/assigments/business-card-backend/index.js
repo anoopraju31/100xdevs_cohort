@@ -9,6 +9,7 @@ const MONGODB_CONNECTION_URL = process.env.MONGODB_CONNECTION_URL
 
 mongoose.connect(MONGODB_CONNECTION_URL)
 
+app.use(express.json())
 app.get('/', (req, res) => {
 	res.json({ message: 'Welcome to Business Card App' })
 })
