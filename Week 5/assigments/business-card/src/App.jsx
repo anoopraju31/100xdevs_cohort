@@ -1,45 +1,15 @@
-import BusinessCard from './components/BusinessCard'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import CreateCard from './pages/CreateCard'
 
 const App = () => {
-	const user = {
-		name: 'Anoop Raju',
-		description: 'A Computer Science Engineering graduate',
-		interests: [
-			{
-				id: '1',
-				interest: 'Coding',
-			},
-			{
-				id: '2',
-				interest: 'Photography',
-			},
-			{
-				id: '3',
-				interest: 'Travel',
-			},
-		],
-		socials: [
-			{
-				id: '1',
-				title: 'LinkedIn',
-				link: 'www.linkedin.com',
-			},
-			{
-				id: '2',
-				title: 'Instagram',
-				link: 'www.instagram.com',
-			},
-			{
-				id: '3',
-				title: 'Github',
-				link: 'www.github.com',
-			},
-		],
-	}
 	return (
-		<div className='h-screen flex justify-center items-center'>
-			<BusinessCard {...user} />
-		</div>
+		<BrowserRouter>
+			<Routes>
+				<Route path='/' element={<h1> Home Page </h1>} />
+				<Route path='/create-card' element={<CreateCard />} />
+				<Route path='/edit-card' element={<h1> Edit Business Card Page </h1>} />
+			</Routes>
+		</BrowserRouter>
 	)
 }
 
