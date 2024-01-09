@@ -7,6 +7,7 @@ const Form = () => {
 	const [description, setDescription] = useState('')
 	const [interestInput, setInterestInput] = useState('')
 	const [socialInput, setSocialInput] = useState('')
+	const [isButtonDisabled, setIsButtonDisabled] = useState(false)
 
 	const handleNameChange = useCallback((e) => setName(e.target.value), [])
 	const handleDescriptionChange = useCallback(
@@ -24,6 +25,7 @@ const Form = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
+		setIsButtonDisabled(true)
 		console.log(name, description, interestInput, socialInput)
 	}
 
@@ -71,7 +73,7 @@ const Form = () => {
 			/>
 
 			<div className='mt-6 flex justify-center'>
-				<Button />
+				<Button title='Submit' type='submit' isDisabled={isButtonDisabled} />
 			</div>
 		</form>
 	)
