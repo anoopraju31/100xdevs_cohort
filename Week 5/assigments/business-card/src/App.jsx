@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import CreateCard from './pages/CreateCard'
+import EditCardPage from './pages/EditCardPage'
 
 const App = () => {
 	return (
@@ -7,7 +8,7 @@ const App = () => {
 			<Routes>
 				<Route path='/' element={<h1> Home Page </h1>} />
 				<Route path='/create-card' element={<CreateCard />} />
-				<Route path='/edit-card' element={<h1> Edit Business Card Page </h1>} />
+				<Route path='/edit-card' element={<EditCardPage />} />
 			</Routes>
 		</BrowserRouter>
 	)
