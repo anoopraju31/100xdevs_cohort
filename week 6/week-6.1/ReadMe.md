@@ -31,3 +31,51 @@
 
 ### React.memo()
 **React.memo()** is a higher-order component provided by React. It's used to memoize functional components, preventing unnecessary re-renders when the component receives the same props. Memoization helps improve the performance of React applications by avoiding rendering components if their inputs (props) haven't changed.
+
+### Keys in React
+In React **key** is a special attribute that we can include in JSX elements when we are rendering a list of items. The purpose of keys is to help React identify which items have changed, been added or been removed from a list. React uses the **keys** to optimize the rendering process and update only the necessary parts of the UI.
+
+Here's an example of using keys in React:
+``` jsx
+import React, { useState } from 'react'
+
+const Todo = () => {
+    const [todos, setTodos] = useState([
+		{ id: 1, title: 'Go to GYM', description: 'Go to GYM today' },
+		{ id: 2, title: 'Go to Market', description: 'Go to Market today' },
+		{
+			id: 3,
+			title: 'Go to Hospital',
+			description: 'Go to Hospital tomorrow.',
+		},
+	])
+
+	const addTodo = () => {
+		setTodos((prev) => [
+			...prev,
+			{ id: prev.length, title: 'new todo', description: 'a new todo added' },
+		])
+	}
+
+    return (
+        <div>
+			<button onClick={addTodo}> Add Todo </button>
+
+			<ul>
+            {todos.map(({ id, title, description }) => (
+				<li key={id}>
+					<h3> {title} </h3>
+					<p> {description} </p>
+				</li>
+			))}
+            </ul>
+		</div>
+    )
+}
+
+export default Todo
+```
+In this example, each **<li>** element has a **key** attribute set to the **id** property of the corresponding item in the **todos** state array. This helps React keep track of each item and efficiently update the UI when the list changes.
+
+![](images/todo-app-add-todo.png)
+As we see in the above image only the parent component is getting updated not the todos. React uses the **key** to optimize the rendering process and update only the necessary parts of the UI.
