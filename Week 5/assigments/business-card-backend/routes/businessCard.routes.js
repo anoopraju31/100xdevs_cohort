@@ -4,6 +4,18 @@ const cardSchema = require('../utills/validations.js')
 
 const router = express.Router()
 
+router.get('/', async (req, res) => {
+	try {
+		const cards = await Card.find()
+
+		res.json({ status: 'success', cards })
+	} catch (error) {
+		console.error(error)
+
+		res.status(500).json({ message: 'something went wrong' })
+	}
+})
+
 router.post('/create', async (req, res) => {
 	try {
 		const { name, description, interests, socials } = req.body
