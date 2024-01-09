@@ -1,0 +1,10 @@
+.wrapper {
+	border: 2px solid #f59599;
+	background-color: #f5f5dc;
+	padding: 20px;
+}
+
+.text-component {
+	padding: 20px;
+	text-align: center;
+}
