@@ -94,8 +94,31 @@ const editBusinessCard = async (req, res) => {
 	}
 }
 
+const deleteBusinessCard = async (req, res) => {
+	try {
+		const id = req.params.id
+		const card = await Card.findOneAndDelete({ _id: id })
+
+		if (!card)
+			return res.status(401).json({
+				status: 'error',
+				message: 'Card not found',
+			})
+
+		res.json({
+			status: 'success',
+			message: 'successfully deleted card.',
+		})
+	} catch (error) {
+		console.error(error)
+
+		res.status(500).json({ message: 'Something went wrong' })
+	}
+}
+
 module.exports = {
 	getBusinessCard,
 	createBusinessCard,
 	editBusinessCard,
+	deleteBusinessCard,
 }
