@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
 	} catch (error) {
 		console.error(error)
 
-		res.status(500).json({ message: 'something went wrong' })
+		res.status(500).json({ message: 'Something went wrong' })
 	}
 })
 
@@ -45,14 +45,13 @@ router.post('/create', async (req, res) => {
 	} catch (error) {
 		console.error(error)
 
-		res.status(500).json({ message: 'something went wrong' })
+		res.status(500).json({ message: 'Something went wrong' })
 	}
 })
 
 router.put('/:id', async (req, res) => {
 	try {
 		const id = req.params.id
-
 		const card = await Card.findOne({ _id: id })
 
 		if (!card) {
@@ -77,7 +76,7 @@ router.put('/:id', async (req, res) => {
 				message: validationResponse.error.issues[0].message,
 			})
 
-		const updatedCard = await Card.updateOne(
+		await Card.updateOne(
 			{ _id: id },
 			{
 				name,
@@ -94,7 +93,29 @@ router.put('/:id', async (req, res) => {
 	} catch (error) {
 		console.error(error)
 
-		res.status(500).json({ message: 'something went wrong' })
+		res.status(500).json({ message: 'Something went wrong' })
+	}
+})
+
+router.delete('/:id', async (req, res) => {
+	try {
+		const id = req.params.id
+		const card = await Card.findOneAndDelete({ _id: id })
+
+		if (!card)
+			return res.status(401).json({
+				status: 'error',
+				message: 'Card not found',
+			})
+
+		res.json({
+			status: 'success',
+			message: 'successfully deleted card.',
+		})
+	} catch (error) {
+		console.error(error)
+
+		res.status(500).json({ message: 'Something went wrong' })
 	}
 })
 
