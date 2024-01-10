@@ -1,20 +1,11 @@
 const express = require('express')
 const Card = require('../models/card.models.js')
 const cardSchema = require('../utills/validations.js')
+const { getBusinessCard } = require('../controllers/businessCard.controllers.js')
 
 const router = express.Router()
 
-router.get('/', async (req, res) => {
-	try {
-		const cards = await Card.find()
-
-		res.json({ status: 'success', cards })
-	} catch (error) {
-		console.error(error)
-
-		res.status(500).json({ message: 'Something went wrong' })
-	}
-})
+router.get('/', getBusinessCard)
 
 router.post('/create', async (req, res) => {
 	try {
