@@ -13,6 +13,39 @@ const getBusinessCard = async (req, res) => {
 	}
 }
 
+const createBusinessCard = async (req, res) => {
+	try {
+		const { name, description, interests, socials } = req.body
+
+		const validationResponse = cardSchema.safeParse({
+			name,
+			description,
+			interests,
+			socials,
+		})
+
+		if (!validationResponse.success)
+			return res.status(401).json({
+				status: 'error',
+				message: validationResponse.error.issues[0].message,
+			})
+
+		const newCard = new Card({
+			name,
+			description,
+			interests,
+			socials,
+		})
+		await newCard.save()
+
+		res.json({ status: 'success', message: 'successfully created new card.' })
+	} catch (error) {
+		console.error(error)
+
+		res.status(500).json({ message: 'Something went wrong' })
+	}
+}
+
 const editBusinessCard = async (req, res) => {
 	try {
 		const id = req.params.id
@@ -63,5 +96,6 @@ const editBusinessCard = async (req, res) => {
 
 module.exports = {
 	getBusinessCard,
+	createBusinessCard,
 	editBusinessCard,
 }
