@@ -10,7 +10,7 @@ import { BASE_URL } from '../constants'
 const SignInPage = () => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
-	const [isButtonDisabled, setIsButtonDisabled] = useState(false)
+	const [isDisabled, setIsDisabled] = useState(false)
 	const navigate = useNavigate()
 
 	const handleEmailChange = useCallback((e) => setEmail(e.target.value), [])
@@ -23,7 +23,7 @@ const SignInPage = () => {
 		async (e) => {
 			try {
 				e.preventDefault()
-				setIsButtonDisabled(true)
+				setIsDisabled(true)
 
 				const res = await axios.post(`${BASE_URL}/users/sign-in`, {
 					email,
@@ -41,7 +41,7 @@ const SignInPage = () => {
 			} catch (error) {
 				toast.error(error.response.data.message)
 			} finally {
-				setIsButtonDisabled(false)
+				setIsDisabled(false)
 			}
 		},
 		[email, password, navigate],
@@ -62,6 +62,7 @@ const SignInPage = () => {
 						placeholder='Enter your email'
 						type='email'
 						value={email}
+						isDisabled={isDisabled}
 						handleChange={handleEmailChange}
 					/>
 					<InputField
@@ -71,15 +72,12 @@ const SignInPage = () => {
 						placeholder='Enter your password'
 						type='password'
 						value={password}
+						isDisabled={isDisabled}
 						handleChange={handlePasswordChange}
 					/>
 
 					<div className='mt-6 flex justify-center'>
-						<Button
-							title='Submit'
-							type='submit'
-							isDisabled={isButtonDisabled}
-						/>
+						<Button title='Submit' type='submit' isDisabled={isDisabled} />
 					</div>
 				</form>
 
