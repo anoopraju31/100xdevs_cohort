@@ -7,4 +7,24 @@ const cardSchema = zod.object({
 	socials: zod.string().array(),
 })
 
-module.exports = cardSchema
+const nameSchema = zod.string().min(1, { message: 'Name is required.' })
+const emailSchema = zod
+	.string()
+	.min(1, { message: 'Email is required.' })
+	.email('Invalid email.')
+const passwordSchema = zod
+	.string()
+	.min(8, { message: 'Password must contain atleast 8 characters.' })
+
+const signUpSchema = zod.object({
+	name: nameSchema,
+	email: emailSchema,
+	password: passwordSchema,
+})
+
+const signInSchema = zod.object({
+	email: emailSchema,
+	password: passwordSchema,
+})
+
+module.exports = { cardSchema, signInSchema, signUpSchema }

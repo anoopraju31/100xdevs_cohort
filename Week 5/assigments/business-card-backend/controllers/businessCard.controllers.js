@@ -1,5 +1,5 @@
 const Card = require('../models/card.models.js')
-const cardSchema = require('../utills/validations.js')
+const { cardSchema } = require('../utills/validations.js')
 
 const getBusinessCard = async (req, res) => {
 	try {
