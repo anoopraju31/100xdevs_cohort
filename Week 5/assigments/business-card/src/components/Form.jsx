@@ -30,7 +30,7 @@ const Form = () => {
 	}
 
 	return (
-		<form className='p-10' onSubmit={handleSubmit}>
+		<form className='px-0 py-5 md:p-10' onSubmit={handleSubmit}>
 			<InputField
 				id='name'
 				name='name'
