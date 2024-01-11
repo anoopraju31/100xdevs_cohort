@@ -4,8 +4,8 @@ const Navbar = () => {
 	const { pathname } = useLocation()
 
 	return (
-		<header className='fixed top-0 left-0 w-full z-50'>
-			<div className='max-w-7xl mx-auto py-5 px-5 xl:px-0 flex justify-between items-center backdrop-blur-3xl'>
+		<header className='fixed top-0 left-0 w-full z-50 backdrop-blur-3xl'>
+			<div className='max-w-7xl mx-auto py-5 px-5 xl:px-0 flex justify-between items-center'>
 				<Link
 					to='/'
 					className='text-xl text-center mb-2 font-bold font-mono text-orange-900'>
