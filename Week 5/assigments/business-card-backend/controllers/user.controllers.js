@@ -13,11 +13,17 @@ const signUpController = async (req, res) => {
 		const validationResponse = signUpSchema.safeParse({ name, email, password })
 
 		if (!validationResponse.success)
-			return res.status(401).json(validationResponse.error.issues[0].message)
+			return res.status(401).json({
+				status: 'error',
+				message: validationResponse.error.issues[0].message,
+			})
 
 		const user = await User.findOne({ email })
 
-		if (user) return res.status(400).json({ message: 'User already exists.' })
+		if (user)
+			return res
+				.status(400)
+				.json({ status: 'error', message: 'User already exists.' })
 
 		const hashedPassword = await bcrypt.hash(password, salt)
 
@@ -29,11 +35,11 @@ const signUpController = async (req, res) => {
 
 		await newUser.save()
 
-		res.json({ message: 'User created successfully.' })
+		res.json({ status: 'success', message: 'User created successfully.' })
 	} catch (error) {
 		console.error(error)
 
-		res.status(500).json({ message: 'something went wrong' })
+		res.status(500).json({ status: 'error', message: 'something went wrong' })
 	}
 }
 
@@ -43,16 +49,24 @@ const signInController = async (req, res) => {
 		const validationResponse = signInSchema.safeParse({ email, password })
 
 		if (!validationResponse.success)
-			return res.status(401).json(validationResponse.error.issues[0].message)
+			return res.status(401).json({
+				status: 'error',
+				message: validationResponse.error.issues[0].message,
+			})
 
 		const user = await User.findOne({ email }).select('+password')
 
-		if (!user) return res.status(400).json({ message: 'User not found.' })
+		if (!user)
+			return res
+				.status(400)
+				.json({ status: 'error', message: 'User not found.' })
 
 		const passwordMatch = await bcrypt.compare(password, user?.password)
 
 		if (!passwordMatch)
-			return res.status(403).json({ message: 'Invalid password' })
+			return res
+				.status(403)
+				.json({ status: 'error', message: 'Incorrect password' })
 
 		const token = jwt.sign(
 			{
@@ -64,11 +78,11 @@ const signInController = async (req, res) => {
 			{ expiresIn: '30d' },
 		)
 
-		res.json({ message: 'successfully signed in.', token })
+		res.json({ status: 'success', message: 'successfully signed in.', token })
 	} catch (error) {
 		console.error(error)
 
-		res.status(500).json({ message: 'something went wrong' })
+		res.status(500).json({ status: 'error', message: 'something went wrong' })
 	}
 }
 
