@@ -6,6 +6,7 @@ import SignInPage from './pages/SignInPage'
 import Home from './pages/Home'
 import CreateCard from './pages/CreateCard'
 import EditCardPage from './pages/EditCardPage'
+import Footer from './components/Footer'
 
 const App = () => {
 	return (
@@ -19,6 +20,7 @@ const App = () => {
 				<Route path='/edit-card' element={<EditCardPage />} />
 			</Routes>
 			<Toaster />
+			<Footer />
 		</BrowserRouter>
 	)
 }
