@@ -112,7 +112,25 @@ const editBusinessCard = async (req, res) => {
 
 const deleteBusinessCard = async (req, res) => {
 	try {
+		const userId = req.headers['user-id']
 		const id = req.params.id
+
+		const user = await User.findOne({ _id: userId })
+
+		if (!user)
+			return res.status(403).json({
+				status: 'error',
+				message: 'User not found.',
+			})
+
+		const filteredCards = user.cards.filter((cardId) => cardId == id)
+
+		if (filteredCards.length === 0)
+			return res.status(401).json({
+				status: 'error',
+				message: 'Card not found.',
+			})
+
 		const card = await Card.findOneAndDelete({ _id: id })
 
 		if (!card)
@@ -120,6 +138,10 @@ const deleteBusinessCard = async (req, res) => {
 				status: 'error',
 				message: 'Card not found',
 			})
+
+		user.cards = user.cards.filter((cardId) => cardId != id)
+
+		await user.save()
 
 		res.json({
 			status: 'success',
