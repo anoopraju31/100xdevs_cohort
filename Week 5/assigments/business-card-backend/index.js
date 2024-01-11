@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
 require('dotenv').config()
 const businessCardRouter = require('./routes/businessCard.routes.js')
 const userRouter = require('./routes/user.routes.js')
@@ -10,6 +11,7 @@ const MONGODB_CONNECTION_URL = process.env.MONGODB_CONNECTION_URL
 
 mongoose.connect(MONGODB_CONNECTION_URL)
 
+app.use(cors())
 app.use(express.json())
 app.get('/', (req, res) => {
 	res.json({ message: 'Welcome to Business Card App' })
