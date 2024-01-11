@@ -26,7 +26,7 @@ const InputField = memo((props) => {
 					placeholder={placeholder}
 					onChange={handleChange}
 					value={value}
-					className='bg-transparent border outline-none border-orange-300 text-orange-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 placeholder:text-orange-800/80'
+					className='bg-transparent border outline-none border-orange-300 text-orange-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 placeholder:text-orange-800/80 transition-colors duration-300'
 				/>
 			) : (
 				<input
@@ -36,7 +36,7 @@ const InputField = memo((props) => {
 					placeholder={placeholder}
 					onChange={handleChange}
 					value={value}
-					className='bg-transparent border outline-none border-orange-300 text-orange-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 placeholder:text-orange-800/80'
+					className='bg-transparent border outline-none border-orange-300 text-orange-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 placeholder:text-orange-800/80 transition-colors duration-300'
 				/>
 			)}
 		</div>
