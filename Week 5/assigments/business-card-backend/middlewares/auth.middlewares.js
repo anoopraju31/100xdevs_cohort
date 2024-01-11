@@ -12,8 +12,6 @@ const authMiddleware = (req, res, next) => {
 		if (!decodedToken)
 			return res.status(403).json({ message: 'unauthorized access' })
 
-		console.log(decodedToken)
-
 		req.headers['user-id'] = decodedToken?.id
 
 		next()
