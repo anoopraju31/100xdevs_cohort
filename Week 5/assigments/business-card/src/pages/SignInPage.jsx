@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import toast from 'react-hot-toast'
 import axios from 'axios'
 import InputField from '../components/InputField'
 import Button from '../components/Button'
@@ -24,21 +25,18 @@ const SignInPage = () => {
 				e.preventDefault()
 				setIsButtonDisabled(true)
 
-				const response = await axios.post(`${BASE_URL}/users/sign-in`, {
+				const res = await axios.post(`${BASE_URL}/users/sign-in`, {
 					email,
 					password,
 				})
 
-				if (response.status == 200) {
-					setEmail('')
-					setPassword('')
-
-					localStorage.setItem('token', response.data?.token)
-
-					navigate('/')
-				}
+				setEmail('')
+				setPassword('')
+				toast.success(res.data.message)
+				localStorage.setItem('token', res.data?.token)
+				navigate('/')
 			} catch (error) {
-				console.log(error)
+				toast.error(error.response.data.message)
 			} finally {
 				setIsButtonDisabled(false)
 			}

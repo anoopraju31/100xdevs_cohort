@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Toaster } from 'react-hot-toast'
 import CreateCard from './pages/CreateCard'
 import EditCardPage from './pages/EditCardPage'
 import SignUpPage from './pages/SignUpPage'
@@ -14,6 +15,7 @@ const App = () => {
 				<Route path='/create-card' element={<CreateCard />} />
 				<Route path='/edit-card' element={<EditCardPage />} />
 			</Routes>
+			<Toaster />
 		</BrowserRouter>
 	)
 }
