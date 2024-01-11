@@ -25,6 +25,10 @@ const CardSchema = mongoose.Schema({
 		type: Date,
 		default: Date.now,
 	},
+	user: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'user',
+	},
 })
 
 const Card = mongoose.model('card', CardSchema)
