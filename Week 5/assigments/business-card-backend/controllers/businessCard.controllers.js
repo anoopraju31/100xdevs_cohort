@@ -4,9 +4,11 @@ const { cardSchema } = require('../utills/validations.js')
 
 const getBusinessCard = async (req, res) => {
 	try {
-		const cards = await Card.find()
+		const userId = req.headers['user-id']
+		const response = await User.findById(userId).populate('cards').exec()
+		const { _id: id, name, email, cards } = response
 
-		res.json({ status: 'success', cards })
+		res.json({ status: 'success', id, name, email, cards })
 	} catch (error) {
 		console.error(error)
 
