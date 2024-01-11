@@ -1,4 +1,5 @@
 const Card = require('../models/card.models.js')
+const User = require('../models/user.models.js')
 const { cardSchema } = require('../utills/validations.js')
 
 const getBusinessCard = async (req, res) => {
@@ -15,6 +16,7 @@ const getBusinessCard = async (req, res) => {
 
 const createBusinessCard = async (req, res) => {
 	try {
+		const userId = req.headers['user-id']
 		const { name, description, interests, socials } = req.body
 
 		const validationResponse = cardSchema.safeParse({
@@ -35,8 +37,14 @@ const createBusinessCard = async (req, res) => {
 			description,
 			interests,
 			socials,
+			user: userId,
 		})
 		await newCard.save()
+
+		const user = await User.findOne({ _id: userId })
+
+		user?.cards?.push(newCard._id)
+		await user.save()
 
 		res.json({ status: 'success', message: 'successfully created new card.' })
 	} catch (error) {
