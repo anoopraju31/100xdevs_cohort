@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react'
 import InputField from '../components/InputField'
 import Button from '../components/Button'
+import { Link } from 'react-router-dom'
 
 const SignUpPage = () => {
 	const [name, setName] = useState('')
@@ -69,6 +70,17 @@ const SignUpPage = () => {
 						/>
 					</div>
 				</form>
+
+				<p className='text-lg text-center mb-2 font-bold font-mono text-orange-900'>
+					{' '}
+					Already a user?{' '}
+					<Link
+						className='underline hover:text-orange-900/70 transition-colors duration-300'
+						to='/sign-in'>
+						{' '}
+						Sign In{' '}
+					</Link>
+				</p>
 			</div>
 		</main>
 	)
