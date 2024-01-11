@@ -1,8 +1,8 @@
 import { useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import toast from 'react-hot-toast'
 import axios from 'axios'
+import toast from 'react-hot-toast'
 import InputField from '../components/InputField'
 import Button from '../components/Button'
 import { BASE_URL } from '../constants'
@@ -30,10 +30,13 @@ const SignInPage = () => {
 					password,
 				})
 
+				toast.success(res.data.message)
+
 				setEmail('')
 				setPassword('')
-				toast.success(res.data.message)
+
 				localStorage.setItem('token', res.data?.token)
+
 				navigate('/')
 			} catch (error) {
 				toast.error(error.response.data.message)
