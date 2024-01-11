@@ -1,13 +1,17 @@
 import { useCallback, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
 import InputField from '../components/InputField'
 import Button from '../components/Button'
-import { Link } from 'react-router-dom'
+import { BASE_URL } from '../constants'
 
 const SignUpPage = () => {
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [isButtonDisabled, setIsButtonDisabled] = useState(false)
+	const navigate = useNavigate()
 
 	const handleNameChange = useCallback((e) => setName(e.target.value), [])
 	const handleEmailChange = useCallback((e) => setEmail(e.target.value), [])
@@ -16,15 +20,35 @@ const SignUpPage = () => {
 		[],
 	)
 
-	const handleSubmit = useCallback(async (e) => {
-		try {
-			e.preventDefault()
-			setIsButtonDisabled(true)
-		} catch (error) {
-			setIsButtonDisabled(false)
-			console.log(error)
-		}
-	}, [])
+	const handleSubmit = useCallback(
+		async (e) => {
+			try {
+				e.preventDefault()
+				setIsButtonDisabled(true)
+
+				const response = await axios.post(`${BASE_URL}/users/sign-up`, {
+					name,
+					email,
+					password,
+				})
+
+				if (response.status == 200) {
+					// setName('')
+					// setEmail('')
+					// setPassword('')
+
+					console.log('ok')
+
+					navigate('/')
+				}
+			} catch (error) {
+				console.log(error)
+			} finally {
+				setIsButtonDisabled(false)
+			}
+		},
+		[name, email, password, navigate],
+	)
 
 	return (
 		<main className='min-h-screen flex justify-center items-center bg-orange-50'>
