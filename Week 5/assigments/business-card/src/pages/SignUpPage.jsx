@@ -33,13 +33,11 @@ const SignUpPage = () => {
 				})
 
 				if (response.status == 200) {
-					// setName('')
-					// setEmail('')
-					// setPassword('')
+					setName('')
+					setEmail('')
+					setPassword('')
 
-					console.log('ok')
-
-					navigate('/')
+					navigate('/sign-in')
 				}
 			} catch (error) {
 				console.log(error)
