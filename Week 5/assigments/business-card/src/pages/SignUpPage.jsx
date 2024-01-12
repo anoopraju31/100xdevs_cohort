@@ -5,7 +5,6 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import InputField from '../components/InputField'
 import Button from '../components/Button'
-import { BASE_URL } from '../constants'
 import checkIsAuthenticated from '../utills/auth'
 
 const SignUpPage = () => {
@@ -32,6 +31,7 @@ const SignUpPage = () => {
 				e.preventDefault()
 				setIsDisabled(true)
 
+				const BASE_URL = import.meta.env.VITE_BASE_URL
 				const response = await axios.post(`${BASE_URL}/users/sign-up`, {
 					name,
 					email,
