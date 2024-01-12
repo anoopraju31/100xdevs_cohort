@@ -1,5 +1,16 @@
 const mongoose = require('mongoose')
 
+const InterestSchema = new mongoose.Schema({
+	id: String,
+	title: String,
+})
+
+const socialSchema = new mongoose.Schema({
+	id: String,
+	title: String,
+	link: String,
+})
+
 const CardSchema = mongoose.Schema({
 	name: {
 		type: String,
@@ -10,11 +21,11 @@ const CardSchema = mongoose.Schema({
 		required: true,
 	},
 	interests: {
-		type: [String],
+		type: [InterestSchema],
 		default: [],
 	},
 	socials: {
-		type: [String],
+		type: [socialSchema],
 		default: [],
 	},
 	createdAt: {
