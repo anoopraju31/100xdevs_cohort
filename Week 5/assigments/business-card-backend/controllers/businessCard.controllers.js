@@ -20,7 +20,6 @@ const createBusinessCard = async (req, res) => {
 	try {
 		const userId = req.headers['user-id']
 		const { name, description, interests, socials } = req.body
-
 		const validationResponse = cardSchema.safeParse({
 			name,
 			description,
@@ -59,8 +58,11 @@ const createBusinessCard = async (req, res) => {
 const editBusinessCard = async (req, res) => {
 	try {
 		const userId = req.headers['user-id']
-		const id = req.params.id
-		const card = await Card.findOne({ _id: id })
+		const _id = req.params.id
+		console.log(_id)
+		const card = await Card.findOne({ _id })
+
+		console.log(card)
 
 		if (!card)
 			return res.status(401).json({
@@ -90,7 +92,7 @@ const editBusinessCard = async (req, res) => {
 			})
 
 		await Card.updateOne(
-			{ _id: id },
+			{ _id },
 			{
 				name,
 				description,
