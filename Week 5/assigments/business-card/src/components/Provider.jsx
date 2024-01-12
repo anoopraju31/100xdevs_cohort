@@ -6,12 +6,21 @@ const Provider = (props) => {
 	const { children } = props
 	const [isEditForm, setIsEditForm] = useState(false)
 	const [card, setCard] = useState(null)
-	const toggleForm = () => setIsEditForm((prev) => !prev)
+	const changeToEditForm = () => setIsEditForm(true)
+	const changeToCreateForm = () => setIsEditForm(false)
 	const addCardToEdit = (cardData) => setCard(cardData)
+	const removeCardFromEdit = () => setCard(null)
 
 	return (
 		<AppContext.Provider
-			value={{ isEditForm, toggleForm, card, addCardToEdit }}>
+			value={{
+				isEditForm,
+				changeToEditForm,
+				changeToCreateForm,
+				card,
+				addCardToEdit,
+				removeCardFromEdit,
+			}}>
 			{children}
 		</AppContext.Provider>
 	)
