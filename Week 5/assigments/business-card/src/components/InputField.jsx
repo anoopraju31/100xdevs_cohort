@@ -15,7 +15,7 @@ const InputField = memo((props) => {
 		isDisabled,
 	} = props
 	return (
-		<div className='mb-4'>
+		<div className=''>
 			<label htmlFor={id} className='sr-only'>
 				{label}
 			</label>
