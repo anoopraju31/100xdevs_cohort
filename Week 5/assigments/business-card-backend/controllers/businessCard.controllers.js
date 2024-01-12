@@ -59,10 +59,7 @@ const editBusinessCard = async (req, res) => {
 	try {
 		const userId = req.headers['user-id']
 		const _id = req.params.id
-		console.log(_id)
 		const card = await Card.findOne({ _id })
-
-		console.log(card)
 
 		if (!card)
 			return res.status(401).json({
@@ -70,14 +67,13 @@ const editBusinessCard = async (req, res) => {
 				message: 'Card not found',
 			})
 
-		if (card.user !== userId)
+		if (card.user != userId)
 			return res.status(403).json({
 				status: 'error',
 				message: 'User does not own the card.',
 			})
 
 		const { name, description, interests, socials } = req.body
-
 		const validationResponse = cardSchema.safeParse({
 			name,
 			description,
