@@ -56,7 +56,7 @@ const SignUpPage = () => {
 					Sign Up
 				</h1>
 
-				<form className='p-10' onSubmit={handleSubmit}>
+				<form className='p-10 flex flex-col gap-4' onSubmit={handleSubmit}>
 					<InputField
 						id='name'
 						name='name'
@@ -88,7 +88,7 @@ const SignUpPage = () => {
 						handleChange={handlePasswordChange}
 					/>
 
-					<div className='mt-6 flex justify-center'>
+					<div className='flex justify-center'>
 						<Button title='Submit' type='submit' isDisabled={isDisabled} />
 					</div>
 				</form>
