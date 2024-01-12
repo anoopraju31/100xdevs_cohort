@@ -8,6 +8,7 @@ import ProtectedRoutes from './components/ProtectedRoutes'
 import Home from './pages/Home'
 import CreateCard from './pages/CreateCard'
 import EditCardPage from './pages/EditCardPage'
+import NotFoundPage from './pages/NotFoundPage'
 import Footer from './components/Footer'
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
 						<Route path='/create-card' element={<CreateCard />} />
 						<Route path='/edit-card' element={<EditCardPage />} />
 					</Route>
+					<Route path='*' element={<NotFoundPage />} />
 				</Routes>
 
 				<Toaster />
