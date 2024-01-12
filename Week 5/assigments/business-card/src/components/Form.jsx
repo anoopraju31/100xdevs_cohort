@@ -59,7 +59,7 @@ const Form = () => {
 	const sendRequest = useCallback(
 		async (payload) => {
 			if (isEditForm)
-				return await axios.put(`/business-card/:${card.id}`, payload)
+				return await axios.put(`/business-card/${card._id}`, payload)
 			return await axios.post('/business-card/create', payload)
 		},
 		[isEditForm, card],
@@ -73,24 +73,24 @@ const Form = () => {
 	}, [])
 
 	const addInterest = useCallback(() => {
-		setInterests((prev) => [...prev, { id: uuidv4(), title: interestInput }])
+		setInterests((prev) => [...prev, { _id: uuidv4(), title: interestInput }])
 		setInterestInput('')
 	}, [interestInput])
 
 	const removeInterest = useCallback((id) => {
-		setInterests((prev) => prev.filter((interest) => interest.id !== id))
+		setInterests((prev) => prev.filter((interest) => interest._id !== id))
 	}, [])
 
 	const addSocial = useCallback(() => {
 		setSocials((prev) => [
 			...prev,
-			{ id: uuidv4(), title: socialInput, link: socialMediaLink },
+			{ _id: uuidv4(), title: socialInput, link: socialMediaLink },
 		])
 		setSocialInput('')
 		setSocialMediaLink('')
 	}, [socialInput, socialMediaLink])
 	const removeSocial = useCallback((id) => {
-		setSocials((prev) => prev.filter((social) => social.id !== id))
+		setSocials((prev) => prev.filter((social) => social._id !== id))
 	}, [])
 
 	const handleSubmit = async (e) => {
@@ -101,8 +101,8 @@ const Form = () => {
 			const payload = {
 				name,
 				description,
-				interests,
-				socials,
+				interests: interests.map(({ title }) => ({ title })),
+				socials: socials.map(({ title, link }) => ({ title, link })),
 			}
 
 			const response = await sendRequest(payload)
@@ -175,11 +175,11 @@ const Form = () => {
 					<div className='flex gap-2 items-center font-mono text-orange-900'>
 						<p className='pl-1 pb-[2px] font-bold'>Interests:</p>
 						<div className='flex py-1 gap-2 overflow-x-auto custom-scrollbar'>
-							{interests.map(({ id, title }) => (
+							{interests.map(({ _id, title }) => (
 								<InputItem
-									key={id}
+									key={_id}
 									title={title}
-									handleClick={() => removeInterest(id)}
+									handleClick={() => removeInterest(_id)}
 								/>
 							))}
 						</div>
@@ -225,12 +225,12 @@ const Form = () => {
 					<div className='flex gap-2 items-center font-mono text-orange-900'>
 						<p className='pl-1 pb-[2px] font-bold'>Social Media:</p>
 						<div className='flex py-1 gap-2 overflow-x-auto custom-scrollbar'>
-							{socials.map(({ title, link, id }) => (
+							{socials.map(({ title, link, _id }) => (
 								<InputItem
-									key={id}
+									key={_id}
 									title={title}
 									link={link}
-									handleClick={() => removeSocial(id)}
+									handleClick={() => removeSocial(_id)}
 								/>
 							))}
 						</div>
