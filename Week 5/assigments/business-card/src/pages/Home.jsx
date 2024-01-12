@@ -1,25 +1,26 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import toast from 'react-hot-toast'
 import BusinessCard from '../components/BusinessCard'
 import axios from '../utills/axios'
+import AppContext from '../components/context'
 
 const Home = () => {
-	const [cards, setCards] = useState([])
+	const { allCards, setAllCards } = useContext(AppContext)
 
 	useEffect(() => {
 		const getCards = async () => {
 			try {
 				const res = await axios.get('/business-card')
-				setCards(res.data.cards)
+				setAllCards(res.data.cards)
 			} catch (error) {
 				toast.error(error.response.data.message)
 			}
 		}
 
 		getCards()
-	}, [])
+	}, [setAllCards])
 
-	if (cards.length === 0)
+	if (allCards.length === 0)
 		return (
 			<main className='min-h-screen flex justify-center items-center bg-orange-50 py-20 px-5'>
 				<h1 className='text-2xl font-mono font-bold text-orange-900'>
@@ -28,8 +29,8 @@ const Home = () => {
 			</main>
 		)
 
-	const allBusinessCards = cards.map((card) => (
-		<BusinessCard key={card.id} {...card} />
+	const allBusinessCards = allCards.map((card) => (
+		<BusinessCard key={card._id} {...card} />
 	))
 
 	return (
