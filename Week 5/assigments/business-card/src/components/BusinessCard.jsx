@@ -6,13 +6,13 @@ import { useContext } from 'react'
 import AppContext from './context'
 
 const BusinessCard = (props) => {
-	const { name, description, interests, socials } = props
+	const { name, description, interests, socials, _id } = props
 	const { addCardToEdit, changeToEditForm } = useContext(AppContext)
 	const navigate = useNavigate()
 
 	const handleEdit = () => {
 		changeToEditForm()
-		addCardToEdit({ name, description, interests, socials })
+		addCardToEdit({ name, description, interests, socials, _id })
 		navigate('/edit-card')
 	}
 	const handleDelete = () => {
@@ -28,15 +28,15 @@ const BusinessCard = (props) => {
 				<div className='flex gap-2 mb-2'>
 					<h4 className='font-medium'> Interests: </h4>
 					<div className='flex items-center gap-2'>
-						{interests.map(({ id, title }) => (
-							<p key={id}> {title} </p>
+						{interests.map(({ _id, title }) => (
+							<p key={_id}> {title} </p>
 						))}
 					</div>
 				</div>
 
 				<div className='flex items-center gap-4'>
-					{socials.map(({ id, title, link }) => (
-						<Link key={id} href={link} title={title} />
+					{socials.map(({ _id, title, link }) => (
+						<Link key={_id} href={link} title={title} />
 					))}
 				</div>
 			</div>
@@ -59,20 +59,21 @@ const BusinessCard = (props) => {
 	)
 }
 
-const Interest = {
-	id: PropTypes.string,
-	interest: PropTypes.string,
-}
+const Interest = PropTypes.shape({
+	_id: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
+})
 
-const Social = {
-	id: PropTypes.string,
-	title: PropTypes.string,
-	link: PropTypes.string,
-}
+const Social = PropTypes.shape({
+	_id: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
+	link: PropTypes.string.isRequired,
+})
 
 BusinessCard.propTypes = {
-	name: PropTypes.string,
-	description: PropTypes.string,
+	_id: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	description: PropTypes.string.isRequired,
 	interests: PropTypes.arrayOf(Interest),
 	socials: PropTypes.arrayOf(Social),
 }
