@@ -1,13 +1,15 @@
 import { useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
 import PropTypes from 'prop-types'
+import toast from 'react-hot-toast'
 import Link from './Link'
 import Button from './Button'
-import { useContext } from 'react'
+import axios from '../utills/axios'
 import AppContext from './context'
 
 const BusinessCard = (props) => {
 	const { name, description, interests, socials, _id } = props
-	const { addCardToEdit, changeToEditForm } = useContext(AppContext)
+	const { addCardToEdit, changeToEditForm, reomveCard } = useContext(AppContext)
 	const navigate = useNavigate()
 
 	const handleEdit = () => {
@@ -15,8 +17,15 @@ const BusinessCard = (props) => {
 		addCardToEdit({ name, description, interests, socials, _id })
 		navigate('/edit-card')
 	}
-	const handleDelete = () => {
-		console.log('delete item')
+	const handleDelete = async () => {
+		try {
+			const response = await axios.delete(`/business-card/${_id}`)
+			reomveCard(_id)
+			toast.success(response.data.message)
+		} catch (error) {
+			console.error(error)
+			toast.error(error.response.data.message)
+		}
 	}
 
 	return (
