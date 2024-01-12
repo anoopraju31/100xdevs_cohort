@@ -1,20 +1,10 @@
 import { Outlet, Navigate } from 'react-router-dom'
-import { jwtDecode } from 'jwt-decode'
+import checkIsAuthenticated from '../utills/auth'
 
 const ProtectedRoutes = () => {
-	const token = localStorage.getItem('token')
+	const isAuthenticated = checkIsAuthenticated()
 
-	if (!token) return <Navigate to='/sign-in' />
-	try {
-		const decodedToken = jwtDecode(token)
-
-		if (decodedToken.exp * 1000 > Date.now()) return <Outlet />
-		else localStorage.removeItem('token')
-	} catch (error) {
-		console.error('Invalid token format')
-		localStorage.removeItem('token')
-		return <Navigate to='/sign-in' />
-	}
+	return isAuthenticated ? <Outlet /> : <Navigate to='/sign-in' />
 }
 
 export default ProtectedRoutes
