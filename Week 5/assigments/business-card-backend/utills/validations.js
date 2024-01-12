@@ -1,10 +1,21 @@
 const zod = require('zod')
 
+const InterestSchema = zod.object({
+	id: zod.string().uuid(),
+	title: zod.string().min(1),
+})
+
+const SocialSchema = zod.object({
+	id: zod.string().uuid(),
+	title: zod.string().min(1),
+	link: zod.string().url(),
+})
+
 const cardSchema = zod.object({
 	name: zod.string().min(1),
 	description: zod.string().min(1),
-	interests: zod.string().array(),
-	socials: zod.string().array(),
+	interests: zod.array(InterestSchema),
+	socials: zod.array(SocialSchema),
 })
 
 const nameSchema = zod.string().min(1, { message: 'Name is required.' })
