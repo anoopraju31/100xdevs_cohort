@@ -1,14 +1,21 @@
 const mongoose = require('mongoose')
 
 const InterestSchema = new mongoose.Schema({
-	id: String,
-	title: String,
+	title: {
+		type: String,
+		required: true,
+	},
 })
 
 const socialSchema = new mongoose.Schema({
-	id: String,
-	title: String,
-	link: String,
+	title: {
+		type: String,
+		required: true,
+	},
+	link: {
+		type: String,
+		required: true,
+	},
 })
 
 const CardSchema = mongoose.Schema({
