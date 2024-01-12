@@ -2,12 +2,17 @@ import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Link from './Link'
 import Button from './Button'
+import { useContext } from 'react'
+import AppContext from './context'
 
 const BusinessCard = (props) => {
 	const { name, description, interests, socials } = props
+	const { addCardToEdit, changeToEditForm } = useContext(AppContext)
 	const navigate = useNavigate()
 
 	const handleEdit = () => {
+		changeToEditForm()
+		addCardToEdit({ name, description, interests, socials })
 		navigate('/edit-card')
 	}
 	const handleDelete = () => {
