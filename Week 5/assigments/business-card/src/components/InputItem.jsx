@@ -12,7 +12,7 @@ const InputItem = (props) => {
 						{title}
 					</a>
 				) : (
-					<span className='px-2'> interest </span>
+					<span className='px-2'> {title} </span>
 				)}
 			</p>
 
