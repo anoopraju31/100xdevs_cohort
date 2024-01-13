@@ -143,3 +143,33 @@
     1. The **useEffect** hook is used to fetch data from an API when the component mounts. The function passed to **useEffect** is the side effect code.
     2. The empty dependency array (**[]**) indicates that the effect should only run once after the initial render. If you omit the dependency array, the effect will run after every render.
     3. The **return** statement inside **useEffect** is optional and is used for cleanup. If you need to perform cleanup when the component is unmounted or when certain dependencies change, you can return a cleanup function.
+
+### useMemo hook
+- The useMemo hook in React is used to memoize the result of a computation, preventing unnecessary recalculations and improving the performance of the components. It is particularly useful when dealing with expensive calculations or complex operations that don't need to be repeated on every render.
+- Example:
+    ``` jsx
+    import React, { useMemo } from 'react';
+
+    function ExampleComponent({ data }) {
+        // useMemo takes two arguments:
+        // 1. A function representing the computation to memoize.
+        // 2. An array of dependencies. The memoized value will only be recalculated if these dependencies change.
+
+        const memoizedValue = useMemo(() => {
+            // Expensive computation or operation
+            return computeValue(data);
+        }, [data]); // Recalculate when 'data' changes
+
+        return (
+            <div>
+                <p>Memoized Value: {memoizedValue}</p>
+            </div>
+        );
+    }
+
+    export default ExampleComponent;
+    ```
+    In this example:
+    1. The **useMemo** hook is used to memoize the result of the **computeValue** function based on the data prop.
+
+The function provided to **useMemo** will only be re-executed when the value of **data** changes. If **data** remains the same between renders, the memoized value will be reused, saving unnecessary computations.
