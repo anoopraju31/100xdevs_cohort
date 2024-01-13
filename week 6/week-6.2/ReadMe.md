@@ -171,5 +171,4 @@
     ```
     In this example:
     1. The **useMemo** hook is used to memoize the result of the **computeValue** function based on the data prop.
-
-The function provided to **useMemo** will only be re-executed when the value of **data** changes. If **data** remains the same between renders, the memoized value will be reused, saving unnecessary computations.
+    2. The function provided to **useMemo** will only be re-executed when the value of **data** changes. If **data** remains the same between renders, the memoized value will be reused, saving unnecessary computations.
