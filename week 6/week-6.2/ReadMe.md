@@ -55,3 +55,14 @@
     }, []); // Empty dependency array means the effect runs once after the initial render
     }
     ```
+
+### Hooks
+- Hooks are a feature introduced in React 16.8 that allow us to use state and other React features without writing a class. They enable functional components to have access to stateful logic and lifecycle features, which were previously only possible in class components. This has led to a more concise and readable way of writing components in React.
+- Hooks are functions that allow functional components to manage state, handle side effects, and access other React features that were previously only available in class components.
+-The key hooks in React include:
+    - **useState**: Manages state in functional components.
+    - **useEffect**: Performs side effects in functional components, such as data fetching, subscriptions, or manual DOM manipulations.
+    - **useCallback**: Memoizes a callback function to prevent unnecessary re-renders of child components.
+    - **useMemo**: Memoizes the result of a computation to prevent unnecessary recalculations.
+    - **useRef**: Provides a mutable object with a **current** property, useful for persisting values between renders of a functional component without triggering re-renders.
+    - **useContext**: Consumes values from a React context, providing a way to share data across components.
