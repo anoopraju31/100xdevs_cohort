@@ -2,8 +2,8 @@
 
 ### Topics to be covered
 - **useEffect Hook**
-- **useCallback Hook**
 - **useMemo Hook**
+- **useCallback Hook**
 - **custom Hooks**
 - **Prop Drilling**
 
@@ -172,3 +172,44 @@
     In this example:
     1. The **useMemo** hook is used to memoize the result of the **computeValue** function based on the data prop.
     2. The function provided to **useMemo** will only be re-executed when the value of **data** changes. If **data** remains the same between renders, the memoized value will be reused, saving unnecessary computations.
+
+### useCallback hook
+- The **useCallback** hook in React is used to memoize functions, particularly useful when passing functions as props to child components. It helps in preventing unnecessary re-creations of functions, which can be important for performance optimization.
+- Here's a basic example of how to use the **useCallback** hook:
+    ``` jsx
+    import React, { useState, useCallback } from 'react';
+
+    function ParentComponent() {
+        const [count, setCount] = useState(0);
+
+        // The useCallback hook takes two arguments:
+        // 1. The function to memoize.
+        // 2. An array of dependencies. The memoized function will only be re-created if these dependencies change.
+
+        const handleClick = useCallback(() => {
+            setCount(count + 1);
+        }, [count]); // Recreate the function when 'count' changes
+
+        return (
+            <div>
+                <p>Count: {count}</p>
+                <ChildComponent onClick={handleClick} />
+            </div>
+        );
+    }
+
+    function ChildComponent({ onClick }) {
+        return (
+            <button onClick={onClick}>
+            Increment Count
+            </button>
+        );
+    }
+
+    export default ParentComponent;
+    ```
+    In this example:
+    1. The **useCallback** hook is used to memoize the **handleClick** function, which increments the **count** state.
+    2. The **handleClick** function will only be re-created if the **count** value changes. This helps in preventing unnecessary re-renders of the **ChildComponent** due to a new function reference.
+
+- It's important to use **useCallback** when you have a function that is passed as a prop to child components, especially if those child components use **React.memo** or have their own **shouldComponentUpdate** logic that depends on the function reference. Without **useCallback**, a new function reference would be created on each render, potentially causing unnecessary re-renders in child components.
