@@ -66,3 +66,31 @@
     - **useMemo**: Memoizes the result of a computation to prevent unnecessary recalculations.
     - **useRef**: Provides a mutable object with a **current** property, useful for persisting values between renders of a functional component without triggering re-renders.
     - **useContext**: Consumes values from a React context, providing a way to share data across components.
+
+### useState Hook
+- In React, the useState hook is a function that allows functional components to manage state.
+- The useState hook is used to declare state variables in a functional component.
+- Example:
+    ``` jsx
+    import React, { useState } from 'react';
+
+    function App() {
+        // useState returns an array with two elements:
+        // 1. The current state value.
+        // 2. A function that allows you to update the state.
+
+        const [count, setCount] = useState(0);
+
+        return (
+            <div>
+                <button onClick={() => setCount(count + 1)}> Click Me {count} </button>
+            </div>
+        );
+    }
+
+    export default App;
+    ```
+    In this example:
+    1. **count** is the state variable, and **setCount** is the function used to update its value.
+    2. **useState(0)** initializes the **count** state variable with an initial value of 0.
+    3. The component renders the current value of **count** and a button. When the button is clicked, the **setCount** function is called to update the **count** state, and the component re-renders with the updated value.
