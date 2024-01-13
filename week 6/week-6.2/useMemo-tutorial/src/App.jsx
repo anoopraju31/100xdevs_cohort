@@ -15,7 +15,9 @@ const Counter = () => {
 	const getSum = useMemo(() => {
 		if (!num) return
 		let n = parseInt(num)
-		let sum = (n * (n + 1)) / 2
+		let sum = 0
+
+		for (let i = 1; i <= n; i++) sum += i
 
 		return sum
 	}, [num])
