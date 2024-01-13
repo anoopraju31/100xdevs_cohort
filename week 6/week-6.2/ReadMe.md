@@ -94,3 +94,52 @@
     1. **count** is the state variable, and **setCount** is the function used to update its value.
     2. **useState(0)** initializes the **count** state variable with an initial value of 0.
     3. The component renders the current value of **count** and a button. When the button is clicked, the **setCount** function is called to update the **count** state, and the component re-renders with the updated value.
+
+### useEffect hook
+- The **useEffect** hook in React is used to perform side effects in functional components. Side effects can include data fetching, subscriptions, manually changing the DOM, and other tasks that need to happen outside the usual flow of a component's rendering.
+- The **useEffect** hook serves the same purpose as **componentDidMount**, **componentDidUpdate** and **componentWillUnmount** in React class components but unified into a single API.
+- Here's a basic example of how to use the **useEffect** hook:
+    ```jsx
+    import React, { useState, useEffect } from 'react';
+
+    function App() {
+        const [data, setData] = useState(null);
+
+        // The useEffect hook takes two arguments:
+        // 1. A function that contains the code to run as a side effect.
+        // 2. An optional array of dependencies, which controls when the effect runs.
+
+        useEffect(() => {
+            // This code will run after the component has mounted.
+
+            // Example: Fetching data from an API
+            fetch('https://api.example.com/data')
+                .then(response => response.json())
+                .then(data => setData(data));
+
+            // If you want to perform cleanup when the component unmounts, you can return a function from useEffect.
+            // This function will be called when the component is unmounted or when the dependencies change.
+
+            return () => {
+                // Cleanup code (optional)
+                // For example, cancelling subscriptions or clearing intervals.
+            };
+        }, []); // The empty dependency array means the effect runs only once after the initial render.
+
+        return (
+            <div>
+                {
+                    data? 
+                    ( <p>Data: {data}</p> ):
+                    ( <p>Loading...</p> )
+                }
+            </div>
+        );
+    }
+
+    export default App;
+    ```
+    In this example:
+    1. The **useEffect** hook is used to fetch data from an API when the component mounts. The function passed to **useEffect** is the side effect code.
+    2. The empty dependency array (**[]**) indicates that the effect should only run once after the initial render. If you omit the dependency array, the effect will run after every render.
+    3. The **return** statement inside **useEffect** is optional and is used for cleanup. If you need to perform cleanup when the component is unmounted or when certain dependencies change, you can return a cleanup function.
