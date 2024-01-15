@@ -55,30 +55,30 @@ export default App;
 - The **React.lazy** function is a feature in React that allows us to load components lazily. It works by dynamically importing a module, which means the code for the component is only fetched when the component is actually rendered.
 - Here's a simple example:
     ``` jsx
-        const MyComponeny = () => {
-            return <div> I am a lazy-loaded component! </div>
-        }
+    const MyComponeny = () => {
+        return <div> I am a lazy-loaded component! </div>
+    }
 
-        export default MyComponent
+    export default MyComponent
     ```
     Now, in The main file or the component where we want to use lazy loading:
     ``` jsx
-        import {lazy, Suspense} from 'react'
+    import {lazy, Suspense} from 'react'
 
-        const MyLazyComponent = lazy(() => import('./MyComponent'))
-        const App = () => {
-            return (
-                <div>
-                    {/* Wrap the lazy-loaded component in Suspense */}
-                    <Suspense fallback={<div> Loading... </div>}>
-                        {/* Render the lazy-loaded component */}
-                        <MyLazyComponent />
-                    </Suspense>
-                </div>
-            )
-        }
+    const MyLazyComponent = lazy(() => import('./MyComponent'))
+    const App = () => {
+        return (
+            <div>
+                {/* Wrap the lazy-loaded component in Suspense */}
+                <Suspense fallback={<div> Loading... </div>}>
+                    {/* Render the lazy-loaded component */}
+                    <MyLazyComponent />
+                </Suspense>
+            </div>
+        )
+    }
 
-        export default App
+    export default App
     ``` 
     In this example:
     1. **React.lazy(() => import('./MyComponent'))** is used to create a lazy-loaded version of **MyComponent**.
@@ -108,8 +108,8 @@ export default App;
     export default MyComponent;
     ```
     in this example:
-    1. **React.lazy(() => import('./AsyncDataComponent'))** enables lazy loading of the **AsyncDataComponent** component.
-    **<Suspense fallback={<div>Loading...</div>}>** wraps the **AsyncDataComponent** and provides a fallback UI (in this case, a simple "Loading..." message) that will be shown while waiting for the asynchronous operation to complete.
+    1. ```React.lazy(() => import('./AsyncDataComponent'))``` enables lazy loading of the **AsyncDataComponent** component.
+    2. ```<Suspense fallback={<div>Loading...</div>}>``` wraps the **AsyncDataComponent** and provides a fallback UI (in this case, a simple "Loading..." message) that will be shown while waiting for the asynchronous operation to complete.
 - The **<Suspense>** component takes two props:
     - **children**:  The actual UI we intend to render. If **children** suspends while rendering, the Suspense boundary will switch to rendering **fallback**.
     - **fallback**: An alternate UI to render in place of the actual UI if it has not finished loading. Any valid React node is accepted, though in practice, a **fallback** is a lightweight placeholder view, such as a loading spinner or skeleton. Suspense will automatically switch to **fallback** when **children** suspends, and back to **children** when the data is ready. If **fallback** suspends while rendering, it will activate the closest parent Suspense boundary.
