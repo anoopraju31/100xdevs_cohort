@@ -47,3 +47,39 @@ const App = () => {
 
 export default App;
 ```
+
+### Lazy Loading in React
+- In React, lazy loading refers to the technique of loading components only when they are needed, typically to improve the initial loading time of the React application. This is particularly useful when dealing with large and complex applications where loading all components at once might lead to unnecessary performance overhead.
+
+### React.Lazy()
+- The **React.lazy** function is a feature in React that allows us to load components lazily. It works by dynamically importing a module, which means the code for the component is only fetched when the component is actually rendered.
+- Here's a simple example:
+    ``` jsx
+        const MyComponeny = () => {
+            return <div> I am a lazy-loaded component! </div>
+        }
+
+        export default MyComponent
+    ```
+    Now, in The main file or the component where we want to use lazy loading:
+    ``` jsx
+        import {lazy, Suspense} from 'react'
+
+        const MyLazyComponent = lazy(() => import('./MyComponent'))
+        const App = () => {
+            return (
+                <div>
+                    {/* Wrap the lazy-loaded component in Suspense */}
+                    <Suspense fallback={<div> Loading... </div>}>
+                        {/* Render the lazy-loaded component */}
+                        <MyLazyComponent />
+                    </Suspense>
+                </div>
+            )
+        }
+
+        export default App
+    ``` 
+    In this example:
+    1. **React.lazy(() => import('./MyComponent'))** is used to create a lazy-loaded version of **MyComponent**.
+    2. The lazy-loaded component is then wrapped in a **Suspense** component, and a **fallback** prop is provided. The fallback component is rendered while the lazy component is being loaded.
