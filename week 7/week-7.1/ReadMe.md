@@ -83,3 +83,33 @@ export default App;
     In this example:
     1. **React.lazy(() => import('./MyComponent'))** is used to create a lazy-loaded version of **MyComponent**.
     2. The lazy-loaded component is then wrapped in a **Suspense** component, and a **fallback** prop is provided. The fallback component is rendered while the lazy component is being loaded.
+
+### Suspense in React
+- In React, the **<Suspense>** component is used to enable React components to suspend rendering while waiting for some asynchronous operation to complete. This asynchronous operation could be data fetching, lazy loading of components, or any other scenario where we want to defer rendering until a certain condition is met.
+- Here's a basic example of using **<Suspense>** for lazy-loading a component:
+    ```jsx
+    import { Suspense } from 'react'
+
+    // Asynchronously loaded component
+    const AsyncDataComponent = React.lazy(() => import('./AsyncDataComponent'));
+
+    // Parent component using Suspense
+    const MyComponent = () => {
+        return (
+            <div>
+                <h1>My Component</h1>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <AsyncDataComponent />
+                </Suspense>
+            </div>
+        );
+    };
+
+    export default MyComponent;
+    ```
+    in this example:
+    1. **React.lazy(() => import('./AsyncDataComponent'))** enables lazy loading of the **AsyncDataComponent** component.
+    **<Suspense fallback={<div>Loading...</div>}>** wraps the **AsyncDataComponent** and provides a fallback UI (in this case, a simple "Loading..." message) that will be shown while waiting for the asynchronous operation to complete.
+- The **<Suspense>** component takes two props:
+    - **children**:  The actual UI we intend to render. If **children** suspends while rendering, the Suspense boundary will switch to rendering **fallback**.
+    - **fallback**: An alternate UI to render in place of the actual UI if it has not finished loading. Any valid React node is accepted, though in practice, a **fallback** is a lightweight placeholder view, such as a loading spinner or skeleton. Suspense will automatically switch to **fallback** when **children** suspends, and back to **children** when the data is ready. If **fallback** suspends while rendering, it will activate the closest parent Suspense boundary.
