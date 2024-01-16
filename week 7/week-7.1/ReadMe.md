@@ -214,3 +214,4 @@ const SiblingComponentB = ({ sharedState, onStateChange }) => {
     )
 }
 ```
+![](images/lift_state_up_&_prop_drilling.png)
