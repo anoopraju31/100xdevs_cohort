@@ -1,4 +1,4 @@
-Week 7.1 | Routing, prop-drilling, context api
+# Week 7.1 | Routing, prop-drilling, context api
 
 ### Topics to be cover:
 - **Routing**
@@ -117,3 +117,48 @@ Week 7.1 | Routing, prop-drilling, context api
 - The **<Suspense>** component takes two props:
     - **children**:  The actual UI we intend to render. If **children** suspends while rendering, the Suspense boundary will switch to rendering **fallback**.
     - **fallback**: An alternate UI to render in place of the actual UI if it has not finished loading. Any valid React node is accepted, though in practice, a **fallback** is a lightweight placeholder view, such as a loading spinner or skeleton. Suspense will automatically switch to **fallback** when **children** suspends, and back to **children** when the data is ready. If **fallback** suspends while rendering, it will activate the closest parent Suspense boundary.
+
+### Prop Drilling
+- Props drilling, also known as "prop passing" or "prop threading," refers to the situation in a React application where you need to pass data through several layers of nested components by explicitly providing them as props.
+- This can occur when a deeply nested component needs access to data that is originally located in a higher-level ancestor component.
+
+``` jsx
+// Top-level component
+const App = () => {
+  const data = /* some data */;
+
+  return (
+    <div>
+      <ComponentA data={data} />
+    </div>
+  );
+};
+
+// ComponentA
+const ComponentA = ({ data }) => {
+  return (
+    <div>
+      <ComponentB data={data} />
+    </div>
+  );
+};
+
+// ComponentB
+const ComponentB = ({ data }) => {
+  return (
+    <div>
+      <ComponentC data={data} />
+    </div>
+  );
+};
+
+// ComponentC
+const ComponentC = ({ data }) => {
+  // Access and use the data
+  return (
+    <div>
+      {data}
+    </div>
+  );
+};
+```
