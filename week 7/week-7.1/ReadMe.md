@@ -162,3 +162,55 @@ const ComponentC = ({ data }) => {
   );
 };
 ```
+
+### Lifting Up State
+- **Lifting state up** in React involves moving shared state from child components to a common ancestor (parent) component and passing it down as props, facilitating centralized state management and synchronization among sibling components.
+``` jsx
+import { useState } from 'react'
+
+// ParentComponent (Common Ancestor)
+const ParentComponent = () => {
+    const [sharedState, setSharedState] = useState('Initial Value')
+
+    const handleStateChange = (newState) => setSharedState(newState)
+
+    return (
+        <div>
+            <SiblingComponentA sharedState={sharedState} onStateChange={handleStateChange} />
+            <SiblingComponentB sharedState={sharedState} onStateChange={handleStateChange} />
+        </div>
+    )
+}
+
+// SiblingComponentA
+const SiblingComponentA = ({ sharedState, onStateChange }) => {
+    const handleButtonClick = () => {
+        // Modify the shared state and notify the parent
+        const newState = sharedState + ' - Modified by Sibling A'
+        onStateChange(newState)
+    }
+
+    return (
+        <div>
+            <p>{sharedState}</p>
+            <button onClick={handleButtonClick}>Modify State (Sibling A)</button>
+        </div>
+    )
+}
+
+// SiblingComponentB
+const SiblingComponentB = ({ sharedState, onStateChange }) => {
+    const handleButtonClick = () => {
+        // Modify the shared state and notify the parent
+        const newState = sharedState + ' - Modified by Sibling B'
+        onStateChange(newState)
+    }
+
+    return (
+        <div>
+            <p>{sharedState}</p>
+            <button onClick={handleButtonClick}>Modify State (Sibling B)</button>
+        </div>
+    )
+}
+```
