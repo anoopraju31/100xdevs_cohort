@@ -74,3 +74,5 @@ export default App
 ![](images/counter-context-api.png)
 Take a look at the image here we can see clearly that the Count component is getting re-rendered even if it does have any state inside it.
 
+### State Management in React
+In React, state management refers to the process of handling and controlling the data within a component or the entire application. The state represents the current condition or values that can change over time as a result of user interactions, API calls, or other events. Effective state management is crucial for building dynamic and interactive user interfaces.
