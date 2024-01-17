@@ -215,3 +215,42 @@ const SiblingComponentB = ({ sharedState, onStateChange }) => {
 }
 ```
 ![](images/lift_state_up_&_prop_drilling.png)
+
+### Context API
+The Context API in React is a feature that allows us to share state data across the components of the React application without having to pass props explicitly through each level of the component tree. This can be particularly useful for managing global state or providing a theme to components.
+
+- **createContext()**
+    - **createContext** is a function that creates a new context. It takes a default value as an argument. The default value is used when a component does not find a matching provider above it in the tree.
+    ``` js
+    const MyContext = React.createContext(defaultValue);
+    ```
+- **<MyContext.Provider>**
+    - Wrap your components with the **<MyContext.Provider>** to make the context value available to them.
+    ``` jsx
+        <MyContext.Provider value={/* some value */}>
+            {/* Your components */}
+        </MyContext.Provider>
+    ```
+-  **useContext** hook:
+    - Use the **useContext** hook within a function component to access the value of a context.
+    ``` jsx
+        const contextValue = useContext(MyContext);
+    ```
+- Example:
+``` jsx
+// Creating a context with a default value
+const MyContext = React.createContext('default');
+
+// Parent component providing the context value
+const ParentComponent = () => (
+  <MyContext.Provider value="Hello from Context!">
+    <ChildComponent />
+  </MyContext.Provider>
+);
+
+// Child component consuming the context value
+const ChildComponent = () => {
+  const contextValue = useContext(MyContext);
+  return <div>{contextValue}</div>;
+};
+```
