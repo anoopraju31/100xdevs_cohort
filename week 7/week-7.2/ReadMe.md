@@ -142,6 +142,20 @@ In React, state management refers to the process of handling and controlling the
     ``` jsx
     import { useRecoilValue } from 'recoil'
     import { countAtom } from './store/atoms/count'
+    
+    const CounterRenderer = () => {
+        const count = useRecoilValue(countAtom)
+        return <div> {count} </div>
+    }
+    ```
+
+#### useSetRecoilState
+- **useSetRecoilState** hook returns a setter function for updating the value of the writable Recoil state.
+- The setter function which can be used asynchronously to change the state.
+
+    ``` jsx
+    import { RecoilRoot, useRecoilValue, useSetRecoilState } from 'recoil'
+    import { countAtom } from './store/atoms/count'
 
     const Button = () => {
         const setCount = useSetRecoilState(countAtom)
