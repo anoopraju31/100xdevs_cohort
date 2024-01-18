@@ -1,8 +1,40 @@
+import { RecoilRoot, useRecoilValue, useSetRecoilState } from 'recoil'
+import { countAtom } from './store/atoms/count'
+
 const App = () => {
 	return (
-		<div>
-			<h1 className='text-3xl font-bold underline'>Hello world!</h1>
+		<RecoilRoot>
+			<div className='h-screen p-10 flex justify-center items-center'>
+				<Count />
+			</div>
+		</RecoilRoot>
+	)
+}
+
+const Count = () => {
+	return (
+		<div className='bg-orange-300 h-[50vh] w-1/2 flex flex-col justify-center items-center gap-16'>
+			<CounterRenderer />
+			<Button />
 		</div>
+	)
+}
+
+const CounterRenderer = () => {
+	const count = useRecoilValue(countAtom)
+	return <div> {count} </div>
+}
+
+const Button = () => {
+	const setCount = useSetRecoilState(countAtom)
+	const handleClick = () => setCount((prev) => prev + 1)
+	return (
+		<button
+			className='text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 disabled:bg-orange-200 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none transition-colors duration-300'
+			type='button'
+			onClick={handleClick}>
+			Increment
+		</button>
 	)
 }
 
