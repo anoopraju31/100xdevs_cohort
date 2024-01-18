@@ -88,6 +88,7 @@ In React, state management refers to the process of handling and controlling the
 
 #### Atoms
 - Atoms are unit of state.
+- Atoms can be read from and written to from any component.
 - they are updatable and subcribable: When an atom is updated, each subscribed component is re-rendered with the new value.
 - Atoms can be used in place of React local component state.
 - If the state atom is used in multiple componentsm all those components share their state.
@@ -101,3 +102,21 @@ In React, state management refers to the process of handling and controlling the
 - The **atom()** function take a single argument which is an object. The object consist of mainly two key values:
     1. **key**: Atoms need a unique key, which is used for debugging, persistence, and for certain advanced APIs that lets us see a map of all atoms. It is an error for two atoms to have the same key.
     2. **default**: Like React component state, atom also have a default state value.
+
+### useRecoilState
+- To read and write an atom from a component, we use a hook called **useRecoilState**.
+- It is just like **useState**, but the state can be shared between components/
+    ``` jsx
+    const Button = () => {
+        const [count, setCount] = useRecoilState(countAtom)
+        const handleClick = () => setCount(count + 1)
+
+        return (
+            <button type='button' onClick={handleClick}>
+                Increment
+            </button>
+        )
+    }
+    ```
+- Clicking the button will increment the count by one.
+
