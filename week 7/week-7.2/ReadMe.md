@@ -169,3 +169,5 @@ In React, state management refers to the process of handling and controlling the
     }
     ```
 - Clicking the button will increment the count by one.
+![](images/counter-recoil.png)
+Here, take a look only the counter component is getting re-rendered and not the whole app.
