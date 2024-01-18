@@ -86,6 +86,22 @@ In React, state management refers to the process of handling and controlling the
 - **useSetRecoilState**
 - **selector**
 
+### RecoilRoot
+- **RecoilRoot** provies the context in which atoms have values.
+- It must be an ancestor of any components that uses any Recoil hooks.
+
+    ```jsx
+    import {RecoilRoot} from 'recoil'
+
+    const App = () => {
+        return (
+            <RecoilRoot>
+                <ComponentThatUsesRecoil />
+            </RecoilRoot>
+        )
+    }
+    ```
+
 #### Atoms
 - Atoms are unit of state.
 - Atoms can be read from and written to from any component.
