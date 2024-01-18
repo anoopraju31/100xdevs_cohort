@@ -86,7 +86,7 @@ In React, state management refers to the process of handling and controlling the
 - **useSetRecoilState**
 - **selector**
 
-### RecoilRoot
+#### RecoilRoot
 - **RecoilRoot** provies the context in which atoms have values.
 - It must be an ancestor of any components that uses any Recoil hooks.
 
@@ -119,7 +119,7 @@ In React, state management refers to the process of handling and controlling the
     1. **key**: Atoms need a unique key, which is used for debugging, persistence, and for certain advanced APIs that lets us see a map of all atoms. It is an error for two atoms to have the same key.
     2. **default**: Like React component state, atom also have a default state value.
 
-### useRecoilState
+#### useRecoilState
 - To read and write an atom from a component, we use a hook called **useRecoilState**.
 - It is just like **useState**, but the state can be shared between components/
     ``` jsx
@@ -136,3 +136,22 @@ In React, state management refers to the process of handling and controlling the
     ```
 - Clicking the button will increment the count by one.
 
+#### useRecoilValue
+- **useRecoilValue** hook returns the value of the given Recoil state.
+- This hook will subscribe the component to re-render if there are changing in the Recoil state.
+    ``` jsx
+    import { useRecoilValue } from 'recoil'
+    import { countAtom } from './store/atoms/count'
+
+    const Button = () => {
+        const setCount = useSetRecoilState(countAtom)
+        const handleClick = () => setCount((prev) => prev + 1)
+
+        return (
+            <button type='button' onClick={handleClick}>
+                Increment
+            </button>
+        )
+    }
+    ```
+- Clicking the button will increment the count by one.
