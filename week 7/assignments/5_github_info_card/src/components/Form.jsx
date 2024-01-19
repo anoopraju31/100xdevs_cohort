@@ -3,10 +3,10 @@ import InputField from './InputField'
 
 const Form = () => {
 	return (
-		<div>
+		<form className='max-w-2xl mx-auto p-10 flex flex-col gap-4'>
 			<InputField />
 			<Button title='Search' />
-		</div>
+		</form>
 	)
 }
 
