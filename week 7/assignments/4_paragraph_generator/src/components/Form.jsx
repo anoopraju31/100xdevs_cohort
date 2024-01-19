@@ -5,7 +5,7 @@ const Form = () => {
 	return (
 		<form>
 			<InputField />
-			<Button />
+			<Button title='Generate' type='button' />
 		</form>
 	)
 }
