@@ -3,7 +3,9 @@ import Stats from './Stats'
 const Profile = () => {
 	return (
 		<div className='max-w-lg mx-auto'>
-			<div className='h-36 bg-teal-300'></div>
+			<div className='h-36 bg-teal-300'>
+				<img className='w-full h-full' src='/banner.jpg' alt='banner' />
+			</div>
 			<div className='pb-10 flex flex-col items-center '>
 				<div className='relative w-40 h-28'>
 					<img
