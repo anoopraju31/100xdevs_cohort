@@ -1,11 +1,7 @@
-import Form from './components/Form'
+import Home from './pages/Home'
 
 const App = () => {
-	return (
-		<main>
-			<Form />
-		</main>
-	)
+	return <Home />
 }
 
 export default App
