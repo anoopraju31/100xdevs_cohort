@@ -1,4 +1,5 @@
 import Form from '../components/Form'
+import ParagraphContainer from '../components/ParagraphContainer'
 
 const Home = () => {
 	return (
@@ -8,6 +9,8 @@ const Home = () => {
 			</h1>
 
 			<Form />
+
+			<ParagraphContainer />
 		</main>
 	)
 }
