@@ -18,7 +18,7 @@ const Card = () => {
 	if (!profile) return null
 
 	return (
-		<div className='max-w-lg mx-auto p-10 rounded-xl shadow-lg bg-orange-200 shadow-orange-900'>
+		<div className='max-w-lg mx-auto p-10 rounded-xl hover:shadow-lg bg-orange-200 shadow-orange-900'>
 			<div className='w-fit mx-auto'>
 				<img
 					className='w-52 h-52 rounded-full '
