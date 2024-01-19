@@ -18,7 +18,7 @@ const Card = () => {
 	if (!profile) return null
 
 	return (
-		<div className='max-w-lg mx-auto p-10 border border-orange-600 rounded-xl shadow-xl'>
+		<div className='max-w-lg mx-auto p-10 rounded-xl shadow-lg bg-orange-200 shadow-orange-900'>
 			<div className='w-fit mx-auto'>
 				<img
 					className='w-52 h-52 rounded-full '
@@ -40,7 +40,7 @@ const Card = () => {
 				</p>
 			</div>
 
-			<div className='flex items-center justify-between gap-5 mt-5'>
+			<div className='grid grid-cols-3 items-center justify-between gap-4 mt-5'>
 				<Stats title='follower' stat={profile.followers} />
 				<Stats title='public repos' stat={profile.public_repos} />
 				<Stats title='following' stat={profile.following} />
