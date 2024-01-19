@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types'
+import { backgroundAtom } from '../store/atoms/background'
+import { useSetRecoilState } from 'recoil'
 
 const Button = (props) => {
 	const { title, color, styles } = props
+	const setBackground = useSetRecoilState(backgroundAtom)
 	const handleClick = () => {
-		console.log(color)
+		setBackground(color)
 	}
 
 	return (
@@ -19,7 +22,7 @@ const Button = (props) => {
 Button.propTypes = {
 	title: PropTypes.string.isRequired,
 	color: PropTypes.string.isRequired,
-	styles: PropTypes.string.isRequired,
+	styles: PropTypes.string,
 }
 
 export default Button
