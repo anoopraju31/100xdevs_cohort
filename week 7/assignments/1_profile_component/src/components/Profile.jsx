@@ -1,3 +1,5 @@
+import Stats from './Stats'
+
 const Profile = () => {
 	return (
 		<div className='max-w-lg mx-auto'>
@@ -13,21 +15,11 @@ const Profile = () => {
 				<h2 className='text-3xl font-bold text-gray-800'> Rita Correia </h2>
 				<p className='text-xl mt-2 text-gray-600 capitalize'> London </p>
 			</div>
+
 			<div className='px-10 py-5 border-t-2 border-gray-600 flex justify-between items-center font-sans'>
-				<div className='flex flex-col items-center gap-2'>
-					<p className='text-2xl font-bold text-gray-800'> 80K </p>
-					<p className='text-gray-600 capitalize'>followers</p>
-				</div>
-
-				<div className='flex flex-col items-center gap-2'>
-					<p className='text-2xl font-bold text-gray-800'> 803K </p>
-					<p className='text-gray-600 capitalize'>Likes</p>
-				</div>
-
-				<div className='flex flex-col items-center gap-2'>
-					<p className='text-2xl font-bold text-gray-800'> 1.4K </p>
-					<p className='text-gray-600 capitalize'>Photos</p>
-				</div>
+				<Stats stat='80K' title='followers' />
+				<Stats stat='803K' title='likes' />
+				<Stats stat='1.4K' title='phots' />
 			</div>
 		</div>
 	)
