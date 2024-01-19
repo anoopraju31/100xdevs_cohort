@@ -5,7 +5,7 @@ const Form = () => {
 	return (
 		<div>
 			<InputField />
-			<Button />
+			<Button title='Search' />
 		</div>
 	)
 }
