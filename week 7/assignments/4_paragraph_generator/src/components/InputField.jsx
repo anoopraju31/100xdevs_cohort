@@ -31,14 +31,18 @@ const InputField = (props) => {
 }
 
 InputField.propTypes = {
-	name: PropTypes.string,
-	label: PropTypes.string,
-	id: PropTypes.string,
-	placeholder: PropTypes.string,
-	type: PropTypes.string,
-	handleChange: PropTypes.func,
-	value: PropTypes.string,
+	name: PropTypes.string.isRequired,
+	label: PropTypes.string.isRequired,
+	id: PropTypes.string.isRequired,
+	placeholder: PropTypes.string.isRequired,
+	type: PropTypes.oneOf(['text', 'email', 'number', 'url']).isRequired,
+	handleChange: PropTypes.func.isRequired,
+	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	isDisabled: PropTypes.bool,
+}
+
+InputField.defaultProp = {
+	type: 'text',
 }
 
 export default InputField
