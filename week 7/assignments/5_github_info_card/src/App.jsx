@@ -1,3 +1,4 @@
+import Card from './components/Card'
 import Form from './components/Form'
 
 const App = () => {
@@ -9,6 +10,10 @@ const App = () => {
 					Github Profile Viewer{' '}
 				</h1>
 				<Form />
+			</div>
+
+			<div className='mt-10'>
+				<Card />
 			</div>
 		</main>
 	)
