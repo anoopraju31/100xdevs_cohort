@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useState } from 'react'
+import Stats from './Stats'
 
 const Card = () => {
 	const [profile, setProfile] = useState({})
@@ -39,13 +40,10 @@ const Card = () => {
 				</p>
 			</div>
 
-			<p>email: {profile?.email}</p>
-			<p> location: {profile?.location} </p>
-
-			<div className='flex items-center justify-between gap-5'>
-				<p>followers{profile.followers}</p>
-				<p>public repos{profile.public_repos}</p>
-				<p>following{profile.following}</p>
+			<div className='flex items-center justify-between gap-5 mt-5'>
+				<Stats title='follower' stat={profile.followers} />
+				<Stats title='public repos' stat={profile.public_repos} />
+				<Stats title='following' stat={profile.following} />
 			</div>
 		</div>
 	)
