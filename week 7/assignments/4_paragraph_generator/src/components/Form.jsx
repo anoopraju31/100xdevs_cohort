@@ -2,15 +2,16 @@ import { useRecoilState } from 'recoil'
 import Button from './Button'
 import InputField from './InputField'
 import { paragraphLengthAtom } from '../store/atom/paragraphLengthAtom'
+import { isFormSubmitAtom } from '../store/atom/isFormSubmitAtom'
 
 const Form = () => {
 	const [paragraphLength, setParagraphLength] =
 		useRecoilState(paragraphLengthAtom)
+	const [isDisabled, setIsDisabled] = useRecoilState(isFormSubmitAtom)
 	const handleChange = (e) => setParagraphLength(e.target.value)
 	const handleSubmit = (e) => {
 		e.preventDefault()
-
-		console.log(paragraphLength)
+		setIsDisabled(true)
 	}
 
 	return (
@@ -24,9 +25,10 @@ const Form = () => {
 				placeholder='Enter number of words'
 				value={paragraphLength}
 				handleChange={handleChange}
+				isDisabled={isDisabled}
 				type='number'
 			/>
-			<Button title='Generate' type='submit' />
+			<Button title='Generate' type='submit' isDisabled={isDisabled} />
 		</form>
 	)
 }
