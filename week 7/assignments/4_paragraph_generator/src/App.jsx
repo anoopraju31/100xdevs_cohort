@@ -1,7 +1,12 @@
+import { RecoilRoot } from 'recoil'
 import Home from './pages/Home'
 
 const App = () => {
-	return <Home />
+	return (
+		<RecoilRoot>
+			<Home />
+		</RecoilRoot>
+	)
 }
 
 export default App
