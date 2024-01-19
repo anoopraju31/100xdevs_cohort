@@ -169,5 +169,35 @@ In React, state management refers to the process of handling and controlling the
     }
     ```
 - Clicking the button will increment the count by one.
+
+#### Selector
+- Selectors represent a function, or derived state in Recoil.
+- It is similar to a pure function without any side-effects that always returns the same value for a given set of dependency values.
+- If only a get function is provided, the selector is read-only and returns a RecoilValueReadOnly object. 
+- If a set is also provided, it returns a writeable RecoilState object.
+```js
+import { atom, selector } from 'recoil'
+
+export const countAtom = atom({
+	key: 'countAtom',
+	default: 0,
+})
+
+export const isEvenSelector = selector({
+	key: 'evenSelector',
+	get: ({ get }) => {
+		const count = get(countAtom)
+		return count % 2 === 0
+	},
+})
+```
+``` jsx
+const EvenCountRenderer = () => {
+	const isEven = useRecoilValue(isEvenSelector)
+	return <div>{isEven ? <p> count is even </p> : null}</div>
+}
+
+export default EvenCountRenderer
+```
 ![](images/counter-recoil.png)
 Here, take a look only the counter component is getting re-rendered and not the whole app.
