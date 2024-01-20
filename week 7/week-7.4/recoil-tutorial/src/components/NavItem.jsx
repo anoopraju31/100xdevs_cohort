@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types'
 
 const NavItem = (props) => {
-	const { title, count } = props
+	const { title, count, total } = props
+	console.log(title, count, total)
 
 	return (
 		<div className='relative'>
@@ -10,7 +11,7 @@ const NavItem = (props) => {
 			</p>
 			{count ? (
 				<div className='absolute -top-3 -right-3 p-2 rounded-full leading-none bg-orange-300'>
-					{count > 99 ? '99+' : count}
+					{count > 99 && !total ? '99+' : count}
 				</div>
 			) : null}
 		</div>
@@ -20,6 +21,11 @@ const NavItem = (props) => {
 NavItem.propTypes = {
 	title: PropTypes.string.isRequired,
 	count: PropTypes.number,
+	total: PropTypes.bool,
+}
+
+NavItem.defaultProps = {
+	total: false,
 }
 
 export default NavItem
