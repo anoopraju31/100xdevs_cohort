@@ -16,7 +16,7 @@ const Stats = (props) => {
 }
 
 Stats.propTypes = {
-	stat: PropTypes.string.isRequired,
+	stat: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 	title: PropTypes.string.isRequired,
 }
 
