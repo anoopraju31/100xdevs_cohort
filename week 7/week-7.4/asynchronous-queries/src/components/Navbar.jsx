@@ -3,7 +3,7 @@ import NavItem from './NavItem'
 import { notificationsAtom, totalNotificationsSelector } from '../store/atoms'
 
 const Navbar = () => {
-	const { network, message, job, notifications } =
+	const { network, messaging, jobs, notifications } =
 		useRecoilValue(notificationsAtom)
 	const totalNotificationsCount = useRecoilValue(totalNotificationsSelector)
 
@@ -11,8 +11,8 @@ const Navbar = () => {
 		<nav className='p-10 flex justify-center items-center flex-wrap gap-5'>
 			<NavItem title='Home' />
 			<NavItem title='network' count={network} />
-			<NavItem title='Messages' count={message} />
-			<NavItem title='Jobs' count={job} />
+			<NavItem title='Messages' count={messaging} />
+			<NavItem title='Jobs' count={jobs} />
 			<NavItem title='notifications' count={notifications} />
 			<NavItem title='Profile' count={totalNotificationsCount} total />
 		</nav>
