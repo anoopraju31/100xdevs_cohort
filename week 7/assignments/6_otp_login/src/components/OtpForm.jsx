@@ -2,9 +2,22 @@ import { useRecoilState } from 'recoil'
 import Button from './Button'
 import InputField from './InputField'
 import { otpFormAtom } from '../store/atom'
+import { useEffect, useRef } from 'react'
 
 const OtpForm = () => {
+	const firstRef = useRef(null)
+	const secondRef = useRef(null)
+	const thirdRef = useRef(null)
+	const forthRef = useRef(null)
 	const [formData, setFormData] = useRecoilState(otpFormAtom)
+
+	useEffect(() => {
+		if (firstRef.current) firstRef.current.focus()
+		if (firstRef.current.value && secondRef.current) secondRef.current.focus()
+		if (secondRef.current.value && thirdRef.current) thirdRef.current.focus()
+		if (thirdRef.current.value && forthRef.current) forthRef.current.focus()
+	}, [formData])
+
 	const handleChangeFirst = (e) =>
 		setFormData((prev) => ({ ...prev, first: e.target.value }))
 	const handleChangeSecond = (e) =>
@@ -17,6 +30,7 @@ const OtpForm = () => {
 		e.preventDefault()
 		setFormData((prev) => ({ ...prev, isSubmitted: true }))
 	}
+
 	return (
 		<section className='w-full max-w-sm p-10 rounded-xl border border-orange-300'>
 			<h1 className='text-3xl mb-8 font-bold font-mono text-center text-orange-600'>
@@ -25,6 +39,7 @@ const OtpForm = () => {
 			<form onSubmit={handleSubmit} className='flex flex-col gap-6 flex-1'>
 				<div className='px-6 flex gap-4 items-center '>
 					<InputField
+						ref={firstRef}
 						id='otp-one'
 						label='First OTP Number'
 						name='first'
@@ -33,6 +48,7 @@ const OtpForm = () => {
 						handleChange={handleChangeFirst}
 					/>
 					<InputField
+						ref={secondRef}
 						id='otp-second'
 						label='Second OTP Number'
 						name='second'
@@ -41,6 +57,7 @@ const OtpForm = () => {
 						handleChange={handleChangeSecond}
 					/>
 					<InputField
+						ref={thirdRef}
 						id='otp-third'
 						label='Third OTP Number'
 						name='third'
@@ -49,6 +66,7 @@ const OtpForm = () => {
 						handleChange={handleChangeThird}
 					/>
 					<InputField
+						ref={forthRef}
 						id='otp-forth'
 						label='Forth OTP Number'
 						name='forth'
