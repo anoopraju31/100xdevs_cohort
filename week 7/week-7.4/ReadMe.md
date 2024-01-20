@@ -116,3 +116,72 @@ export const totalNotificationSelector = selector({
 	},
 })
 ```
+6. **Asychronous Data Queries**: Selectors can be used as one way to incorporate asynchronous data into the Recoil data-flow graph.
+``` jsx
+import { useRecoilValue } from 'recoil'
+import NavItem from './NavItem'
+import { notificationsAtom, totalNotificationsSelector } from '../store/atoms'
+
+const Navbar = () => {
+	const { network, messaging, jobs, notifications } =
+		useRecoilValue(notificationsAtom)
+	const totalNotificationsCount = useRecoilValue(totalNotificationsSelector)
+
+	return (
+		<nav className='p-10 flex justify-center items-center flex-wrap gap-5'>
+			<NavItem title='Home' />
+			<NavItem title='network' count={network} />
+			<NavItem title='Messages' count={messaging} />
+			<NavItem title='Jobs' count={jobs} />
+			<NavItem title='notifications' count={notifications} />
+			<NavItem title='Profile' count={totalNotificationsCount} total />
+		</nav>
+	)
+}
+
+export default Navbar
+```
+
+``` jsx
+import { atom, selector } from 'recoil'
+import axios from 'axios'
+
+export const notificationsAtom = atom({
+	key: 'notificationsAtom',
+	default: selector({
+		key: 'notificationsSelector',
+		get: async () => {
+			const response = await axios.get(
+				'https://sum-server.100xdevs.com/notifications',
+			)
+			return response.data
+		},
+	}),
+})
+
+export const totalNotificationsSelector = selector({
+	key: 'totalNotificationsSelector',
+	get: ({ get }) => {
+		const { network, messaging, jobs, notifications } = get(notificationsAtom)
+
+		return network + messaging + jobs + notifications
+	},
+})
+```
+``` jsx
+import { RecoilRoot } from 'recoil'
+import Navbar from './components/Navbar'
+import { Suspense } from 'react'
+
+const App = () => {
+	return (
+		<RecoilRoot>
+			<Suspense fallback={<h1> Loading... </h1>}>
+				<Navbar />
+			</Suspense>
+		</RecoilRoot>
+	)
+}
+
+export default App
+```
