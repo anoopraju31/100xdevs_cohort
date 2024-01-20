@@ -5,7 +5,7 @@ import Stats from './Stats'
 const Card = () => {
 	const profile = useRecoilValue(githubProfileSelector)
 
-	if (!profile) return <div className='w-[512px] h-40 mx-auto p-10'></div>
+	if (!profile) return <div className='lg:w-[512px] h-40 mx-auto p-10'></div>
 
 	if (profile?.message === 'Not Found')
 		return (
