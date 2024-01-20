@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 
 const NavItem = (props) => {
 	const { title, count, total } = props
-	console.log(title, count, total)
 
 	return (
 		<div className='relative'>
