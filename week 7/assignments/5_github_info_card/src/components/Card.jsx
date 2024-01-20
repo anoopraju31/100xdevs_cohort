@@ -1,21 +1,19 @@
-import { useEffect } from 'react'
-import { useState } from 'react'
+import { useRecoilValue } from 'recoil'
+import { githubProfileSelector } from '../store/atoms'
 import Stats from './Stats'
 
 const Card = () => {
-	const [profile, setProfile] = useState({})
+	const profile = useRecoilValue(githubProfileSelector)
 
-	useEffect(() => {
-		const getProfile = async () => {
-			const res = await fetch('https://api.github.com/users/anoopraju31')
-			const data = await res.json()
+	if (!profile) return <div className='w-[512px] h-40 mx-auto p-10'></div>
 
-			setProfile(data)
-		}
-		getProfile()
-	}, [])
-
-	if (!profile) return null
+	if (profile?.message === 'Not Found')
+		return (
+			<p className='text-center mt-3 font-mono text-orange-700'>
+				{' '}
+				user not found!{' '}
+			</p>
+		)
 
 	return (
 		<div className='max-w-lg mx-auto p-10 rounded-xl hover:shadow-lg bg-orange-200 shadow-orange-900'>
@@ -36,14 +34,14 @@ const Card = () => {
 					{profile?.login}
 				</p>
 				<p className='text-center mt-3 font-mono text-orange-700'>
-					{profile.bio}
+					{profile?.bio}
 				</p>
 			</div>
 
 			<div className='grid grid-cols-3 items-center justify-between gap-4 mt-5'>
-				<Stats title='follower' stat={profile.followers} />
-				<Stats title='public repos' stat={profile.public_repos} />
-				<Stats title='following' stat={profile.following} />
+				<Stats title='follower' stat={profile?.followers} />
+				<Stats title='public repos' stat={profile?.public_repos} />
+				<Stats title='following' stat={profile?.following} />
 			</div>
 		</div>
 	)
