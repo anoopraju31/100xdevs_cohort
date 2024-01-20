@@ -7,3 +7,14 @@ export const mobileNumberFormAtom = atom({
 		isSubmitted: false,
 	},
 })
+
+export const otpFormAtom = atom({
+	key: 'otpFormAtom',
+	default: {
+		first: '',
+		second: '',
+		third: '',
+		forth: '',
+		isSubmitted: false,
+	},
+})
