@@ -1,10 +1,13 @@
 import { RecoilRoot } from 'recoil'
 import Navbar from './components/Navbar'
+import { Suspense } from 'react'
 
 const App = () => {
 	return (
 		<RecoilRoot>
-			<Navbar />
+			<Suspense fallback={<h1> Loading... </h1>}>
+				<Navbar />
+			</Suspense>
 		</RecoilRoot>
 	)
 }
