@@ -1,8 +1,8 @@
+import { useEffect, useRef } from 'react'
 import { useRecoilState } from 'recoil'
 import Button from './Button'
 import InputField from './InputField'
 import { otpFormAtom } from '../store/atom'
-import { useEffect, useRef } from 'react'
 
 const OtpForm = () => {
 	const firstRef = useRef(null)
