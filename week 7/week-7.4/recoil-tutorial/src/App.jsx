@@ -1,9 +1,10 @@
 import { RecoilRoot } from 'recoil'
+import Navbar from './components/Navbar'
 
 const App = () => {
 	return (
 		<RecoilRoot>
-			<h1 className='text-3xl font-bold underline'>Hello world!</h1>
+			<Navbar />
 		</RecoilRoot>
 	)
 }
