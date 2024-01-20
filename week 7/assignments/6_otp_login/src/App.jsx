@@ -1,10 +1,11 @@
+import { RecoilRoot } from 'recoil'
 import Login from './pages/Login'
 
 const App = () => {
 	return (
-		<div>
+		<RecoilRoot>
 			<Login />
-		</div>
+		</RecoilRoot>
 	)
 }
 
