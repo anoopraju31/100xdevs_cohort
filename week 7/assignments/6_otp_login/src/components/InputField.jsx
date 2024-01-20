@@ -26,7 +26,7 @@ InputField.propTypes = {
 	id: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
 	type: PropTypes.oneOf(['text', 'email', 'number', 'url']).isRequired,
-	placeholder: PropTypes.string.isRequired,
+	placeholder: PropTypes.string,
 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	handleChange: PropTypes.func.isRequired,
 }
