@@ -5,7 +5,7 @@ const LoginForm = () => {
 	return (
 		<div>
 			<InputField />
-			<Button />
+			<Button title='Send OTP' />
 		</div>
 	)
 }
