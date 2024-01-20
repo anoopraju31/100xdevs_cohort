@@ -1,5 +1,11 @@
+import InputField from './InputField'
+
 const LoginForm = () => {
-	return <div>LoginForm</div>
+	return (
+		<div>
+			<InputField />
+		</div>
+	)
 }
 
 export default LoginForm
