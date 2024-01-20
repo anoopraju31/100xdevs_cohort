@@ -17,6 +17,7 @@ const LoginForm = () => {
 			<h1 className='text-3xl mb-8 font-bold font-mono text-center text-orange-600'>
 				Login via OTP
 			</h1>
+
 			<form onSubmit={handleSubmit} className='flex flex-col gap-6 flex-1'>
 				<InputField
 					id='mobile-number'
@@ -24,10 +25,10 @@ const LoginForm = () => {
 					name='mobileNumber'
 					placeholder='Enter mobile number'
 					type='text'
-					value={formData.mobile}
+					value={formData?.mobile}
 					handleChange={handleChange}
 				/>
-				<Button title='Send OTP' />
+				<Button type='submit' title='Send OTP' />
 			</form>
 		</section>
 	)
