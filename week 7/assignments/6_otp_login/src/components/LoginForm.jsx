@@ -7,7 +7,7 @@ const LoginForm = () => {
 			<h1 className='text-3xl mb-8 font-bold font-mono text-center text-orange-600'>
 				Login via OTP
 			</h1>
-			<form className='flex flex-col gap-4 flex-1'>
+			<form className='flex flex-col gap-6 flex-1'>
 				<InputField
 					id='mobile-number'
 					label='Mobile Number'
