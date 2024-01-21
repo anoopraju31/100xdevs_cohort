@@ -92,4 +92,31 @@ router.put('/', authMiddleware, async (req, res) => {
 	res.json({ message: 'Updated successfully' })
 })
 
+router.get('/bulk', authMiddleware, async (req, res) => {
+	const filter = req.query.filter || ''
+	const filteredUsers = await User.find({
+		$or: [
+			{
+				firstName: {
+					$regex: filter,
+				},
+			},
+			{
+				lastName: {
+					$regex: filter,
+				},
+			},
+		],
+	})
+
+	const users = filteredUsers.map(({ username, firstName, lastName, _id }) => ({
+		username,
+		firstName,
+		lastName,
+		_id,
+	}))
+
+	res.json({ users })
+})
+
 module.exports = router
