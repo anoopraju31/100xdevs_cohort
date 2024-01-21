@@ -1,7 +1,12 @@
 const express = require('express')
-const { signupSchema, signInSchema } = require('../helpers/validations')
+const {
+	signupSchema,
+	signInSchema,
+	updateSchema,
+} = require('../helpers/validations')
 const jwt = require('jsonwebtoken')
 const { User } = require('../db')
+const { authMiddleware } = require('../middlewares/authMiddleware')
 require('dotenv').config()
 
 const router = express.Router()
@@ -74,6 +79,17 @@ router.post('/sign-in', async (req, res) => {
 		message: 'User successfully login',
 		token,
 	})
+})
+
+router.put('/', authMiddleware, async (req, res) => {
+	const { success } = updateSchema.safeParse(req.body)
+
+	if (!success)
+		return res.status(411).json({ message: 'Error while updating information' })
+
+	await User.updateOne({ _id: req.userId }, req.body)
+
+	res.json({ message: 'Updated successfully' })
 })
 
 module.exports = router
