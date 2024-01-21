@@ -1,8 +1,10 @@
+import { RecoilRoot } from 'recoil'
+
 const App = () => {
 	return (
-		<div>
-			<h1 className='text-3xl font-bold underline'>Hello world!</h1>
-		</div>
+		<RecoilRoot>
+			<h1 className='text-3xl font-bold underline'> Hello world! </h1>
+		</RecoilRoot>
 	)
 }
 
