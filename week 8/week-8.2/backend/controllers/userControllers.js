@@ -54,8 +54,24 @@ const updateController = async (req, res) => {
 	res.json({ message: 'Updated successfully' })
 }
 
+const bulkUserController = async (req, res) => {
+	const filter = req.query.filter || ''
+	const filteredUsers = await User.find({
+		$or: [{ firstName: { $regex: filter } }, { lastName: { $regex: filter } }],
+	})
+	const users = filteredUsers.map(({ username, firstName, lastName, _id }) => ({
+		username,
+		firstName,
+		lastName,
+		_id,
+	}))
+
+	res.json({ users })
+}
+
 module.exports = {
 	signUpController,
 	signInController,
 	updateController,
+	bulkUserController,
 }
