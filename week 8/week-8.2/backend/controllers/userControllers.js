@@ -1,5 +1,9 @@
 const jwt = require('jsonwebtoken')
-const { signupSchema, signInSchema } = require('../helpers/validations')
+const {
+	signupSchema,
+	signInSchema,
+	updateSchema,
+} = require('../helpers/validations')
 const { User } = require('../db')
 require('dotenv').config()
 
@@ -39,7 +43,19 @@ const signInController = async (req, res) => {
 	res.json({ message: 'User successfully login', token })
 }
 
+const updateController = async (req, res) => {
+	const { success } = updateSchema.safeParse(req.body)
+
+	if (!success)
+		return res.status(411).json({ message: 'Error while updating information' })
+
+	await User.updateOne({ _id: req.userId }, req.body)
+
+	res.json({ message: 'Updated successfully' })
+}
+
 module.exports = {
 	signUpController,
 	signInController,
+	updateController,
 }
