@@ -185,3 +185,21 @@ const App = () => {
 
 export default App
 ```
+
+### Advance:
+1. **atomFamily** 
+	- It is a function that returns a writable RecoilState atom.
+	- The **atomFamily()** essentially provides a map from the parameter to an atom.
+	- Here is an example:
+	``` js
+	export const todoAtomFamily = atomFamily({
+		key: 'todoAtomFamily',
+		default: (id) => {
+			return TODOS.find((x) => x.id === id)
+		},
+	})
+	```
+	- Arguments to atomFamily():
+		- **key**: A unique string used to identify the atom internally. This string should be unique with respect to other atoms and selectors in the entire application.
+		- **default**: The initial value of the atom. 
+	- **atomFamily** should be used when we create a collection of atoms, where each atom us uniquely identified by a specific set of parameter values(let say an **id**). This allows us to dynamically generate atoms with different default values.
