@@ -187,7 +187,7 @@ export default App
 ```
 
 ### Advance:
-1. **atomFamily** 
+1. **atomFamily** :
 	- It is a function that returns a writable RecoilState atom.
 	- The **atomFamily()** essentially provides a map from the parameter to an atom.
 	- Here is an example:
@@ -203,3 +203,23 @@ export default App
 		- **key**: A unique string used to identify the atom internally. This string should be unique with respect to other atoms and selectors in the entire application.
 		- **default**: The initial value of the atom. 
 	- **atomFamily** should be used when we create a collection of atoms, where each atom us uniquely identified by a specific set of parameter values(let say an **id**). This allows us to dynamically generate atoms with different default values.
+2. **selectorFamily**:
+	- It is a function that returns a read-only **RecoilValueReadOnly** or writeable **RecoilState** selector.
+	- It allows us to pass parameters to the get and set callbacks of a selector. 
+	- The selectorFamily() utility returns a function which can be called with user-defined parameters and returns a selector. Each unique parameter value will return the same memoized selector instance.
+	example :
+	```js
+	const todoAtomFamily = atomFamily({
+		key: 'todoAtomFamily',
+		default: selectorFamily({
+			key: 'todoSelectorFamily',
+			get: (id) => async () => {
+				const response = await fetch(
+					`https://sum-server.100xdevs.com/todo?id=${id}`,
+				)
+				const data = await response.json()
+				return data.todo
+			},
+		}),
+	})
+	```
