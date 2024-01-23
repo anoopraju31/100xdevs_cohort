@@ -2,7 +2,7 @@ import RevenueCard from './RevenueCard'
 
 const EnhancedRevenueCard = () => {
 	return (
-		<div className='rounded-lg shadow flex flex-col text-black-95 bg-primary-blue hover:bg-hover-blue transition-colors duration-300 ease-in-out'>
+		<div className='rounded-lg shadow flex flex-col text-black-95 bg-primary-blue'>
 			<RevenueCard
 				title='Next Payout'
 				amount='₹2,312.23'
