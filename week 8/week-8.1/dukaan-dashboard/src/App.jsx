@@ -1,12 +1,12 @@
-import TabButton from './components/TabButton'
+import IconWrapper from './components/IconWrapper'
 
 const App = () => {
 	return (
 		<div className='max-w-sm mx-auto py-20'>
-			<TabButton title='Payouts' quantity={22} isActive={true} />
+			<IconWrapper icon='/message.svg' altText='message' />
 			<div className='py-5'></div>
 
-			<TabButton title='Payouts' quantity={22} />
+			<IconWrapper icon='/menu.svg' altText='menu' />
 		</div>
 	)
 }
