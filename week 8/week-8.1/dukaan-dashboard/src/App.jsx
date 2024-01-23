@@ -1,24 +1,12 @@
-import SearchInput from './components/SearchInput'
+import TabButton from './components/TabButton'
 
 const App = () => {
 	return (
 		<div className='max-w-sm mx-auto py-20'>
-			<SearchInput
-				id='search'
-				name='search'
-				label='search'
-				placeholder='Search features, tutorials, etc.'
-			/>
-
+			<TabButton title='Payouts' quantity={22} isActive={true} />
 			<div className='py-5'></div>
 
-			<SearchInput
-				variant='outlined'
-				id='search'
-				name='search'
-				label='search'
-				placeholder='Search features, tutorials, etc.'
-			/>
+			<TabButton title='Payouts' quantity={22} />
 		</div>
 	)
 }
