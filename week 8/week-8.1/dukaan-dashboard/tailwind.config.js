@@ -20,6 +20,9 @@ export default {
 				'navbar-hover': 'rgba(255, 255, 255, 0.10)',
 				'navbar-secondary': '#353c53',
 			},
+			fontFamily: {
+				inter: 'var(--inter-font)',
+			},
 		},
 	},
 	plugins: [],

@@ -1,19 +1,9 @@
-import { RevenueCardWithBoxShadow } from './components/RevenueCard'
-import EnhancedRevenueCard from './components/enhancedRevenueCard'
+import Navbar from './components/Navbar'
 
 const App = () => {
 	return (
-		<div className='grid grid-cols-3 p-10 gap-10'>
-			<EnhancedRevenueCard />
-			<RevenueCardWithBoxShadow
-				title='Amount Processed'
-				amount='₹23,92,312.19'
-				orderCount={13}
-			/>
-			<RevenueCardWithBoxShadow
-				title='Amount Processed'
-				amount='₹23,92,312.19'
-			/>
+		<div className='grid grid-cols-5 gap-10'>
+			<Navbar />
 		</div>
 	)
 }
