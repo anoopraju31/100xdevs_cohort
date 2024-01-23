@@ -1,4 +1,4 @@
-import RevenueCard from './components/RevenueCard'
+import RevenueCard, { RevenueCardWithBoxShadow } from './components/RevenueCard'
 
 const App = () => {
 	return (
@@ -9,7 +9,7 @@ const App = () => {
 				orderCount={13}
 			/>
 
-			<RevenueCard
+			<RevenueCardWithBoxShadow
 				title='Amount Processed'
 				amount='₹23,92,312.19'
 				orderCount={13}
