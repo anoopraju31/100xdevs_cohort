@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import ChevronRight from './ChevronRight'
 import Help from './Help'
-import withBoxShadow from './WithBoxShadow'
+import withBoxShadow from './withBoxShadow'
 
 const RevenueCard = (props) => {
 	const { title, amount, orderCount, textColor } = props
@@ -38,7 +38,6 @@ RevenueCard.propTypes = {
 	amount: PropTypes.string.isRequired,
 	orderCount: PropTypes.number,
 	textColor: PropTypes.string,
-	// textColor: PropTypes.string,
 }
 
 export const RevenueCardWithBoxShadow = withBoxShadow(RevenueCard)
