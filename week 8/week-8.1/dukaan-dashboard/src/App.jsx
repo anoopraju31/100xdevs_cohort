@@ -2,8 +2,18 @@ import RevenueCard from './components/RevenueCard'
 
 const App = () => {
 	return (
-		<div>
-			<RevenueCard />
+		<div className='grid grid-cols-2 p-10 gap-10'>
+			<RevenueCard
+				title='Amount Processed'
+				amount='₹23,92,312.19'
+				orderCount={13}
+			/>
+
+			<RevenueCard
+				title='Amount Processed'
+				amount='₹23,92,312.19'
+				orderCount={13}
+			/>
 		</div>
 	)
 }
