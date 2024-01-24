@@ -13,7 +13,7 @@ const DropDown = () => {
 			</OutlinedButton>
 
 			{openMenu ? (
-				<div className='absolute right-0 top-[125%] bg-black-90 rounded shadow-md p-2'>
+				<div className='absolute right-0 top-[125%] bg-black-100 rounded shadow-md p-2'>
 					<ul className='flex flex-col gap-1 text-black-30 font-inter'>
 						<li className='px-4 py-2 rounded hover:text-black-12 hover:bg-black-95 whitespace-nowrap transition-colors duration-300 cursor-pointer'>
 							newest
