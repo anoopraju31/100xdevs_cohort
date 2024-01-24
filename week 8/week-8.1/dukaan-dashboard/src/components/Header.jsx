@@ -4,7 +4,7 @@ import IconWrapper from './IconWrapper'
 
 const Header = () => {
 	return (
-		<header className='sticky top-0 right-0 w-full p-3 sm:px-8 flex items-center gap-4 border-b border-black-85 bg-black-100'>
+		<header className='sticky top-0 right-0 w-full p-3 sm:px-8 flex items-center gap-4 border-b border-black-85 bg-black-100 z-50'>
 			{/* logo */}
 			<div className='flex items-center gap-4'>
 				<h4 className='text-black-12 text-xl font-medium'> Payouts </h4>
