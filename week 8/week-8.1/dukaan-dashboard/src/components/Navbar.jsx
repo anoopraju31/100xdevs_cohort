@@ -4,7 +4,7 @@ import NavItem from './NavItem'
 
 const Navbar = () => {
 	return (
-		<nav className='w-full min-w-60 py-4 px-[10px] flex flex-col gap-6 bg-navbar min-h-screen'>
+		<nav className='sticky top-0 w-full min-w-60 py-4 px-[10px] flex flex-col gap-6 bg-navbar min-h-screen'>
 			{/* logo */}
 			<div className='flex items-center gap-3'>
 				<div className='w-10 h-10 rounded-md bg-black-100'>
