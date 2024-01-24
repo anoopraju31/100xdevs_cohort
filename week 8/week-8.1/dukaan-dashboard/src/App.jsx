@@ -4,7 +4,7 @@ import Dashboard from './components/Dashboard'
 
 const App = () => {
 	return (
-		<div className='flex'>
+		<div className='flex bg-black-98'>
 			<div className='hidden lg:block'>
 				<Navbar />
 			</div>
