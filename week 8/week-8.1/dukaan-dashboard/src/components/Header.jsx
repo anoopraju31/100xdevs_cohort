@@ -4,7 +4,7 @@ import IconWrapper from './IconWrapper'
 
 const Header = () => {
 	return (
-		<header className='fixed top-0 right-0 w-full p-3 sm:px-8 flex items-center gap-4 border-b border-black-85 bg-black-100'>
+		<header className='sticky top-0 right-0 w-full p-3 sm:px-8 flex items-center gap-4 border-b border-black-85 bg-black-100'>
 			{/* logo */}
 			<div className='flex-1 flex items-center gap-4'>
 				<h4 className='text-black-12 text-xl font-medium'> Payouts </h4>
@@ -35,11 +35,7 @@ const Header = () => {
 					<IconWrapper icon='/message.svg' altText='message' />
 				</div>
 
-				<div className='hidden sm:block'>
-					<IconWrapper icon='/menu.svg' altText='menu' />
-				</div>
-
-				<div className='lg:hidden'>
+				<div>
 					<IconWrapper icon='/hamburger.svg' altText='menu' />
 				</div>
 			</div>
