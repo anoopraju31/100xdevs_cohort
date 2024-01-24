@@ -4,14 +4,14 @@ import NavItem from './NavItem'
 
 const Navbar = () => {
 	return (
-		<nav className='w-full min-w-[224px] py-4 px-[10px] flex flex-col gap-6 bg-navbar min-h-screen'>
+		<nav className='w-full min-w-60 py-4 px-[10px] flex flex-col gap-6 bg-navbar min-h-screen'>
 			{/* logo */}
 			<div className='flex items-center gap-3'>
-				<div className='w-10 h-10 rounded bg-black-100'>
+				<div className='w-10 h-10 rounded-md bg-black-100'>
 					<img
 						src='/nishyan.png'
 						alt='nishyan logo'
-						className='w-full h-full'
+						className='w-full h-full rounded-md'
 					/>
 				</div>
 				<div className='flex-1 flex flex-col justify-center gap-1 text-black-100'>
