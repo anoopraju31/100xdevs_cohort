@@ -6,7 +6,7 @@ const Header = () => {
 	return (
 		<header className='sticky top-0 right-0 w-full p-3 sm:px-8 flex items-center gap-4 border-b border-black-85 bg-black-100'>
 			{/* logo */}
-			<div className='flex-1 flex items-center gap-4'>
+			<div className='flex items-center gap-4'>
 				<h4 className='text-black-12 text-xl font-medium'> Payouts </h4>
 
 				<div className='hidden sm:flex items-center gap-[6px]'>
@@ -16,17 +16,19 @@ const Header = () => {
 			</div>
 
 			{/* Search Bar */}
-			<div className='flex-1 hidden md:block'>
-				<SearchInput
-					id='search'
-					name='search'
-					label='search'
-					placeholder='Search features, tutorials, etc.'
-				/>
+			<div className='flex-1 flex items-center justify-center'>
+				<div className='w-full max-w-sm hidden md:block'>
+					<SearchInput
+						id='search'
+						name='search'
+						label='search'
+						placeholder='Search features, tutorials, etc.'
+					/>
+				</div>
 			</div>
 
 			{/* Icon Container */}
-			<div className='flex-1 flex justify-end gap-2'>
+			<div className='flex justify-end gap-2'>
 				<div className='hidden sm:block md:hidden'>
 					<IconWrapper icon='/search.svg' altText='search' />
 				</div>
