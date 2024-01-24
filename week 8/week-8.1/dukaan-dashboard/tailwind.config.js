@@ -23,6 +23,12 @@ export default {
 			fontFamily: {
 				inter: 'var(--inter-font)',
 			},
+			maxWidth: {
+				'full-screen': 'var(--full-screen)',
+			},
+			screens: {
+				smd: '700px',
+			},
 		},
 	},
 	plugins: [],

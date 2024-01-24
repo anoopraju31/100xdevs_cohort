@@ -11,8 +11,26 @@
 
 :root {
 	--inter-font: 'Inter', sans-serif;
+	--full-screen: calc(100vw - (100vw - 100%));
+	--ww: calc(100vw - 68px);
 }
 
 body {
 	font-family: 'GalanoGrotesque', sans-serif;
+}
+
+/* body::-webkit-scrollbar {
+	display: none;
+} */
+.t::-webkit-scrollbar-track {
+	background-color: #f2f2f2;
+}
+
+.t::-webkit-scrollbar {
+	height: 3px;
+	background-color: #f2f2f2;
+}
+
+.t::-webkit-scrollbar-thumb {
+	background-color: #d9d9d9;
 }
