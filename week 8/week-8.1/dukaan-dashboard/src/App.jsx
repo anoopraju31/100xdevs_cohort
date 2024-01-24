@@ -1,11 +1,9 @@
-import Table from './components/Table'
+import Header from './components/Header'
 
 const App = () => {
 	return (
-		<div className='p-20'>
-			<div className='overflow-auto'>
-				<Table />
-			</div>
+		<div className='h-[200vh]'>
+			<Header />
 		</div>
 	)
 }
