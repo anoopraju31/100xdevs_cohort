@@ -1,4 +1,6 @@
+import DropDown from './DropDown'
 import EnhancedRevenueCard from './EnhancedRevenueCard'
+import OutlinedButton from './OutlinedButton'
 import { RevenueCardWithBoxShadow } from './RevenueCard'
 import SearchInput from './SearchInput'
 import TabButton from './TabButton'
@@ -10,6 +12,8 @@ const Dashboard = () => {
 			<div className='flex flex-col gap-6'>
 				<div className='flex justify-between items-center'>
 					<h2 className='text-xl font-medium text-black-12'> Overview </h2>
+
+					<DropDown />
 				</div>
 
 				<div className='flex flex-wrap gap-5'>
@@ -45,12 +49,19 @@ const Dashboard = () => {
 				</div>
 
 				<div className='w-full p-3 pb-2 rounded-lg bg-black-100 shadow flex flex-col gap-3'>
-					<div className='flex flex-col sm:flex-row justify-between items-center'>
+					<div className='flex gap-2 flex-col sm:flex-row items-end sm:justify-between sm:items-center'>
 						<div className='flex-1 sm:flex-none w-full sm:w-fit'>
 							<SearchInput
 								variant='outlined'
 								placeholder='Order ID or transaction ID'
 							/>
+						</div>
+
+						<div className='flex items-center gap-4'>
+							<DropDown />
+							<OutlinedButton>
+								<img className='py-0.5' src='/download.svg' alt='download' />
+							</OutlinedButton>
 						</div>
 					</div>
 
