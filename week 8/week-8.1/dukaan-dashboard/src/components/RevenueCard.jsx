@@ -8,12 +8,12 @@ const RevenueCard = (props) => {
 	return (
 		<div className='p-5 flex flex-col gap-4'>
 			<div className={`flex gap-2 items-center text-black-30 ${textColor}`}>
-				<h5> {title} </h5>
+				<h5 className='whitespace-nowrap'> {title} </h5>
 
 				<Help styles={`fill-black-30 ${textColor}`} />
 			</div>
 
-			<div className='flex justify-between items-center'>
+			<div className='flex justify-between items-center gap-2'>
 				<h5 className={`text-4xl font-medium text-black-12 ${textColor}`}>
 					{' '}
 					{amount}{' '}
@@ -22,7 +22,7 @@ const RevenueCard = (props) => {
 				{orderCount ? (
 					<div className='flex items-center cursor-pointer'>
 						<p
-							className={`text-primary-blue text-base font-medium underline ${textColor}`}>
+							className={`text-primary-blue text-base font-medium underline whitespace-nowrap ${textColor}`}>
 							{orderCount} orders
 						</p>
 						<ChevronRight styles={`fill-primary-blue ${textColor}`} />
