@@ -1,3 +1,5 @@
+const axios = require('axios')
+
 const url = 'https://sum-server.100xdevs.com/todos'
 
 function main() {
@@ -13,5 +15,12 @@ async function asyncMain() {
 	console.log(data.todos.length)
 }
 
+async function axiosMain() {
+	const res = await axios.get(url)
+
+	console.log(res.data.todos.length)
+}
+
 main()
 asyncMain()
+axiosMain()
