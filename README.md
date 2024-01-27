@@ -9,3 +9,4 @@
 - [**Week 6 - React and hooks**](week%206/)
 - [**Week 7 - More React**](week%207/)
 - [**Week 8 - Wrapping Up React**](week%208/)
+- [**Week 9 - Typescript and Custom Hooks**](week%209/)
