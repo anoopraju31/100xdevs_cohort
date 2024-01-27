@@ -4,23 +4,38 @@ import PropTypes from 'prop-types'
 
 function useTodos() {
 	const [todos, setTodos] = useState([])
+	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
 		const getTodos = async () => {
-			const response = await axios.get('https://sum-server.100xdevs.com/todos')
-			setTodos(response.data.todos)
+			setTimeout(async () => {
+				const response = await axios.get(
+					'https://sum-server.100xdevs.com/todos',
+				)
+
+				setTodos(response.data.todos)
+				setLoading(false)
+			}, 3000)
 		}
 
 		getTodos()
 	}, [])
 
-	return todos
+	return { todos, loading }
 }
 
 const App = () => {
-	const todos = useTodos()
+	const { todos, loading } = useTodos()
+
+	if (loading)
+		return (
+			<div className='max-w-sm mx-auto py-10 flex flex-col gap-4'>
+				<p> Loading... </p>
+			</div>
+		)
+
 	return (
-		<div className=' max-w-sm mx-auto py-10 flex flex-col gap-4'>
+		<div className='max-w-sm mx-auto py-10 flex flex-col gap-4'>
 			{todos.map((todo) => (
 				<Todo key={todo.id} todo={todo} />
 			))}
