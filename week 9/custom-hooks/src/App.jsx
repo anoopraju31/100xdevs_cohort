@@ -1,9 +1,48 @@
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import PropTypes from 'prop-types'
+
+function useTodos() {
+	const [todos, setTodos] = useState([])
+
+	useEffect(() => {
+		const getTodos = async () => {
+			const response = await axios.get('https://sum-server.100xdevs.com/todos')
+			setTodos(response.data.todos)
+		}
+
+		getTodos()
+	}, [])
+
+	return todos
+}
+
 const App = () => {
+	const todos = useTodos()
 	return (
-		<div>
-			<h1 className='text-3xl font-bold underline'>Hello world!</h1>
+		<div className=' max-w-sm mx-auto py-10 flex flex-col gap-4'>
+			{todos.map((todo) => (
+				<Todo key={todo.id} todo={todo} />
+			))}
 		</div>
 	)
+}
+
+const Todo = ({ todo }) => {
+	const { id, title, description } = todo
+
+	return (
+		<div className='p-4 flex flex-col gap-2 rounded-xl bg-fuchsia-100'>
+			<h4>
+				{id} - {title}
+			</h4>
+			<p> {description} </p>
+		</div>
+	)
+}
+
+Todo.propTypes = {
+	todo: PropTypes.object,
 }
 
 export default App
