@@ -3,6 +3,7 @@ import axios from 'axios'
 import PropTypes from 'prop-types'
 import useIsOnline from './hooks/useIsOnline'
 import useMousePosistion from './hooks/useMousePosistion'
+import useDimension from './hooks/useDimension'
 
 function useTodos() {
 	const [todos, setTodos] = useState([])
@@ -30,6 +31,7 @@ const App = () => {
 	const { todos, loading } = useTodos()
 	const isOnline = useIsOnline()
 	const { x, y } = useMousePosistion()
+	const { width, height } = useDimension()
 
 	if (loading)
 		return (
@@ -45,7 +47,10 @@ const App = () => {
 				<Todo key={todo.id} todo={todo} />
 			))}
 			<p className='text-xl text-center '>
-				mouse position: x: {x}, y: {y}{' '}
+				mouse position: x: {x}, y: {y}
+			</p>
+			<p className='text-xl text-center '>
+				Dimension: width: {width}, height: {height}
 			</p>
 		</div>
 	)
