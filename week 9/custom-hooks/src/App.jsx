@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import PropTypes from 'prop-types'
+import useIsOnline from './hooks/useIsOnline'
 
 function useTodos() {
 	const [todos, setTodos] = useState([])
@@ -26,6 +27,7 @@ function useTodos() {
 
 const App = () => {
 	const { todos, loading } = useTodos()
+	const isOnline = useIsOnline()
 
 	if (loading)
 		return (
@@ -36,6 +38,7 @@ const App = () => {
 
 	return (
 		<div className='max-w-sm mx-auto py-10 flex flex-col gap-4'>
+			<p className='text-xl text-center '>{isOnline ? 'Online' : 'Offline'}</p>
 			{todos.map((todo) => (
 				<Todo key={todo.id} todo={todo} />
 			))}
