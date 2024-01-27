@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import PropTypes from 'prop-types'
 import useIsOnline from './hooks/useIsOnline'
+import useMousePosistion from './hooks/useMousePosistion'
 
 function useTodos() {
 	const [todos, setTodos] = useState([])
@@ -28,6 +29,7 @@ function useTodos() {
 const App = () => {
 	const { todos, loading } = useTodos()
 	const isOnline = useIsOnline()
+	const { x, y } = useMousePosistion()
 
 	if (loading)
 		return (
@@ -42,6 +44,9 @@ const App = () => {
 			{todos.map((todo) => (
 				<Todo key={todo.id} todo={todo} />
 			))}
+			<p className='text-xl text-center '>
+				mouse position: x: {x}, y: {y}{' '}
+			</p>
 		</div>
 	)
 }
