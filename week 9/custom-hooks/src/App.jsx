@@ -8,17 +8,17 @@ function useTodos() {
 
 	useEffect(() => {
 		const getTodos = async () => {
-			setTimeout(async () => {
-				const response = await axios.get(
-					'https://sum-server.100xdevs.com/todos',
-				)
+			const response = await axios.get('https://sum-server.100xdevs.com/todos')
 
-				setTodos(response.data.todos)
-				setLoading(false)
-			}, 3000)
+			setTodos(response.data.todos)
+			setLoading(false)
 		}
 
-		getTodos()
+		const interval = setInterval(getTodos, 1000)
+
+		return () => {
+			clearInterval(interval)
+		}
 	}, [])
 
 	return { todos, loading }
