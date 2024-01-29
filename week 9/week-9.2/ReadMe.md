@@ -169,3 +169,6 @@ delayedCall(function() {
         "use strict";
         const greet = (name) => `Hello, ${name}!`;
         ```
+2. **rootDir**
+    - the **rootDir** is the folder the compiler should look for ```.ts``` files.
+    - A good practice is for this to be the **src** folder.
