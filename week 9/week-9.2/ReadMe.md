@@ -89,7 +89,7 @@ tsc -b
     - **null**
     - **undefined**
 
-#### Problem 1 - Hello World
+#### Problem 1
 - **Aim**: How to give types to arguments of a function
 - **Problem**: Write a function that greets a user given their first name.
 - **Argument**: firstName
@@ -104,7 +104,7 @@ function greeting(firstName: string) {
 greeting('Anoop')
 ```
 
-#### Problem 2 - Sum function
+#### Problem 2
 - **Aim**: How to assign a return type to a function.
 - **Problem**: Write a function that calculates the sum of two functions.
 - **Argument**: num1, num2
@@ -116,7 +116,7 @@ function sum(num1: number, num2: number):number {
 
 console.log(sum(45, 54)) // 99
 ```
-#### Problem 3 - isLegal Function
+#### Problem 3
 - **Aim**: Type inference
 - **Problem**: Write a function that returns true or false based on if a user is 18+.
 - **Arugment**: age
@@ -129,8 +129,11 @@ function isLegal(age: number) {
 console.log(isLegal(2))
 ```
 
-#### Problem 4 -
+#### Problem 4
 - **Problem**: Create a function that takes another function as input, and runs it after 1 second.
+- **Arugment**: function
+- **returns**: depends on the input function.
+
 ```typescript
 function delayedCall(fn: () => void) {
     setTimeout(fn, 1000)
