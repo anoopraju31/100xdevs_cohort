@@ -8,6 +8,11 @@
     - **Typescript compiler**
 - **The TSC compiler**
 - **Basic Types in Typescript**
+    - **Problem 1**
+    - **Problem 2**
+    - **Problem 3**
+    - **Problem 4**
+- **The ```tsconfig``` file**
 
 ### Types of Languages (Strongly typed vs loosely typed)
 - The terms **strongly typed** and **loosely typed** refer to how programming languages handle types, particularly how strict they are about type conversions and type safety.
@@ -144,3 +149,23 @@ delayedCall(function() {
     console.log("hi there")
 })
 ```
+
+### The tsconfig file
+- The tsconfig file has a bunch of options that we can change to change the compilation process.
+- Some of these includes:
+1. **target**
+    - The **target** option in a **tsconfig.json** file specifies the ECMAScript target version to which the TypeScript compiler will compile the TypeScript code.
+    - To try it out, try compiling the following code for target being **ES5** and **es2020**:
+        ```typescript
+        const greet = (name: string) => `Hello, ${name}!`
+        ```
+    - **Output in ES5**
+        ```js
+        "use strict";
+        var greet = function (name) { return "Hello, ".concat(name, "!"); };
+        ```
+    - **Output in ES2020**
+        ```js
+        "use strict";
+        const greet = (name) => `Hello, ${name}!`;
+        ```
