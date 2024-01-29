@@ -128,3 +128,15 @@ function isLegal(age: number) {
 
 console.log(isLegal(2))
 ```
+
+#### Problem 4 -
+- **Problem**: Create a function that takes another function as input, and runs it after 1 second.
+```typescript
+function delayedCall(fn: () => void) {
+    setTimeout(fn, 1000)
+}
+
+delayedCall(function() {
+    console.log("hi there")
+})
+```
