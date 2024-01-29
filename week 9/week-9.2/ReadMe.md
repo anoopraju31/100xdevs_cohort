@@ -104,7 +104,7 @@ function greeting(firstName: string) {
 greeting('Anoop')
 ```
 
-#### Problem 2 - Sun function
+#### Problem 2 - Sum function
 - **Aim**: How to assign a return type to a function.
 - **Problem**: Write a function that calculates the sum of two functions.
 - **Argument**: num1, num2
@@ -115,4 +115,16 @@ function sum(num1: number, num2: number):number {
 }
 
 console.log(sum(45, 54)) // 99
+```
+#### Problem 3 - isLegal Function
+- **Aim**: Type inference
+- **Problem**: Write a function that returns true or false based on if a user is 18+.
+- **Arugment**: age
+- **Returns**: true/false 
+```typescript
+function isLegal(age: number) {
+    return age > 18
+}
+
+console.log(isLegal(2))
 ```
