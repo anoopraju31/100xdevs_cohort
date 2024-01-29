@@ -128,6 +128,7 @@ function isLegal(age: number) {
 
 console.log(isLegal(2))
 ```
+- **Type Inference**: Type inference in TypeScript refers to the ability of the compiler to automatically determine and assign data types to variables based on the value assigned to them. 
 
 #### Problem 4
 - **Problem**: Create a function that takes another function as input, and runs it after 1 second.
