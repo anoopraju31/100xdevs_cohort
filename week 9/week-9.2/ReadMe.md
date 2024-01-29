@@ -103,3 +103,16 @@ function greeting(firstName: string) {
 
 greeting('Anoop')
 ```
+
+#### Problem 2 - Sun function
+- **Aim**: How to assign a return type to a function.
+- **Problem**: Write a function that calculates the sum of two functions.
+- **Argument**: num1, num2
+- **returns**: sum
+```typescript
+function sum(num1: number, num2: number):number {
+    return num1 + num2
+}
+
+console.log(sum(45, 54)) // 99
+```
