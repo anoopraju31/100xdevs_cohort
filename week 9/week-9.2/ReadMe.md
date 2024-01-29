@@ -174,3 +174,6 @@ delayedCall(function() {
     - A good practice is for this to be the **src** folder.
 3. **outDir**
     - The **outDir** is the folder to look for spit out the **.js** files. 
+4. **noImplicitAny**
+    - the **noImplicitAny** compiler option is used to enforce stricter type checking by preventing the use of the any type implicitly.
+    - When **noImplicitAny** is enabled, TypeScript will flag an error whenever it cannot infer a more specific type and would otherwise default to the any type.
