@@ -7,6 +7,7 @@
     - **Where/How does typescript code run?**
     - **Typescript compiler**
 - **The TSC compiler**
+- **Basic Types in Typescript**
 
 ### Types of Languages (Strongly typed vs loosely typed)
 - The terms **strongly typed** and **loosely typed** refer to how programming languages handle types, particularly how strict they are about type conversions and type safety.
@@ -78,3 +79,12 @@ tsc -b
 - Also notice that no **index.js** is created anymore.
 ![](images/error.png)
 - This is the high level benefit of typescript. It lets you catch **type** errors at **compile time**.
+
+
+### Basic Types in Typescript
+- Typescript provides us with some basic types:
+    - **number**
+    - **string**
+    - **boolean**
+    - **null**
+    - **undefined**
