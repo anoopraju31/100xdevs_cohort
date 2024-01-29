@@ -177,3 +177,5 @@ delayedCall(function() {
 4. **noImplicitAny**
     - the **noImplicitAny** compiler option is used to enforce stricter type checking by preventing the use of the any type implicitly.
     - When **noImplicitAny** is enabled, TypeScript will flag an error whenever it cannot infer a more specific type and would otherwise default to the any type.
+5. **removeComments**
+    - Weather or not to include comments in the final **js** file
