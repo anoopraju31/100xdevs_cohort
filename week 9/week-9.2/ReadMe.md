@@ -170,5 +170,7 @@ delayedCall(function() {
         const greet = (name) => `Hello, ${name}!`;
         ```
 2. **rootDir**
-    - the **rootDir** is the folder the compiler should look for ```.ts``` files.
+    - The **rootDir** is the folder the compiler should look for ```.ts``` files.
     - A good practice is for this to be the **src** folder.
+3. **outDir**
+    - The **outDir** is the folder to look for spit out the **.js** files. 
