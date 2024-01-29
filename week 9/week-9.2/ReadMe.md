@@ -88,3 +88,18 @@ tsc -b
     - **boolean**
     - **null**
     - **undefined**
+
+#### Problem 1 - Hello World
+- **Aim**: How to give types to arguments of a function
+- **Problem**: Write a function that greets a user given their first name.
+- **Argument**: firstName
+- **logs**: Hello {firstName} 
+- **returns**: Doesn't return anything
+
+```typescript
+function greeting(firstName: string) {
+    console.log(`Hello ${firstName}`)
+}
+
+greeting('Anoop')
+```
