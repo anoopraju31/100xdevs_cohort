@@ -176,6 +176,29 @@ delayedCall(function() {
     - The **outDir** is the folder to look for spit out the **.js** files. 
 4. **noImplicitAny**
     - the **noImplicitAny** compiler option is used to enforce stricter type checking by preventing the use of the any type implicitly.
-    - When **noImplicitAny** is enabled, TypeScript will flag an error whenever it cannot infer a more specific type and would otherwise default to the any type.
+     - When **noImplicitAny** is enabled, TypeScript will flag an error whenever it cannot infer a more specific type and would otherwise default to the any type.
 5. **removeComments**
     - Weather or not to include comments in the final **js** file
+
+### Interfaces
+- In TypeScript, an **interface** is a way to define the structure of an object.
+- It's a TypeScript-specific feature that helps in describing the shape of objects, including their properties and methods.
+- Interfaces are purely a compile-time construct and do not generate any JavaScript code.
+- **example:** Here, is a user object looks like - 
+    ```js
+    const user = {
+        firstName: "harkirat",
+        lastName: "singh",
+        email: "email@gmail.com".
+        age: 21,
+    }
+    ```
+    To assign a type to the **user** object, we can use an **interface**
+    ```ts
+    interface User {
+        firstName: string;
+        lastName: string;
+        email: string;
+        age: number;
+    }
+    ```
