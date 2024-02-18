@@ -19,6 +19,7 @@
     - **Features of Types**
 - **Interface vs Type**
     - **When to use which**
+- **Arrays in TS**
 
 ### Types of Languages (Strongly typed vs loosely typed)
 - The terms **strongly typed** and **loosely typed** refer to how programming languages handle types, particularly how strict they are about type conversions and type safety.
@@ -317,3 +318,44 @@ type User = {
     - When defining the structure of objects or contracts for class implementations.
     - Extending or implementing other interfaces.
     - When consistency in object shape is a priority.
+
+### Arrays in TS
+- If we want to access arrays in typescript, it’s as simple as adding a **[]** annotation next to the type.
+#### Example 1
+- Given an array of positive integers as input, return the maximum value in the array.
+```ts
+function maxValue(arr: number[]) {
+    let max = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > max) {
+            max = arr[i]
+        }
+    }
+    return max;
+}
+
+console.log(maxValue([1, 2, 3]));
+```
+#### Example 2 
+Given a list of users, filter out the users that are legal (greater than 18 years of age).
+```ts
+interface User {
+	firstName: string;
+	lastName: string;
+	age: number;
+}
+
+function filteredUsers(users: User[]) {
+    return users.filter(x => x.age >= 18);
+}
+
+console.log(filteredUsers([{
+    firstName: "harkirat",
+    lastName: "Singh",
+    age: 21
+}, {
+    firstName: "Raman",
+    lastName: "Singh",
+    age: 16
+}, ]));
+```
