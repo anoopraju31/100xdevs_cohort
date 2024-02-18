@@ -269,3 +269,27 @@ type User = {
     ```
     - Unions provide flexibility in handling different types within a single type definition.
     - **Note:** We cannot do this with **interface**
+2. **Intersection**
+    - Intersections allow us to create a type that has every property of multiple **types** or **interfaces**. 
+    - If we have types like **Employee** and **Manager**, and we want to create a **TeamLead** type that combines properties of both:
+    ``` ts
+    type Employee = {
+        name: string;
+        startDate: Date;
+    };
+
+    type Manager = {
+        name: string;
+        department: string;
+    };
+
+    type TeamLead = Employee & Manager;
+
+    const teamLead: TeamLead = {
+        name: "harkirat",
+        startDate: new Date(),
+        department: "Software developer"
+    };
+    ```
+    - Intersections provide a way to create a new type that inherits properties from multiple existing types.
+    - **Note:** We cannot do this with **interface**
