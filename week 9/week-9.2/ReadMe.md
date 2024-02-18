@@ -13,6 +13,8 @@
     - **Problem 3**
     - **Problem 4**
 - **The ```tsconfig``` file**
+- **Interfaces**
+    - **Implementing interfaces**
 
 ### Types of Languages (Strongly typed vs loosely typed)
 - The terms **strongly typed** and **loosely typed** refer to how programming languages handle types, particularly how strict they are about type conversions and type safety.
@@ -213,3 +215,30 @@ delayedCall(function() {
         return user.age > 18
     }
     ```
+#### Implementing Interfaces
+- In typescript, we can **implement** interfaces as a class.
+- Let’s say we have a person **interface** - 
+``` ts
+interface Person {
+    name: string;
+    age: number;
+    greet(phrase: string): void;
+}
+```
+- We can create a class which implements this interface.
+``` ts
+class Employee implements Person {
+    name: string;
+    age: number;
+
+    constructor(n: string, a: number) {
+        this.name = n;
+        this.age = a;
+    }
+
+    greet(phrase: string) {
+        console.log(`${phrase} ${this.name}`);
+    }
+}
+```
+- This is useful since now we can create multiple variants of a person (Manager, CEO …)
