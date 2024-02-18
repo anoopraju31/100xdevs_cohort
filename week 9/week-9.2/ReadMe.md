@@ -16,6 +16,7 @@
 - **Interfaces**
     - **Implementing interfaces**
 - **Types**
+    - **Features of Types**
 
 ### Types of Languages (Strongly typed vs loosely typed)
 - The terms **strongly typed** and **loosely typed** refer to how programming languages handle types, particularly how strict they are about type conversions and type safety.
@@ -293,3 +294,13 @@ type User = {
     ```
     - Intersections provide a way to create a new type that inherits properties from multiple existing types.
     - **Note:** We cannot do this with **interface**
+
+- ### Interface vs Types
+| Differences             | Interfaces              | Types                   |
+|-------------------------|-------------------------|-------------------------|
+| Declaration Syntax      | Uses the **type** keyword. <br/> More flexible syntax, can represent primitive types, unions, intersections, and more. | Uses the **interface** keyword. <br/> Typically used for defining the structure of objects. |
+| Extension and Merging | Supports extending types. <br /> Can't be merged; if you define another type with the same name, it will override the previous one. | Supports extending **interfaces** using the extends keyword. <br /> Automatically merges with the same-name interfaces, combining their declarations. |
+| Declaration vs. Implementation | Can represent any type, including primitives, unions, intersections, etc. <br />Suitable for describing the shape of data. | Mainly used for describing the shape of objects. <br /> Can also be used to define contracts for classes. |
+| Type Overriding | Types cannot be overridden or merged. Redefining a type with the same name replaces the previous one. | Interfaces automatically merge if declared with the same name. |
+| Object Literal Strictness | Types are more lenient when dealing with object literal assignments. | Interfaces enforce strict object literal shapes. |
+| Implementation for Classes | Interfaces can be used to define contracts for class implementations. |Types are more versatile for creating complex types and reusable utility types. |
