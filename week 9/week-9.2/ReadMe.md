@@ -15,6 +15,7 @@
 - **The ```tsconfig``` file**
 - **Interfaces**
     - **Implementing interfaces**
+- **Types**
 
 ### Types of Languages (Strongly typed vs loosely typed)
 - The terms **strongly typed** and **loosely typed** refer to how programming languages handle types, particularly how strict they are about type conversions and type safety.
@@ -242,3 +243,29 @@ class Employee implements Person {
 }
 ```
 - This is useful since now we can create multiple variants of a person (Manager, CEO …)
+
+### Types
+- In TypeScript, **types** allow us to aggregate data together in a manner very similar to interfaces. They provide a way to define the structure of an object, similar to how interfaces do.
+```ts
+type User = {
+    firstName: string;
+	lastName: string;
+	age: number
+}
+```
+#### Features of Type
+1. **Unions**
+    - Unions allow us to define a type that can be one of several types. This is useful when dealing with values that could have different types.
+    - For instance, imagine we want to print the ID of a user, which can be either a number or a string:
+    ``` ts 
+    type StringOrNumber = string | number;
+
+    function printId(id: StringOrNumber) {
+    console.log(`ID: ${id}`);
+    }
+
+    printId(101); // ID: 101
+    printId("202"); // ID: 202
+    ```
+    - Unions provide flexibility in handling different types within a single type definition.
+    - **Note:** We cannot do this with **interface**
