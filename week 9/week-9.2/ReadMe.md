@@ -196,9 +196,20 @@ delayedCall(function() {
     To assign a type to the **user** object, we can use an **interface**
     ```ts
     interface User {
-        firstName: string;
-        lastName: string;
-        email: string;
-        age: number;
+        firstName: string
+        lastName: string
+        age: number
+        email?: string
+    }
+
+    const user = {
+        firstName: 'harkirat',
+        lastName: 'singh',
+        email: 'email@gmail.com',
+        age: 21,
+    }
+
+    function isLegal(user: User) {
+        return user.age > 18
     }
     ```

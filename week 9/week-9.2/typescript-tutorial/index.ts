@@ -22,3 +22,21 @@ function runAfter1s(fn: () => void) {
 runAfter1s(function () {
 	console.log('Hi there!')
 })
+
+interface User {
+	firstName: string
+	lastName: string
+	age: number
+	email?: string
+}
+
+const user = {
+	firstName: 'harkirat',
+	lastName: 'singh',
+	email: 'email@gmail.com',
+	age: 21,
+}
+
+function isLegal(user: User) {
+	return user.age > 18
+}
