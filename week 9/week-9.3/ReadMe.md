@@ -4,6 +4,8 @@
 - **Enums**
 - **Generics**
 - **Exporting and importing modules**
+    - **Contant Exports**
+    - **Default Exports**
 
 
 ### Enums
@@ -148,3 +150,41 @@ console.log(box1.getValue()); // Output: Hello
 console.log(box2.getValue()); // Output: 123
 ```
 - In this example, **Box<T>** is a generic class that can hold a value of any type. We can create instances of **Box** with different types, and the **getValue** method returns the value of the specified type.
+
+### Importing & Exporting Modules
+- TypeScript follows the ES6 module system, using **import** and **export** statements to share code between different files.
+
+#### Constant exports
+- **math.ts**
+```ts
+export function add(x: number, y: number): number {
+    return x + y;
+}
+
+export function subtract(x: number, y: number): number {
+    return x - y;
+}
+```
+- **main.ts**
+```ts
+import { add } from "./math"
+
+add(1, 2)
+```
+
+#### Default exports
+- **calculator.ts**
+```ts
+export default class Calculator {
+    add(x: number, y: number): number {
+        return x + y;
+    }
+}
+```
+- **main.ts**
+```ts
+import Calculator from './Calculator';
+
+const calc = new Calculator();
+console.log(calc.add(10, 5));
+```
