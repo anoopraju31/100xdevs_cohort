@@ -103,3 +103,48 @@ app.get("/', (req, res) => {
 		res.status(ResponseStatus.Success).json({});
 })
 ```
+
+### Generics
+- Generics in TypeScript allow us to create reusable components and functions that can work with a variety of data types while maintaining type safety.
+- They enable us to define placeholders for types that are specified when the component, function, or class is used.
+- Here's a basic example of how generics work in TypeScript:
+```ts
+// A simple generic function that takes an argument of type T and returns it
+function identity<T>(arg: T): T {
+    return arg;
+}
+
+// Using the generic function with different types
+let output1 = identity<string>("hello");
+let output2 = identity<number>(123);
+
+console.log(output1); // Output: hello
+console.log(output2); // Output: 123
+```
+- In this example:
+    - **<T>** declares a type parameter **T**, which acts as a placeholder for a specific type.
+    - **identity<T>** is a function that takes an argument of type **T** and returns the same type **T**.
+    - When calling identity, we specify the type we want to use within angle brackets (**<string>** or **<number>** in this case).
+- Generics can also be used with classes and interfaces. Here's an example:
+``` ts
+// A generic class that holds a value of type T
+class Box<T> {
+    private value: T;
+
+    constructor(value: T) {
+        this.value = value;
+    }
+
+    getValue(): T {
+        return this.value;
+    }
+}
+
+// Using the generic class with different types
+let box1 = new Box<string>("Hello");
+let box2 = new Box<number>(123);
+
+console.log(box1.getValue()); // Output: Hello
+console.log(box2.getValue()); // Output: 123
+```
+- In this example, **Box<T>** is a generic class that can hold a value of any type. We can create instances of **Box** with different types, and the **getValue** method returns the value of the specified type.
