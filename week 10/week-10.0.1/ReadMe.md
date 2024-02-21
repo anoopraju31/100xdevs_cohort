@@ -11,3 +11,8 @@
         - These databases are designed to handle various types of unstructured, semi-structured, or highly distributed data at scale.
         - They are schemaless databases.
         - They are faster to produce apps.
+
+### Types of SQL Databases
+Some of the common SQL databases are - 
+1. MySQL
+2. Postgres SQL
