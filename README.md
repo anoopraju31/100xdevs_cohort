@@ -11,3 +11,5 @@
 - [**Week 8  - Wrapping Up React**](week%208/)
 - [**Week 9  - Typescript and Custom Hooks**](week%209/)
 - [**Week 10 - Postgress & Prisma**](week%2010/)
+- [**Week 11 - Serverless & AWS Delpoyments**](week%2011/)
+- [**Week 13 - Project**](week%2013/)
