@@ -36,4 +36,15 @@
 - This has also few upsides like - 
     - can move data very fast
     - can change schema very easily
-    
+
+### Why SQL?
+- SQL databases have a strict schema. 
+- They require us to -
+    - Define our schema
+    - Put in data that follows that schema
+    - Update the schema as our app changes and perform migrations.
+- There are 4 parts when using an SQL database - 
+    - Running the database.
+    - Using a library that let’s you connect and put data in it.
+    - Creating a table and defining it’s schema.
+    - Run queries on the database to interact with the data (Insert/Update/Delete). 
