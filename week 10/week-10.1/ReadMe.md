@@ -1,5 +1,11 @@
 # Week 10.1 Cohort 2 Postgres
 
+## Contents:
+- **Types of Databases**
+- **Why not SQL?**
+    - **What is schemaless?**
+- **Why SQL?**
+
 ### Types of Databases
 - Databases are divided into 2 types -
     1. SQL - Structured Query Language
