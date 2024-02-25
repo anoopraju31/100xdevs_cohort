@@ -23,3 +23,17 @@
         - Useful in Machine learning
         - Examples - Pinecone
         ![Vector Database](images/vector-db.webp)
+
+### Why not NoSQL?
+- NoSQL databases like MongoDB, has a schemaless properties makes it ideal for bootstraping a project fast. But as the app grows this property makes it very easy for data to get corrupted.  
+#### What is schemaless?
+- Schemaless means different rows can have different schema (keys/types).
+![](images/schemaless.png)
+- This could leads to problems such as - 
+    - inconsistency in databases
+    - can cause run time errors
+    - make it too flexible for an app that needs strictness
+- This has also few upsides like - 
+    - can move data very fast
+    - can change schema very easily
+    
