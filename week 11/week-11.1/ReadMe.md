@@ -38,3 +38,8 @@ There are many famous backend serverless providers -
 1. [AWS Lambda](https://aws.amazon.com/pm/lambda/)
 2. [Google Cloud Functions](https://firebase.google.com/docs/functions)
 3. [Cloudflare Workers](https://workers.cloudflare.com/)
+
+### When should you use a serverless architecture?
+1. When we have to get off the ground fast and don’t want to worry about deployments.
+2. When we can’t anticipate the traffic and don’t want to worry about autoscaling.
+3. If we have very low traffic and want to optimise for costs.
