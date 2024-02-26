@@ -7,7 +7,8 @@
 - [**When Should We use a serverless architecture?**](#when-should-you-use-a-serverless-architecture)
 - [**Cloudflare Worker Setup**](#cloudflare-workers-setup)
 - [**How cloudflare workers work**](#how-cloudflare-workers-work)
-- [**Initializing a worker**]()
+- [**Initializing a worker**](#initializing-a-worker)
+    - [**How can I do Routing?**](#how-can-i-do0outing)
 - [**Deploying a worker**]()
 - [**Adding express to it**]()
 - [**Using hono**]()
@@ -83,3 +84,34 @@ There are many famous backend serverless providers -
             },
         };
         ```
+- Cloudflare expects us to just write the logic to handle a request. Creating an HTTP server on top is handled by cloudflare.
+
+#### How can I do Routing?
+- In express, routing is done as follows - 
+```js
+import express from "express"
+const app = express();
+
+app.get("/route", (req, res) => {
+	// handles a get request to /route
+});
+```
+- Routing in the Cloudflare environment -
+```ts
+export default {
+	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+		console.log(request.body);
+		console.log(request.headers);
+		
+		if (request.method === "GET") {
+			return Response.json({
+				message: "you sent a get request"
+			});
+		} else {
+			return Response.json({
+				message: "you did not send a get request"
+			});
+		}
+	},
+};
+```
