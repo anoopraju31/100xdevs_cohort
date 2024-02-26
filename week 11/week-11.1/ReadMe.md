@@ -47,3 +47,8 @@ There are many famous backend serverless providers -
 ### Cloudflare workers setup
 - Please sign up on [Cloudflare](https://cloudflare.com/)
 ![](images/cloudflare-signup.jpg)
+
+### How cloudflare workers work?
+- [Detailed Blog Post](https://developers.cloudflare.com/workers/reference/how-workers-works/#:~:text=Though%20Cloudflare%20Workers%20behave%20similarly,used%20by%20Chromium%20and%20Node)
+- ![](images/how-cloudflare-works.jpg)
+- ![](images/isolates.jpg)
