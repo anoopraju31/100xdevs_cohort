@@ -43,3 +43,7 @@ There are many famous backend serverless providers -
 1. When we have to get off the ground fast and don’t want to worry about deployments.
 2. When we can’t anticipate the traffic and don’t want to worry about autoscaling.
 3. If we have very low traffic and want to optimise for costs.
+
+### Cloudflare workers setup
+- Please sign up on [Cloudflare](https://cloudflare.com/)
+![](images/cloudflare-signup.jpg)
