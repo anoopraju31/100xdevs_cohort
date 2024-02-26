@@ -52,3 +52,34 @@ There are many famous backend serverless providers -
 - [Detailed Blog Post](https://developers.cloudflare.com/workers/reference/how-workers-works/#:~:text=Though%20Cloudflare%20Workers%20behave%20similarly,used%20by%20Chromium%20and%20Node)
 - ![](images/how-cloudflare-works.jpg)
 - ![](images/isolates.jpg)
+
+### Initializing a worker
+- To create and deploy our application, we can take the following steps -
+    1. Initialize a worker
+        ```bash
+        npm create cloudflare -- my-app
+        ```
+        Select no for Do you want to deploy your application
+    2. Explore package.json dependencies
+        ```bash
+        "wrangler": "^3.0.0"
+        ```
+        Notice express is not a dependency there
+    3. Start the worker locally
+        ```bash
+        npm run dev
+        ```
+    4. How to return json?
+        ```ts
+        export default {
+            async fetch(
+                request: Request, 
+                env: Env, 
+                ctx: ExecutionContext
+            ): Promise<Response> {
+                return Response.json({
+                    message: "hi"
+                });
+            },
+        };
+        ```
