@@ -1,18 +1,18 @@
 # Week 11.1 - Serverless Fns
 
 ## Contents:
-- **What are backends servers?**
-- **What are Serverless Backends**
-- **Famous Serverless Providers**
-- **When Should We use a serverless architecture?**
-- **Cloudflare Worker Setup**
-- **How cloudflare workers work**
-- **Initializing a worker**
-- **Deploying a worker**
-- **Adding express to it**
-- **Using hono**
-- **Middlewares**
-- **Connecting to DB**
+- [**What are backends servers?**](#what-are-backends-servers)
+- [**What are Serverless Backends**](#what-are-serverless-backends)
+- [**Famous Serverless Providers**](#famous-serverless-providers)
+- [**When Should We use a serverless architecture?**](#when-should-you-use-a-serverless-architecture)
+- [**Cloudflare Worker Setup**](#cloudflare-workers-setup)
+- [**How cloudflare workers work**](#how-cloudflare-workers-work)
+- [**Initializing a worker**]()
+- [**Deploying a worker**]()
+- [**Adding express to it**]()
+- [**Using hono**]()
+- [**Middlewares**]()
+- [**Connecting to DB**]() 
 
 ### What are backends servers?
 - We have used **express** to create a Backend server and the way we run it usually is **node index.js** which starts a process on a certain port(usually 3000).
