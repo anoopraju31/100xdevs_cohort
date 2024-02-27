@@ -129,3 +129,13 @@ export default {
     npm run deploy
     ```
     If all goes well, we should see the app up and running.
+
+### Adding express to it
+- Cloudflare doesnot support **express.js** as it heavily relies on **Node.js**.
+- Cloudflare has a custom javascript runtime environment with is different from **Node.js**.
+- There are a few alternatives to **express.js**
+    - **hono.js** - [**Hono.js**](https://github.com/honojs/hono) is a ultra fast web framework for cloudflare workers, Deno, Bun and Node.js.
+    ![](images/hono-alternative-to-express.jpg)
+- If the codebase is in express.js, we can split all the handler in a file. Create a generic handler that can forward request from either express or hono or native cloudflare handler.
+![](images/split-handler.jpg)
+![](images/express-to-cloudflare-routes.jpg)
