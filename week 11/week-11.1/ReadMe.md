@@ -9,7 +9,7 @@
 - [**How cloudflare workers work**](#how-cloudflare-workers-work)
 - [**Initializing a worker**](#initializing-a-worker)
     - [**How can I do Routing?**](#how-can-i-do-routing)
-- [**Deploying a worker**]()
+- [**Deploying a worker**](#deploying-a-worker)
 - [**Adding express to it**]()
 - [**Using hono**]()
 - [**Middlewares**]()
