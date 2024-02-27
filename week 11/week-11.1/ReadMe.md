@@ -11,7 +11,11 @@
     - [**How can I do Routing?**](#how-can-i-do-routing)
 - [**Deploying a worker**](#deploying-a-worker)
 - [**Adding express to it**](#adding-express-to-it)
-- [**Using hono**]()
+- [**Using hono**](#using-hono)
+    - [**What runtimes does it support?**](#what-runtimes-does-it-support)
+    - [**Working with cloudflare workers**](#working-with-cloudflare-workers)
+    - [**Getting inputs from user**](#getting-inputs-from-user)
+    - [**Deploying**](#deploying)
 - [**Middlewares**]()
 - [**Connecting to DB**]() 
 
@@ -139,3 +143,51 @@ export default {
 - If the codebase is in express.js, we can split all the handler in a file. Create a generic handler that can forward request from either express or hono or native cloudflare handler.
 ![](images/split-handler.jpg)
 ![](images/express-to-cloudflare-routes.jpg)
+
+### Using hono
+[![](images/hono-motivation.jpg)](https://hono.dev/concepts/motivation)
+
+#### What runtimes does it support?
+![](images/hono-runtime.jpg)
+
+#### Working with cloudflare workers
+1. Initialize a new app
+    ```bash
+    npm create hono@latest my-app
+    ```
+2. Move to **my-app** and install the dependencies.
+    ```bash
+    cd my-app
+    npm i
+    ```
+3. Hello World
+    ```js
+    import { Hono } from 'hono'
+    const app = new Hono()
+
+    app.get('/', (c) => c.text('Hello Cloudflare Workers!'))
+
+    export default app
+    ```
+#### Getting inputs from user
+``` js
+import { Hono } from 'hono'
+
+const app = new Hono()
+
+app.get('/', async (c) => {
+  const body = await c.req.json()
+  console.log(body);
+  console.log(c.req.header("Authorization"));
+  console.log(c.req.query("param"));
+
+  return c.text('Hello Hono!')
+})
+
+export default app
+```
+#### Deploying 
+- Make sure you’re logged into cloudflare (**wrangler login**)
+    ```bash
+    npm run deploy
+    ```
