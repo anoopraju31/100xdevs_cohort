@@ -115,3 +115,17 @@ export default {
 	},
 };
 ```
+
+### Deploying a worker
+- For deploying a worker we use [wrangler]( https://developers.cloudflare.com/workers/wrangler/)
+- ![Wrangler (Command line)](images/wrangler-cli.jpg)
+1. Login to cloudflare via the **wrangler cli**
+    ```bash
+    npx wrangler login
+    ```
+    ![Wrangler login](images/wrangler-login.jpg)
+2. Deploy our worker
+    ```bash
+    npm run deploy
+    ```
+    If all goes well, we should see the app up and running.
