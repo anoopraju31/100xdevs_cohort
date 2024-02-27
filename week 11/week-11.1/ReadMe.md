@@ -10,7 +10,7 @@
 - [**Initializing a worker**](#initializing-a-worker)
     - [**How can I do Routing?**](#how-can-i-do-routing)
 - [**Deploying a worker**](#deploying-a-worker)
-- [**Adding express to it**]()
+- [**Adding express to it**](#adding-express-to-it)
 - [**Using hono**]()
 - [**Middlewares**]()
 - [**Connecting to DB**]() 
