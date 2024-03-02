@@ -13,6 +13,7 @@
     - [**Week 9  - Typescript and Custom Hooks**](week%209/)
     - [**Week 10 - Postgress & Prisma**](week%2010/)
     - [**Week 11 - Serverless & AWS Delpoyments**](week%2011/)
+    - [**Week 12 - Offline Videos**](week%2012/)
     - [**Week 13 - Project**](week%2013/)
 - **1-100**
     - [**Week 14 - Intro to Next.js**](week%2014/)
