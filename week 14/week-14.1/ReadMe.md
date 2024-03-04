@@ -4,6 +4,7 @@
 - [**Introduction to Next.js**](#introduction-to-nextjs)
 - [**Problem with React.js**](#problem-with-reactjs)
 - [**SEO Optimisation**](#seo-optimisation)
+- [**Waterfalling Problem**](#waterfalling-problem)
 
 
 ### Introduction to Next.js
@@ -23,3 +24,19 @@
 - This isn't suitable for SEO Crawlers, as the HTML they gets is just a boiler plate that does not specific any information regarding the website.
 - ![](images/seo.png)
 - Thats where Next.js comes into picture, It also Static Site Generation(SSG) and Server Side Rendering(SSR).
+
+
+# Waterfalling Problem
+- The "waterfalling problem" in React, and more broadly in web development, refers to a scenario where data fetching operations are chained or dependent on each other in a way that leads to inefficient loading behavior.
+- Lets assume we build a Blogging website in React
+![](images/blogging-app.png)
+- Lets look at the request cycle -
+![](images/request-cycle-for-blogging-website-react.png)
+    1. Fetching the index.html from the CDN
+    2. Fetching script.js from CDN
+    3. Checking if user is logged in (if not, redirect them to /login page)
+    4. Fetching the actual blogs
+- There are 4 round trips that happen one after the other (sequentially).
+- Let see how next.js handles the above request -
+![](images/request-cycle-for-blogging-website-next.png)
+- Next.js lets us get all the blogs in one request, this is great as it better for SEO optimization
