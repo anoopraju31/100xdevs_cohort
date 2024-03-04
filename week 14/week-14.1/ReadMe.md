@@ -27,7 +27,7 @@
 
 
 # Waterfalling Problem
-- The "waterfalling problem" in React, and more broadly in web development, refers to a scenario where data fetching operations are chained or dependent on each other in a way that leads to inefficient loading behavior.
+- The **waterfalling problem** in React, and more broadly in web development, refers to a scenario where data fetching operations are chained or dependent on each other in a way that leads to inefficient loading behavior.
 - Lets assume we build a Blogging website in React
 ![](images/blogging-app.png)
 - Lets look at the request cycle -
