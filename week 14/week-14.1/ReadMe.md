@@ -39,4 +39,13 @@
 - There are 4 round trips that happen one after the other (sequentially).
 - Let see how next.js handles the above request -
 ![](images/request-cycle-for-blogging-website-next.png)
-- Next.js lets us get all the blogs in one request, this is great as it better for SEO optimization
+- Next.js lets us get all the blogs in one request, this is great as it better for SEO optimization.
+
+### Next.js Offerings
+Next.js provides us the following upsides over React:
+1. Server Side Rendering (SSR) - It solves the SEO problem.
+2. API routes - Single Codebase with frontend and backend.
+3. File Based Routing - Next.js out of the box comes with routing.
+4. Bundle Size Optimizations
+5. Static Site Generation (SSG)
+6. Maintained by the Vercel Team
