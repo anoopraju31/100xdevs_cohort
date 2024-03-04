@@ -72,3 +72,27 @@ npx create-next-app@latest
 #### Bootstrap the project
 1. Remove everything from **app/page.tsx** and return an empty **div**.
 2. Remove the css bits (not the tailwind headers) from the **global.css** file.
+
+### Understanding routing in Next
+- **Routing in react:**
+![](images/routing-in-react.png)
+- **Routing in Next.js:**
+    - **Next.js** has a **file based router**, this means that the way we create our files, describes what renders on a route.
+    - Let’s add a new folder in app called **signup**.
+    - Let’s add a file called page.tsx inside **app/signup**.
+        ```tsx
+        export default function Signup() {
+            return (
+            <div>
+                hi from the signup page
+            </div>
+            );
+        }
+        ```
+    - Start the application locally
+        ```bash
+        npm run dev
+        ```
+        ![](images/signup.png)
+    - Final folder structure
+    ![](images/signup-folder-structure.png)
