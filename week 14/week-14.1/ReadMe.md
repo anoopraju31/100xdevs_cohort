@@ -5,10 +5,12 @@
 - [**Problem with React.js**](#problem-with-reactjs)
 - [**SEO Optimisation**](#seo-optimisation)
 - [**Waterfalling Problem**](#waterfalling-problem)
-
+- [**Lets bootstrap a simple Next.js App**](#lets-bootstrap-a-simple-nextjs-app)
+    - [**File Structure**](#file-structure)
+    - [**Bootstrap the project**](#bootstrap-the-project)
 
 ### Introduction to Next.js
-- **Next.js** is a React framework for building full-stack web applications. 
+**Next.js** is a React framework for building full-stack web applications. 
 
 ### Problem with React.js
 1. In React Project, we have maintain a seperate repository for backend and has to deploy seperately.
@@ -53,3 +55,20 @@ Next.js provides us the following upsides over React:
 Downsides:
 1. Next.js website can not be distributed via a CDN, always needs a server running that does Server Side Rendering and is expensive.
 2. Very opinionated, very hard to move out of it
+
+### Lets bootstrap a simple Next.js App
+
+```bash
+npx create-next-app@latest
+```
+![](images/next-bootstrap.png)
+
+#### File Structure
+![](images/next-bootstrap.png)
+1. **next.config.mjs** - Nextjs configuration file
+2. **tailwind.config.js** - Tailwind configuration file
+3. **app** - Contains all your code/components/layouts/routes/apis
+
+#### Bootstrap the project
+1. Remove everything from **app/page.tsx** and return an empty **div**.
+2. Remove the css bits (not the tailwind headers) from the **global.css** file.
