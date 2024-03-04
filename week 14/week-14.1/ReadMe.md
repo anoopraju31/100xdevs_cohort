@@ -26,7 +26,7 @@
 - Thats where Next.js comes into picture, It also Static Site Generation(SSG) and Server Side Rendering(SSR).
 
 
-# Waterfalling Problem
+### Waterfalling Problem
 - The **waterfalling problem** in React, and more broadly in web development, refers to a scenario where data fetching operations are chained or dependent on each other in a way that leads to inefficient loading behavior.
 - Lets assume we build a Blogging website in React
 ![](images/blogging-app.png)
@@ -49,3 +49,7 @@ Next.js provides us the following upsides over React:
 4. Bundle Size Optimizations
 5. Static Site Generation (SSG)
 6. Maintained by the Vercel Team
+
+Downsides:
+1. Next.js website can not be distributed via a CDN, always needs a server running that does Server Side Rendering and is expensive.
+2. Very opinionated, very hard to move out of it
