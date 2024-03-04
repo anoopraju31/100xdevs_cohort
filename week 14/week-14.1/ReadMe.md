@@ -9,6 +9,7 @@
     - [**File Structure**](#file-structure)
     - [**Bootstrap the project**](#bootstrap-the-project)
 - [**Understanding routing in Next**](#understanding-routing-in-next)
+- [**Server Side Rendering (SSR)**](#server-side-rendering-ssr)
 
 ### Introduction to Next.js
 **Next.js** is a React framework for building full-stack web applications. 
@@ -25,7 +26,7 @@
 - The crawlers don't usually run JS code and renders the webpage to see the final output.
 - A website build using React.js, initially has a boiler plate HTML, which gets hydrated after the react code gets rendered.
 - This isn't suitable for SEO Crawlers, as the HTML they gets is just a boiler plate that does not specific any information regarding the website.
-- ![](images/seo.png)
+    ![](images/seo.png)
 - Thats where Next.js comes into picture, It also Static Site Generation(SSG) and Server Side Rendering(SSR).
 
 
@@ -97,3 +98,11 @@ npx create-next-app@latest
         ![](images/signup.png)
     - Final folder structure
     ![](images/signup-folder-structure.png)
+
+### Server Side Rendering (SSR)
+- **Server Side Rendering (SSR)** in Next.js allows you to render React components on the server side before sending them to the client.
+- This can improve performance, especially for **search engine optimization (SEO)** and initial page load times.
+- However, it's important to consider the trade-offs, such as increased server load and latency due to rendering on every request.
+    ![](images/ssr.png)
+- Now if **GoogleBot** tries to scrape the page, it’ll understand that this is a **signup page** without running any Javascript.
+- The first **index.html** file it get’s back will have context about the page since it was **server side rendered**.
