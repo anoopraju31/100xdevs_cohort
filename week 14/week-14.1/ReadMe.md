@@ -8,6 +8,7 @@
 - [**Lets bootstrap a simple Next.js App**](#lets-bootstrap-a-simple-nextjs-app)
     - [**File Structure**](#file-structure)
     - [**Bootstrap the project**](#bootstrap-the-project)
+- [**Understanding routing in Next**](#understanding-routing-in-next)
 
 ### Introduction to Next.js
 **Next.js** is a React framework for building full-stack web applications. 
