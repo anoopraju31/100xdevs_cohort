@@ -11,6 +11,7 @@
 - [**Understanding routing in Next**](#understanding-routing-in-next)
 - [**Server Side Rendering (SSR)**](#server-side-rendering-ssr)
 - [**Layouts**](#layouts)
+- [**Layouts in sub routes**](#layouts-in-sub-routes)
 
 ### Introduction to Next.js
 **Next.js** is a React framework for building full-stack web applications. 
@@ -114,3 +115,12 @@ npx create-next-app@latest
     ![](images/layouts-folder-structure.png)
 - Lets explore **layout.tsx**
     ![](images/explore-layout.png)
+
+### Layouts in sub routes
+- We could add additional layouts to the sub routes which won't be applied outside that particular route.
+- Let say we need to a banner in /signin route only that says **Login now to get 20% OFF**.
+- We would need to create a **layout.tsx** inside the **signin** folder.
+    ![](images/layout-sign-in.png)
+    ![](images/sign-in-layout.png)
+- By default, layouts in the folder hierarchy are **nested**, which means they wrap child layouts via their **children** prop. 
+- we can nest layouts by adding **layout.tsx** inside specific route segments (folders).
