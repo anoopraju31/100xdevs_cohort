@@ -10,6 +10,7 @@
     - [**Bootstrap the project**](#bootstrap-the-project)
 - [**Understanding routing in Next**](#understanding-routing-in-next)
 - [**Server Side Rendering (SSR)**](#server-side-rendering-ssr)
+- [**Layouts**](#layouts)
 
 ### Introduction to Next.js
 **Next.js** is a React framework for building full-stack web applications. 
@@ -106,3 +107,10 @@ npx create-next-app@latest
     ![](images/ssr.png)
 - Now if **GoogleBot** tries to scrape the page, it’ll understand that this is a **signup page** without running any Javascript.
 - The first **index.html** file it get’s back will have context about the page since it was **server side rendered**.
+
+### Layouts
+- A layout is UI that is shared between multiple routes.
+- On navigation, layouts preserve state, remain interactive, and do not re-render. 
+    ![](images/layouts-folder-structure.png)
+- Lets explore **layout.tsx**
+    ![](images/explore-layout.png)
