@@ -12,6 +12,7 @@
 - [**Server Side Rendering (SSR)**](#server-side-rendering-ssr)
 - [**Layouts**](#layouts)
 - [**Layouts in sub routes**](#layouts-in-sub-routes)
+- [**Merging Routes**](#merging-routes)
 
 ### Introduction to Next.js
 **Next.js** is a React framework for building full-stack web applications. 
@@ -124,3 +125,18 @@ npx create-next-app@latest
     ![](images/sign-in-layout.png)
 - By default, layouts in the folder hierarchy are **nested**, which means they wrap child layouts via their **children** prop. 
 - we can nest layouts by adding **layout.tsx** inside specific route segments (folders).
+
+### Merging Routes
+- Suppose we want to get to **banner** in both **sign in** and **sign up** page.
+- We could go for any of these approaches:
+    1. **Approach #1**: Move both the **signin** and **signup** folder inside a another folder let say **auth**. Inside which we will have a **layout.tsx** 
+        ![](images/merge-route-1.png)
+        - we can access the routes at - 
+            - **signin**:  **http://localhost:3000/auth/signin**
+            - **signup**: **http://localhost:3000/auth/signup**
+    2. **Approach #2**: We can create a new folder with **()** around the name.
+        - This folder is ignored by the router.
+        ![](images/merge-route-2.png)
+        - We can access the routes at - 
+            - **signin**:  **http://localhost:3000/signin**
+            - **signup**: **http://localhost:3000/signup**
