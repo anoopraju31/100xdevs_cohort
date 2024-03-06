@@ -289,9 +289,9 @@ Here for the sake of simplicity, we will be returning a hardcoded value for the 
 6. Route the user to landing page if the signup succeeded
     ```jsx
     'use client'
-    
+
     import axios from "axios";
-    import { useRouter } from "next/router";
+    import { useRouter } from "next/navigation";
     import { useState } from "react";
 
     export function Signup() {
