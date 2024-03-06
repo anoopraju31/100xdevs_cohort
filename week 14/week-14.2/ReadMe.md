@@ -6,6 +6,7 @@
 - [**Data fetching in Next**](#data-fetching-in-next)
     - [**Let try this using next.js**](#let-try-this-using-nextjs)
 - [**Loaders in Next**](#loaders-in-next)
+- [**Introducing api routes in Next.js**](#introducing-api-routes-in-nextjs)
 
 
 ### Backend in Next.js
@@ -147,3 +148,10 @@ export default function Loading() {
     )
 }
 ```
+
+### Introducing api routes in Next.js
+- Next.js let us write backend route just like express, this is why Next.js is considerd to be a **full stack framework**.
+- The benefits of using next.js for backend includes:
+    1. Single repo to maintain both frontend and backend codes.
+    2. Next.js provides all the standard thing the we get from a backend framework like express.
+    3. Server components can directly talk to the backend.
