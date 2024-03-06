@@ -3,6 +3,7 @@
 ### Contents - 
 - [**Backend in Next.js**](#backend-in-nextjs)
 - [**Recap of data fetching in React**](#recap-of-data-fetching-in-react)
+- [**Data fetching in Next**](#data-fetching-in-next)
 
 
 ### Backend in Next.js
@@ -27,4 +28,76 @@
     - Second request is send to get the JS scripts.
     - Then the UserCard component get rendered initial with a spinner and backend request is send to the server to fetch the user details.
     - After fetching the user details it gets rendered on the client side.
-    
+
+### Data fetching in Next
+- We could do the same way we did in React to fetch data, but we will lose the benefits of **Server Side Rendering** that Next.js offers us.
+- In SSR, the user details are fetched on the server side and pre-render on the page before returning it to the client.
+    ![](images/next-ssr-request.png)
+
+#### Let try this using next.js
+1. Initialise an empty next project
+```bash
+npx create-next-app@latest
+```
+
+2. Install **axios**
+```bash
+npm i axios
+```
+3. Clean up **page.tsx**, **global.css**.
+4. In the root **page.tsx**, write a function to fetch the user details
+```js
+async function getUserDetails() {
+    const response = await axios.get("https://week-13-offline.kirattechnologies.workers.dev/api/v1/user/details")
+	return response.data;
+}
+```
+5. Convert the default export to be an async function (yes, nextjs now supports **async components**).
+```jsx
+import axios from "axios";
+
+async function getUserDetails() {
+    const response = await axios.get("https://week-13-offline.kirattechnologies.workers.dev/api/v1/user/details")
+	return response.data;
+}
+
+export default async function Home() {
+    const userData = await getUserDetails();
+
+    return (
+        <div>
+            {userData.email}
+            {userData.name}
+        </div>
+    );
+}
+```
+6. Check the network tab, make sure there is no waterfalling.
+    ![](images/network-request-ssr=next.png)
+7. Prettify the UI
+```jsx
+import axios from "axios";
+
+async function getUserDetails() {
+    const response = await axios.get("https://week-13-offline.kirattechnologies.workers.dev/api/v1/user/details")
+	return response.data;
+}
+
+export default async function Home() {
+    const userData = await getUserDetails();
+
+    return (
+        <div className="flex flex-col justify-center h-screen">
+            <div className="flex justify-center">
+                <div className="border p-8 rounded">
+                    <div>
+                        Name: {userData?.name}
+                    </div>
+                
+                    {userData?.email}
+                </div>
+            </div>
+        </div>
+    );
+}
+```
