@@ -36,68 +36,68 @@
 
 #### Let try this using next.js
 1. Initialise an empty next project
-```bash
-npx create-next-app@latest
-```
+    ```bash
+    npx create-next-app@latest
+    ```
 
 2. Install **axios**
-```bash
-npm i axios
-```
+    ```bash
+    npm i axios
+    ```
 3. Clean up **page.tsx**, **global.css**.
 4. In the root **page.tsx**, write a function to fetch the user details
-```js
-async function getUserDetails() {
-    const response = await axios.get("https://week-13-offline.kirattechnologies.workers.dev/api/v1/user/details")
-	return response.data;
-}
-```
+    ```js
+    async function getUserDetails() {
+        const response = await axios.get("https://week-13-offline.kirattechnologies.workers.dev/api/v1/user/details")
+        return response.data;
+    }
+    ```
 5. Convert the default export to be an async function (yes, nextjs now supports **async components**).
-```jsx
-import axios from "axios";
+    ```jsx
+    import axios from "axios";
 
-async function getUserDetails() {
-    const response = await axios.get("https://week-13-offline.kirattechnologies.workers.dev/api/v1/user/details")
-	return response.data;
-}
+    async function getUserDetails() {
+        const response = await axios.get("https://week-13-offline.kirattechnologies.workers.dev/api/v1/user/details")
+        return response.data;
+    }
 
-export default async function Home() {
-    const userData = await getUserDetails();
+    export default async function Home() {
+        const userData = await getUserDetails();
 
-    return (
-        <div>
-            {userData.email}
-            {userData.name}
-        </div>
-    );
-}
-```
+        return (
+            <div>
+                {userData.email}
+                {userData.name}
+            </div>
+        );
+    }
+    ```
 6. Check the network tab, make sure there is no waterfalling.
     ![](images/network-request-ssr=next.png)
 7. Prettify the UI
-```jsx
-import axios from "axios";
+    ```jsx
+    import axios from "axios";
 
-async function getUserDetails() {
-    const response = await axios.get("https://week-13-offline.kirattechnologies.workers.dev/api/v1/user/details")
-	return response.data;
-}
+    async function getUserDetails() {
+        const response = await axios.get("https://week-13-offline.kirattechnologies.workers.dev/api/v1/user/details")
+        return response.data;
+    }
 
-export default async function Home() {
-    const userData = await getUserDetails();
+    export default async function Home() {
+        const userData = await getUserDetails();
 
-    return (
-        <div className="flex flex-col justify-center h-screen">
-            <div className="flex justify-center">
-                <div className="border p-8 rounded">
-                    <div>
-                        Name: {userData?.name}
+        return (
+            <div className="flex flex-col justify-center h-screen">
+                <div className="flex justify-center">
+                    <div className="border p-8 rounded">
+                        <div>
+                            Name: {userData?.name}
+                        </div>
+                    
+                        {userData?.email}
                     </div>
-                
-                    {userData?.email}
                 </div>
             </div>
-        </div>
-    );
-}
-```
+        );
+    }
+    ```
