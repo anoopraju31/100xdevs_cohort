@@ -7,6 +7,7 @@
     - [**Let try this using next.js**](#let-try-this-using-nextjs)
 - [**Loaders in Next**](#loaders-in-next)
 - [**Introducing api routes in Next.js**](#introducing-api-routes-in-nextjs)
+- [**Let’s move the backend into our own app**](#lets-move-the-backend-into-our-own-app)
 
 
 ### Backend in Next.js
@@ -155,3 +156,30 @@ export default function Loading() {
     1. Single repo to maintain both frontend and backend codes.
     2. Next.js provides all the standard thing the we get from a backend framework like express.
     3. Server components can directly talk to the backend.
+
+### Let’s move the backend into our own app
+Here for the sake of simplicity, we will be returning a hardcoded value for the user's details (email, name).
+1. Add a new folder called **api** inside the **app** folder.
+2. Add another folder called **user** inside the **api** folder.
+3. Add a file inside the**user** folder called **route.js**
+4. Initialize a GET route inside the **route.js**
+    ```js
+    export async function GET() {
+        return Response.json({ 
+            username: "harkirat", 
+            email: "harkirat@gmail.com" 
+        })
+    }
+    ```
+5. Try replacing the api call in page.tsx to hit this URL
+    ```jsx
+    async function getUserDetails() {
+        try {
+            const response = await axios.get("http://localhost:3000/api/user")
+            return response.data;
+        }  catch(e) {
+            console.log(e);
+        }
+    }
+    ```
+    **Note:** This isn’t the best way to fetch data from the backend. We’ll make this better as time goes by
