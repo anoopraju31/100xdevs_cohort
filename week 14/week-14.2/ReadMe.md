@@ -4,6 +4,7 @@
 - [**Backend in Next.js**](#backend-in-nextjs)
 - [**Recap of data fetching in React**](#recap-of-data-fetching-in-react)
 - [**Data fetching in Next**](#data-fetching-in-next)
+    - [**Let try this using next.js**](#let-try-this-using-nextjs)
 
 
 ### Backend in Next.js
