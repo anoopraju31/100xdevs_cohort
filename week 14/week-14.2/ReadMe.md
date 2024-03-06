@@ -8,6 +8,7 @@
 - [**Loaders in Next**](#loaders-in-next)
 - [**Introducing api routes in Next.js**](#introducing-api-routes-in-nextjs)
 - [**Let’s move the backend into our own app**](#lets-move-the-backend-into-our-own-app)
+- [**Frontend for Signing up**](#frontend-for-signing-up)
 
 
 ### Backend in Next.js
@@ -183,3 +184,184 @@ Here for the sake of simplicity, we will be returning a hardcoded value for the 
     }
     ```
     **Note:** This isn’t the best way to fetch data from the backend. We’ll make this better as time goes by
+
+
+### Frontend for Signing up
+1. Create **app/signup/page.jsx**
+2. Create a simple Page
+    ```jsx
+    import { Signup } from "@/components/Signup"
+
+    export default function() {
+        return <Signup />
+    }
+    ```
+3. Create **components/Signup.tsx**
+    ```jsx
+    import axios from "axios";
+    import { useState } from "react";
+
+    export function Signup() {
+        const [username, setUsername] = useState("");
+        const [password, setPassword] = useState("");
+
+        return (
+            <div className="h-screen flex justify-center flex-col">
+                <div className="flex justify-center">
+                    <a href="#" className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
+                        <div>
+                            <div className="px-10">
+                                <div className="text-3xl font-extrabold">
+                                    Sign up
+                                </div>
+                            </div>
+                    
+                            <div className="pt-2">
+                                <LabelledInput 
+                                    onChange={(e) => {
+                                        setUsername(e.target.value);
+                                    }} 
+                                    label="Username" 
+                                    placeholder="harkirat@gmail.com" 
+                                />
+                                <LabelledInput 
+                                    onChange={(e) => {
+                                        setPassword(e.target.value)
+                                    }} 
+                                    label="Password" 
+                                    type={"password"} 
+                                    placeholder="123456" 
+                                />
+                                <button 
+                                    type="button" 
+                                    className="mt-8 w-full text-white bg-gray-800 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
+                                >
+                                    Sign in
+                                </button>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        )
+
+    }
+
+    function LabelledInput({ label, placeholder, type, onChange }) {
+        return (
+            <div>
+                <label className="block mb-2 text-sm text-black font-semibold pt-4">{label}</label>
+                <input 
+                    onChange={onChange} 
+                    type={type || "text"} 
+                    id="first_name" 
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
+                    placeholder={placeholder} 
+                    required 
+                />
+            </div>
+        )
+    }
+
+    ```
+4. Convert components/Signup.tsx to a client component
+    ```js
+    "use client"
+    ```
+5. Add a  **onclick handler** that sends a **POST request** to **/user**
+    ```jsx
+     <button 
+        onClick={async () => {
+            const response = await axios.post(
+                "http://localhost:3000/api/user", 
+                {
+                    username,
+                    password
+                }
+            );
+        }} 
+        type="button" 
+        className="mt-8 w-full text-white bg-gray-800 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
+    >
+        Sign in
+    </button>
+    ```
+6. Route the user to landing page if the signup succeeded
+    ```jsx
+    import axios from "axios";
+    import { useRouter } from "next/router";
+    import { useState } from "react";
+
+    export function Signup() {
+        const [username, setUsername] = useState("");
+        const [password, setPassword] = useState("");
+        const router = useRouter();
+
+        return (
+            <div className="h-screen flex justify-center flex-col">
+                <div className="flex justify-center">
+                    <a href="#" className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
+                        <div>
+                            <div className="px-10">
+                                <div className="text-3xl font-extrabold"> Sign up </div>
+                            </div>
+                        
+                            <div className="pt-2">
+                                <LabelledInput 
+                                    onChange={(e) => {
+                                        setUsername(e.target.value);
+                                    }} 
+                                    label="Username" 
+                                    placeholder="harkirat@gmail.com" 
+                                />
+                            
+                                <LabelledInput 
+                                    onChange={(e) => {
+                                        setPassword(e.target.value)
+                                    }} 
+                                    label="Password" 
+                                    type={"password"} 
+                                    placeholder="123456" 
+                                />
+                                
+                                <button 
+                                    onClick={async () => {
+                                        const response = await axios.post(
+                                            "http://localhost:3000/api/user", 
+                                            {
+                                                username,
+                                                password
+                                            }
+                                        );
+                                        router.push("/")
+                                        }} 
+                                        type="button" 
+                                        className="mt-8 w-full text-white bg-gray-800 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
+                                    >
+                                    Sign in
+                                </button>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        )
+    }
+
+    function LabelledInput({ label, placeholder, type, onChange }) {
+        return (
+            <div>
+                <label className="block mb-2 text-sm text-black font-semibold pt-4">{label}</label>
+                <input 
+                    onChange={onChange} 
+                    type={type || "text"} 
+                    id="first_name" 
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
+                    placeholder={placeholder} 
+                    required 
+                />
+            </div>
+        )
+    }
+    ```
+    **Note:** [Ref useRouter hook](https://nextjs.org/docs/app/building-your-application/routing/linking-and-navigating#userouter-hook)
