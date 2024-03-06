@@ -5,6 +5,7 @@
 - [**Recap of data fetching in React**](#recap-of-data-fetching-in-react)
 - [**Data fetching in Next**](#data-fetching-in-next)
     - [**Let try this using next.js**](#let-try-this-using-nextjs)
+- [**Loaders in Next**](#loaders-in-next)
 
 
 ### Backend in Next.js
@@ -102,3 +103,47 @@
         );
     }
     ```
+
+### Loaders in Next
+Suppose, the **getUserDetails** call takes 5s to finish(lets sata the backend is slow). then the website will take more than 5s seconds to load on client side.
+During this time we could show a loader.
+```jsx
+import axios from "axios";
+
+async function getUserDetails() {
+    await new Promise(r => setTimeout(r, 5000))
+    const response = await axios.get("https://week-13-offline.kirattechnologies.workers.dev/api/v1/user/details")
+    return response.data;
+}
+
+export default async function Home() {
+    const userData = await getUserDetails();
+
+    return (
+        <div className="flex flex-col justify-center h-screen">
+            <div className="flex justify-center">
+                <div className="border p-8 rounded">
+                    <div>
+                        Name: {userData?.name}
+                    </div>
+                
+                    {userData?.email}
+                </div>
+            </div>
+        </div>
+    );
+}
+```
+Here we have added an artifical delay of 5s.
+To add a loader or skeleton in next.js, Just like **page.tsx** and **layout.tsx** , we can define a **loading.tsx** file that will render until all the async operations finish.
+```jsx
+export default function Loading() {
+    return (
+        <div className="flex flex-col justify-center h-screen">
+            <div className="flex justify-center">
+                Loading...
+            </div>
+        </div>
+    )
+}
+```
