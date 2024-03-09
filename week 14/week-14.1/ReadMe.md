@@ -13,6 +13,7 @@
 - [**Layouts**](#layouts)
 - [**Layouts in sub routes**](#layouts-in-sub-routes)
 - [**Merging Routes**](#merging-routes)
+-[**OnClick Handler**](#onclick-handler)
 
 ### Introduction to Next.js
 **Next.js** is a React framework for building full-stack web applications. 
@@ -140,3 +141,5 @@ npx create-next-app@latest
         - We can access the routes at - 
             - **signin**:  **http://localhost:3000/signin**
             - **signup**: **http://localhost:3000/signup**
+
+### OnClick Handler
