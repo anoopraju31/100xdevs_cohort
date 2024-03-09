@@ -97,16 +97,27 @@
 
 // console.log(users['ras@rtti'])
 
-// Map
-type User = {
-	id: string
-	username: string
+// // Map
+// type User = {
+// 	id: string
+// 	username: string
+// }
+
+// const users = new Map<string, User>()
+
+// users.set('ras@rtti', { id: 'ras@rtti', username: 'anoop' })
+// users.set('ras@harki', { id: 'ras@harki', username: 'harkirat' })
+
+// const user = users.get('ras@rtti')
+// console.log(user)
+
+// Exclude
+type EventType = 'click' | 'scroll' | 'mousemove'
+type ExcludeEvent = Exclude<EventType, 'scroll'>
+
+const handleEvent = (event: ExcludeEvent) => {
+	console.log(`Handling event: ${event}`)
 }
 
-const users = new Map<string, User>()
-
-users.set('ras@rtti', { id: 'ras@rtti', username: 'anoop' })
-users.set('ras@harki', { id: 'ras@harki', username: 'harkirat' })
-
-const user = users.get('ras@rtti')
-console.log(user)
+handleEvent('click')
+handleEvent('scroll')

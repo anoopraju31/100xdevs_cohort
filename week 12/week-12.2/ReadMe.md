@@ -11,6 +11,7 @@
 - [**Record and Map**](#record-and-map)
   - [**Record**](#record)
   - [**Map**](#map)
+- [**Exclude**](#exclude)
 
 ### Pre-requisities
 #### Interface
@@ -197,3 +198,17 @@ users.set('ras@harki', { id: 'ras@harki', username: 'harkirat' })
 const user = users.get('ras@rtti')
 console.log(user)
 ```
+
+### Exclude
+- In a function that can accept serveral types of inputs but we want to exclude specific types from being passed to it.
+```ts
+type EventType = 'click' | 'scroll' | 'mousemove'
+type ExcludeEvent = Exclude<EventType, 'scroll'>
+
+const handleEvent = (event: ExcludeEvent) => {
+	console.log(`Handling event: ${event}`);
+}
+
+handleEvent('click')
+```
+![](images/exclude.png)
