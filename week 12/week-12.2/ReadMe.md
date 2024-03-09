@@ -6,6 +6,7 @@
     - [**Type**](#type)
     - [**Recap setup procedure**](#recap-setup-procedure)
 - [**Pick**](#pick)
+- [**Partial**](#partial)
 
 ### Pre-requisities
 #### Interface
@@ -70,3 +71,25 @@ const displayUserProfile = (user: UserProfile) => {
 };
 ```
 - This will also ensure that if the type of any key in **User** type changes, those changes will be reflect back to **UserProfile**.
+
+### Partial
+- **Partial** makes all properties of a type optional, creating a type with the same properties, but each marked as optional.
+![](images/partial.png)
+```ts
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  createdAt: Date;
+}
+
+// For a profile display, only pick `name` and `email`
+type UserProfile = Pick<User, 'name' | 'email'>;
+type UserProfileUpdate = Partial<UserProfile>
+
+const updateUserProfile = (user: UserProfileUpdate) => {
+    // hit the database tp update thr user.
+};
+
+updateUser({})
+```
