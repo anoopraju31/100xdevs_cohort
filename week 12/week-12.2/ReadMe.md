@@ -10,6 +10,7 @@
 - [**Readonly**](#readonly)
 - [**Record and Map**](#record-and-map)
   - [**Record**](#record)
+  - [**Map**](#map)
 
 ### Pre-requisities
 #### Interface
