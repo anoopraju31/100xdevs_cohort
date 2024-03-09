@@ -72,26 +72,41 @@
 
 // user.name = 'Anoop' // Error: Cannot assign to 'name' because it is a read-only property.
 
+// // Record
+// type User = {
+// 	id: string
+// 	username: string
+// }
+
+// // type Users = {
+// // 	[key: string]: User
+// // }
+
+// type Users = Record<string, User>
+
+// const users: Users = {
+// 	'ras@rtti': {
+// 		id: 'ras@rtti',
+// 		username: 'anoop',
+// 	},
+// 	'ras@harki': {
+// 		id: 'ras@harki',
+// 		username: 'harkirat',
+// 	},
+// }
+
+// console.log(users['ras@rtti'])
+
+// Map
 type User = {
 	id: string
 	username: string
 }
 
-// type Users = {
-// 	[key: string]: User
-// }
+const users = new Map<string, User>()
 
-type Users = Record<string, User>
+users.set('ras@rtti', { id: 'ras@rtti', username: 'anoop' })
+users.set('ras@harki', { id: 'ras@harki', username: 'harkirat' })
 
-const users: Users = {
-	'ras@rtti': {
-		id: 'ras@rtti',
-		username: 'anoop',
-	},
-	'ras@harki': {
-		id: 'ras@harki',
-		username: 'harkirat',
-	},
-}
-
-console.log(users['ras@rtti'])
+const user = users.get('ras@rtti')
+console.log(user)
