@@ -5,6 +5,7 @@
     - [**Interface**](#interface)
     - [**Type**](#type)
     - [**Recap setup procedure**](#recap-setup-procedure)
+- [**Pick**](#pick)
 
 ### Pre-requisities
 #### Interface
@@ -49,3 +50,23 @@ npx tsc --init
 	"outDir": "./dist"
 }
 ```
+
+### Pick
+- **Pick** allows us to create a new type by selecting a set of properties (**Keys**) from an existing type (**Type**).
+- Imagine we have a User model with several properties, but for a user profile display, we only need a subset of these properties.
+```ts
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  createdAt: Date;
+}
+
+// For a profile display, only pick `name` and `email`
+type UserProfile = Pick<User, 'name' | 'email'>;
+
+const displayUserProfile = (user: UserProfile) => {
+  console.log(`Name: ${user.name}, Email: ${user.email}`);
+};
+```
+- This will also ensure that if the type of any key in **User** type changes, those changes will be reflect back to **UserProfile**.
