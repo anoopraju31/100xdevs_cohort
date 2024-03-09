@@ -101,25 +101,54 @@ npx tsc --init
 **Note:** The Pick utility type in TypeScript allows us to create types that are subsets of existing types. It allows us to be explicit about what properties a function or component expects, leading to more maintainable and error-resistant code.
 
 ### Partial
+- The `Partial` utility type in TypeScript is used to create a new type by making all properties of an existing type optional. 
+- This is particularly useful when we want to update a subset of an object's properties without needing to provide the entire object.
 - **Partial** makes all properties of a type optional, creating a type with the same properties, but each marked as optional.
 ![](images/partial.png)
+#### Understanding `Partial`
+- The `Partial` utility type takes a single type argument and produces a type with all the properties of the provided type set to optional. Here's the syntax for using `Partial`.
+```ts
+Partial<Type>
+```
+- `Type`: The original type you want to convert to a type with optional properties.
+
+#### Example Usage of `Partial`
+Let's say we have a `User` interface representing a user in our application:
 ```ts
 interface User {
-  id: number;
-  name: string;
-  email: string;
-  createdAt: Date;
+    id: string;
+    name: string;
+    age: string;
+    email: string;
+    password: string;
+};
+```
+If we're creating a function to update a user, we might only want to update their name, age, or email, and not all properties at once. We can use Pick to select these properties and then apply Partial to make them optional:
+``` ts
+// Selecting 'name', 'age', and 'email' properties from User
+type UpdateProps = Pick<User, 'name' | 'age' | 'email'>
+
+// Making the selected properties optional
+type UpdatePropsOptional = Partial<UpdateProps>
+
+// Function that accepts an object with optional 'name', 'age', and 'email' properties
+function updateUser(updatedProps: UpdatePropsOptional) {
+    // hit the database to update the user
 }
 
-type UserProfile = Pick<User, 'name' | 'email'>;
-type UserProfileUpdate = Partial<UserProfile>
-
-const updateUserProfile = (user: UserProfileUpdate) => {
-    // hit the database tp update thr user.
-};
-
-updateUserProfile({})
+// Example usage of updateUser
+updateUser({ name: "Alice" }); // Only updating the name
+updateUser({ age: "30", email: "alice@example.com" }); // Updating age and email
+updateUser({}); // No updates, but still a valid call
 ```
+In this example, **UpdatePropsOptional** is a new type where the **name**, **age**, and **email** properties are all optional, thanks to **Partial**. The **updateUser** function can then accept an object with any combination of these properties, including an empty object.
+
+#### Benefits of Using `Partial`
+1. **Flexibility in Updates**: `Partial` is ideal for update operations where we may only want to modify a few properties of an object.
+2. **Type Safety**: Even though the properties are optional, we still get the benefits of type checking for the properties that are provided.
+3. **Code Simplicity**: Using `Partial` can simplify function signatures by not requiring clients to pass an entire object when only a part of it is needed.
+
+**Note:** The **Partial** utility type in TypeScript is useful where we need to work with objects that might only have a subset of their properties defined. It allows us to create types that are more flexible for update operations while still maintaining type safety.
 
 ### Readonly
 - When we have a configuration object that should not be altered after initialization, making it **Readonly** ensures its properties cannot be changed.
