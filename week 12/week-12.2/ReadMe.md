@@ -8,6 +8,8 @@
 - [**Pick**](#pick)
 - [**Partial**](#partial)
 - [**Readonly**](#readonly)
+- [**Record and Map**](#record-and-map)
+  - [**Record**](#record)
 
 ### Pre-requisities
 #### Interface
@@ -128,3 +130,49 @@ const user: Readonly<User> = { name: 'Taro', age: 20 }
 ```
 - Readonly is used when we want to ensure the even the inner values must be const.
 - **Note:** This is compile time checking, not runtime (unlike const).
+
+### Record and Map
+#### Record
+```ts
+type User = {
+	id: string
+	username: string
+}
+  
+type Users = {
+	[key: string]: User
+}
+  
+const users: Users = {
+	'ras@rtti': {
+	  id: 'ras@rtti',
+	  username: 'anoop'
+	},
+	'ras@harki': {
+		id: 'ras@harki',
+		username: 'harkirat'
+	},
+}
+```
+- We could use the above approach to give type to objects, but **record** lets us do in a cleaner way.
+```ts
+type User = {
+	id: string
+	username: string
+}
+
+type Users = Record<string, User>
+
+const users: Users = {
+	'ras@rtti': {
+	  id: 'ras@rtti',
+	  username: 'anoop'
+	},
+	'ras@harki': {
+		id: 'ras@harki',
+		username: 'harkirat'
+	},
+}
+
+console.log(users['ras@rtti']); 
+```

@@ -62,12 +62,36 @@
 // 	password: 'fjoitjpijgodmvompi',
 // }
 
-// readonly
-interface User {
-	readonly name: string
-	readonly age: number
+// // readonly
+// interface User {
+// 	readonly name: string
+// 	readonly age: number
+// }
+
+// const user: User = { name: 'Taro', age: 20 }
+
+// user.name = 'Anoop' // Error: Cannot assign to 'name' because it is a read-only property.
+
+type User = {
+	id: string
+	username: string
 }
 
-const user: User = { name: 'Taro', age: 20 }
+// type Users = {
+// 	[key: string]: User
+// }
 
-user.name = 'Anoop' // Error: Cannot assign to 'name' because it is a read-only property.
+type Users = Record<string, User>
+
+const users: Users = {
+	'ras@rtti': {
+		id: 'ras@rtti',
+		username: 'anoop',
+	},
+	'ras@harki': {
+		id: 'ras@harki',
+		username: 'harkirat',
+	},
+}
+
+console.log(users['ras@rtti'])
