@@ -176,3 +176,23 @@ const users: Users = {
 
 console.log(users['ras@rtti']); 
 ```
+- **Note:** **Record** is typescript feature not a javascript feature.
+
+#### Map
+- **Maps** gives us an even fancier way to deal with objects. 
+- Very similar to **Maps** in C++.
+
+```ts
+type User = {
+	id: string
+	username: string
+}
+
+const users = new Map<string, User>()
+
+users.set('ras@rtti', { id: 'ras@rtti', username: 'anoop' })
+users.set('ras@harki', { id: 'ras@harki', username: 'harkirat' })
+
+const user = users.get('ras@rtti')
+console.log(user)
+```
