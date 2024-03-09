@@ -83,7 +83,6 @@ interface User {
   createdAt: Date;
 }
 
-// For a profile display, only pick `name` and `email`
 type UserProfile = Pick<User, 'name' | 'email'>;
 type UserProfileUpdate = Partial<UserProfile>
 
@@ -91,5 +90,5 @@ const updateUserProfile = (user: UserProfileUpdate) => {
     // hit the database tp update thr user.
 };
 
-updateUser({})
+updateUserProfile({})
 ```
