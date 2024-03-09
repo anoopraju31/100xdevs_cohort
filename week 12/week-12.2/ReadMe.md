@@ -6,6 +6,9 @@
     - [**Type**](#type)
     - [**Recap setup procedure**](#recap-setup-procedure)
 - [**Pick**](#pick)
+	- [**Understanding Pick**](#understanding-pick)
+	- [**Example Usage of Pick**](#example-usage-of-pick)
+	- [**Benefits of Using Pick**](#benefits-of-using-pick)
 - [**Partial**](#partial)
 - [**Readonly**](#readonly)
 - [**Record and Map**](#record-and-map)
@@ -63,31 +66,31 @@ npx tsc --init
 
 #### Understanding Pick
 - The Pick utility type is part of TypeScript's mapped types, which enable you to create new types based on the keys of an existing type. The syntax for Pick is as follows:
-```ts
-Pick<Type, Keys>
-```
+	```ts
+	Pick<Type, Keys>
+	```
 	- **Type:** The original type we want to pick properties from.
 	- **Keys:** The keys (property names) we want to pick from the Type, separated by | (the union operator).
 
 #### Example Usage of Pick
 - Consider an interface User that represents a user in our application.
-```ts
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  createdAt: Date;
-}
-```
+	```ts
+	interface User {
+	id: number;
+	name: string;
+	email: string;
+	createdAt: Date;
+	}
+	```
 - Suppose we're creating a function to display a user profile, but we only need the name and email properties for this purpose. We can use Pick to create a new type, UserProfile, that includes only these properties:
-``` ts
-// For a profile display, only pick `name` and `email`
-type UserProfile = Pick<User, 'name' | 'email'>;
+	``` ts
+	// For a profile display, only pick `name` and `email`
+	type UserProfile = Pick<User, 'name' | 'email'>;
 
-const displayUserProfile = (user: UserProfile) => {
-  console.log(`Name: ${user.name}, Email: ${user.email}`);
-};
-```
+	const displayUserProfile = (user: UserProfile) => {
+	console.log(`Name: ${user.name}, Email: ${user.email}`);
+	};
+	```
 - In this example, UserProfile is a new type that has only the name and email properties from the original User interface. The displayUserProfile function then uses this UserProfile type for its parameter, ensuring that it can only receive objects that have name and email properties.
 
 #### Benefits of Using Pick
@@ -95,7 +98,7 @@ const displayUserProfile = (user: UserProfile) => {
 2. **Code Readability**: Using `Pick` to create descriptive types can make our code more readable and self-documenting.
 3. **Reduced Redundancy**: Instead of defining new interfaces manually for subsets of properties, `Pick` allows us to reuse existing types, keeping our code DRY (Don't Repeat Yourself).
 
-- **Note:** The Pick utility type in TypeScript allows us to create types that are subsets of existing types. It allows us to be explicit about what properties a function or component expects, leading to more maintainable and error-resistant code.
+**Note:** The Pick utility type in TypeScript allows us to create types that are subsets of existing types. It allows us to be explicit about what properties a function or component expects, leading to more maintainable and error-resistant code.
 
 ### Partial
 - **Partial** makes all properties of a type optional, creating a type with the same properties, but each marked as optional.
