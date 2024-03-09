@@ -36,28 +36,38 @@
 
 // displayUserProfile(user1)
 
-// Partial
+// // Partial
+// interface User {
+// 	id: string
+// 	name: string
+// 	age: number
+// 	email: string
+// 	password: string
+// }
+
+// type UserProfile = Pick<User, 'name' | 'email'>
+// type UserProfileUpdate = Partial<UserProfile>
+
+// const updateUserProfile = (user: UserProfileUpdate) => {
+// 	console.log(`Name: ${user.name}, Email: ${user.email}`)
+// }
+
+// updateUserProfile({})
+
+// const user1: User = {
+// 	id: 'aq1wws3ed',
+// 	name: 'Harkirat Singh',
+// 	age: 30,
+// 	email: 'harkirat@gmail.com',
+// 	password: 'fjoitjpijgodmvompi',
+// }
+
+// readonly
 interface User {
-	id: string
-	name: string
-	age: number
-	email: string
-	password: string
+	readonly name: string
+	readonly age: number
 }
 
-type UserProfile = Pick<User, 'name' | 'email'>
-type UserProfileUpdate = Partial<UserProfile>
+const user: User = { name: 'Taro', age: 20 }
 
-const updateUserProfile = (user: UserProfileUpdate) => {
-	console.log(`Name: ${user.name}, Email: ${user.email}`)
-}
-
-updateUserProfile({})
-
-const user1: User = {
-	id: 'aq1wws3ed',
-	name: 'Harkirat Singh',
-	age: 30,
-	email: 'harkirat@gmail.com',
-	password: 'fjoitjpijgodmvompi',
-}
+user.name = 'Anoop' // Error: Cannot assign to 'name' because it is a read-only property.

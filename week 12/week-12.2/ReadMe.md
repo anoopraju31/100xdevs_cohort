@@ -7,6 +7,7 @@
     - [**Recap setup procedure**](#recap-setup-procedure)
 - [**Pick**](#pick)
 - [**Partial**](#partial)
+- [**Readonly**](#readonly)
 
 ### Pre-requisities
 #### Interface
@@ -33,7 +34,7 @@ console.log(age)
 - In TypeScript, types allow us to aggregate data together in a manner very similar to interfaces. They provide a way to define the structure of an object, similar to how interfaces do.
 ```ts
 type User = {
-    firstName: string;
+  firstName: string;
 	lastName: string;
 	age: number
 }
@@ -92,3 +93,38 @@ const updateUserProfile = (user: UserProfileUpdate) => {
 
 updateUserProfile({})
 ```
+
+### Readonly
+- When we have a configuration object that should not be altered after initialization, making it **Readonly** ensures its properties cannot be changed.
+```js
+const obj = {
+  name: 'Anoop'
+  age: 23
+}
+const arr = [1,2,3,4]
+```
+- In the about code we cannot change the value of **obj** and **arr*, but we can change the value inside the both.
+```js
+obj.name = 'Harkirat'
+arr[2] = 10
+```
+- Suppose we want to ensures its properties cannot be changed, that as where **Readonly** comes to the rescue.
+```ts
+interface User {
+	readonly name: string
+	readonly age: number
+}
+```
+- By enforcing **readonly**, we can't change the the value of **name** or **age** of a user.
+![](images/readonly.png)
+- Suppose we already have a type which we need to make readonly then we could do like this
+```ts
+interface User {
+	name: string
+	age: number
+}
+
+const user: Readonly<User> = { name: 'Taro', age: 20 }
+```
+- Readonly is used when we want to ensure the even the inner values must be const.
+- **Note:** This is compile time checking, not runtime (unlike const).
