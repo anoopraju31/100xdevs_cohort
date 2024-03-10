@@ -7,6 +7,7 @@
 - [**Verification**](#verification)
 - [**Why Docker?**](#why-docker)
 - [**Docker Hub**](#docker-hub)
+- [**Common Commands**](#common-commands)
 
 ### Installation
 Docker can be installed using the Docker GUI, which simplifies the setup process. Detailed instructions for various operating systems can be found on the official Docker documentation website at https://docs.docker.com/engine/install/.
