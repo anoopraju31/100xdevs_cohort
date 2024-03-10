@@ -62,3 +62,12 @@ In summary, the flow of commands for running a **MongoDB** container with port m
 1. `docker run -d -p 27017:27017 mongo` (Run MongoDB in detached mode with port mapping)
 2. `docker ps` (Inspect running containers)
 3. `docker kill <container_id>` (Stop the specified container)
+
+### Common Packages
+To better understand the use of Docker for running database services, let's consider the MongoDB and PostgreSQL packages. Docker allows us to run these databases in containers, which are isolated environments that contain everything the software needs to run.
+- **MongoDB:**
+    ```bash
+    docker run -d -p 27017:27017 mongo
+    ```
+    This command runs a MongoDB container in detached mode(`d`) which means it runs in the background. The `-p 27017: 27017` option maps the default MongoDB port inside the container(27017) to the same port on the host machine, allowing us to connect to MongoDB from our local machine as if it were running natively.
+    
