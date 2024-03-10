@@ -8,6 +8,7 @@
 - [**Why Docker?**](#why-docker)
 - [**Docker Hub**](#docker-hub)
 - [**Common Commands**](#common-commands)
+- [**common Packages**](#common-packages)
 
 ### Installation
 Docker can be installed using the Docker GUI, which simplifies the setup process. Detailed instructions for various operating systems can be found on the official Docker documentation website at https://docs.docker.com/engine/install/.
@@ -70,4 +71,51 @@ To better understand the use of Docker for running database services, let's cons
     docker run -d -p 27017:27017 mongo
     ```
     This command runs a MongoDB container in detached mode(`d`) which means it runs in the background. The `-p 27017: 27017` option maps the default MongoDB port inside the container(27017) to the same port on the host machine, allowing us to connect to MongoDB from our local machine as if it were running natively.
-    
+- **PostgresSQL:**
+    ```bash
+    docker run -e POSTGRES_PASSWORD=mysecrectpassword -d -p 5432:5432 postgres
+    ```
+    This command runs a PostgreSQL container with a specified environment variable (-e) setting the default user's password to "mysecretpassword". It also runs in detached mode and maps the default PostgreSQL port (5432) from the container to the host. The connection string provided is used to connect to this PostgreSQL instance from your local machine.
+    The connection string `postgresql://postgres:mysecretpassword@localhost:5432/postgres` is used to connect to the PostgreSQL server from your local machine. It includes the username, password, host, port, and database name.
+
+    Below is a simple Node.js script to test the connection to the PostgreSQL database running in the Docker container:
+    The Node.js code snippet provided is an example of how to use the `pg` library to connect to the PostgreSQL server running in the Docker container. It creates a new client with the connection string, connects to the database, runs a query to fetch the current date and time, and then closes the connection.
+    This script does the following:
+    1. Imports the `pg` library, which is a PostgreSQL client for Node.js.
+    2. Defines the connection string using the credentials and port specified in the docker run command for PostgreSQL.
+    3. Creates a new client instance with the connection string.
+    4. Connects to the PostgreSQL database.
+    5. Runs a query to fetch the current date and time from the database.
+    6. Logs the result of the query or an error if the connection or query fails.
+    7. Closes the database connection.
+    ```js
+    // Import the pg library
+    const { Client } = require('pg');
+
+    // Define your connection string (replace placeholders with your actual data)
+    const connectionString = 'postgresql://postgres:mysecretpassword@localhost:5432/postgres';
+
+    // Create a new client instance with the connection string
+    const client = new Client({ connectionString: connectionString });
+
+    // Connect to the database
+    client.connect(err => {
+        if (err) {
+            console.error('connection error', err.stack);
+        } else {
+            console.log('connected to the database');
+        }
+    });
+
+    // Run a simple query (Example: Fetching the current date and time from PostgreSQL)
+    client.query('SELECT NOW()', (err, res) => {
+        if (err) {
+            console.error(err);
+        } else {
+            console.log(res.rows[0]);
+        }
+
+        // Close the connection
+        client.end();
+    });
+    ```
