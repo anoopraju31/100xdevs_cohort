@@ -15,6 +15,7 @@
     - [**Docker Image**](#docker-image)
     - [**Docker Container**](#docker-container)
 - [**Port Mapping**](#port-mapping)
+- [**Common Docker Commands**](#common-docker-commands)
 
 ### Why Docker?
 Docker is a powerful platform that serves several purposes in the development, deployment, and running of applications. Below are the reasons why it is used:
@@ -91,3 +92,14 @@ that where port mapping comes into picture. the localhost request from the syste
 docker run -p 27017:27017 mongo
 ```
 ![](images/port-mapping.png)
+
+### Common Docker Commands
+1. Pulling an image: `docker pull <image-name>`
+2. Show all the image present locally: `docker images`
+3. Start a container: `docker run <image-name>`
+4. Start a container in detatched mode: `docker run -d <image-name>`
+5. Start a container with port mapping: `docker run -p <port-number>:<port-number> <image-name>`
+6. Show all running containers: `docker ps`
+7. Push an image to a registry: `docker push <image-name>`
+8. Kill a container: `docker kill <container-id>`
+9. Remove an Image `docker rmi <image-name>`
