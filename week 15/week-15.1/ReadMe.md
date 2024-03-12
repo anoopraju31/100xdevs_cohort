@@ -14,7 +14,7 @@
 - [**Images vs Containers**](#images-vs-containers)
     - [**Docker Image**](#docker-image)
     - [**Docker Container**](#docker-container)
-
+- [**Port Mapping**](#port-mapping)
 
 ### Why Docker?
 Docker is a powerful platform that serves several purposes in the development, deployment, and running of applications. Below are the reasons why it is used:
@@ -79,3 +79,15 @@ A Docker image is a lightweight, standalone, executable package that includes ev
 - It encapsulates the application or service and its dependencies, running in an isolated environment.
 - We can create multiple containers from the same image.
 ![](images/images-containers--registry.png)
+
+### Port Mapping
+As we know containers are an isolated environment, suppose we are running a mongo container.
+```bash
+docker run mongo
+```
+the mongoDB server running on PORT 27017 inside the container. Since the container is an isolate environment we cannot access the port 27017 directly.
+that where port mapping comes into picture. the localhost request from the system is mapped to the container. 
+```bash
+docker run -p 27017:27017 mongo
+```
+![](images/port-mapping.png)
