@@ -11,7 +11,9 @@
     - [**Docker Engine**](#docker-engine)
     - [**Docker CLI**](#docker-cli)
     - [**Docker Registry**](#docker-registry)
-
+- [**Images vs Containers**](#images-vs-containers)
+    - [**Docker Image**](#docker-image)
+    - [**Docker Container**](#docker-container)
 
 
 ### Why Docker?
@@ -67,3 +69,13 @@ docker run -d -p 27017:27017 mongo
 - It is similar to `github`, but it lets you push images rather than sourcecode.
 - Docker’s main registry - [Docker Hub](https://dockerhub.com/)
 - DockerHub is a hosted registry used by default when installing the Docker engine, but there are other hosted registries available for public use such as AWS and Google's own registries.
+
+### Images vs Containers
+#### Docker Image
+A Docker image is a lightweight, standalone, executable package that includes everything needed to run a piece of software, including the code, a runtime, libraries, environment variables, and config files.
+
+#### Docker Container
+- A container is a running instance of an image. 
+- It encapsulates the application or service and its dependencies, running in an isolated environment.
+- We can create multiple containers from the same image.
+![](images/images-containers--registry.png)
