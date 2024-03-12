@@ -6,6 +6,7 @@
     - [**What are containers**](#what-are-containers)
     - [**Why containers**](#why-containers)
     - [**Benifits of using containers**](#benifits-of-using-containers)
+- [**Installing Docker**](#installing-docker)
 
 
 
@@ -36,3 +37,10 @@ That where containers comes into action, a container create an isolate environme
 - We can run our projects in an isolated environment.
 - Setting projects locally a breeze and with a single command.
 - Makes installing auxiliary services/DBs easy
+
+### Installing Docker
+- We could install docker for [**here**](https://docs.docker.com/engine/install/).
+![](images/docker-installation.png)
+
+- Also make sure that you are able to run the `docker cli` locally -
+![](images/docker-cli.png)
