@@ -7,6 +7,10 @@
     - [**Why containers**](#why-containers)
     - [**Benifits of using containers**](#benifits-of-using-containers)
 - [**Installing Docker**](#installing-docker)
+- [**Inside Docker**](#inside-docker)
+    - [**Docker Engine**](#docker-engine)
+    - [**Docker CLI**](#docker-cli)
+    - [**Docker Registry**](#docker-registry)
 
 
 
@@ -44,3 +48,22 @@ That where containers comes into action, a container create an isolate environme
 
 - Also make sure that you are able to run the `docker cli` locally -
 ![](images/docker-cli.png)
+
+### Inside Docker
+![](images/docker-flow.png)
+Suppose we want to run a mongo container locally. we will run the command `docker run mongo` in the terminal. this is command is run with the help of `docker CLI`. the cli will talk to the `docker engine` to run the mongo container. Now the docker engine will check if the mongo image is present locally if so it create a mongo container and run it. If no mongo image present locally, the docker engine will pull the mongo image from the docker registry and the run the mongo container.
+
+#### Docker Engine
+- Docker Engine is an open-source containerization technology that allows developers to package applications into container.
+- Containers are standardized executable components combining application source code with the operating system (OS) libraries and dependencies required to run that code in any environment.
+
+#### Docker CLI
+The command line interface lets us talk to the `docker engine` and lets us start/stop/list containers.
+```bash
+docker run -d -p 27017:27017 mongo
+```
+#### Docker Registry
+- A Docker registry is a system for versioning, storing and distributing Docker images. 
+- It is similar to `github`, but it lets you push images rather than sourcecode.
+- Docker’s main registry - [Docker Hub](https://dockerhub.com/)
+- DockerHub is a hosted registry used by default when installing the Docker engine, but there are other hosted registries available for public use such as AWS and Google's own registries.
