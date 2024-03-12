@@ -2,6 +2,9 @@
 
 ## Contents:
 - [**Why Docker?**](#why-docker)
+- [**Containerization**](#containerization)
+    - [**What are containers**](#what-are-containers)
+    
 
 
 ### Why Docker?
@@ -15,3 +18,7 @@ Docker is a powerful platform that serves several purposes in the development, d
 3. **Running Common Software Packages:**
     - Docker provides the ability to run common software packages such as databases(MongoDB, Postgres, etc.) within containers.
     - This means we can quickly deploy and manage these services without the need  to install and configure them directly on out host machine.
+
+### Containerization
+#### What are containers
+Containers are a way to package and distribute software applications in a way that makes them easy to deploy and run consistently across different environments. They allow us to package an application, along with all its dependencies and libraries, into a single unit that can be run on any machine with a container runtime, such as Docker.
