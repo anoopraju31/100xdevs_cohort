@@ -4,7 +4,8 @@
 - [**Why Docker?**](#why-docker)
 - [**Containerization**](#containerization)
     - [**What are containers**](#what-are-containers)
-    
+    - [**Why containers**](#why-containers)
+
 
 
 ### Why Docker?
@@ -22,3 +23,9 @@ Docker is a powerful platform that serves several purposes in the development, d
 ### Containerization
 #### What are containers
 Containers are a way to package and distribute software applications in a way that makes them easy to deploy and run consistently across different environments. They allow us to package an application, along with all its dependencies and libraries, into a single unit that can be run on any machine with a container runtime, such as Docker.
+
+#### Why containers
+Setting up a project locally isn't easy, depending on the operating system used the steps to run the projects varies. It becomes hard to keep track of dependencies as the project grows. Sometimes some of these dependencies or other softwares are already present on your system and are of different verions, this also cause issues setting up projects locally. 
+That to not, event after the project gets completed most of these dependencies will still be in the system. 
+That where containers comes into action, a container create an isolate environment to run the project with all the neccesary dependencies. With a single command the project is up and running regardless of the operating system you are using.
+
