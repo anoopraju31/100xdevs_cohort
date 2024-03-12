@@ -5,6 +5,7 @@
 - [**Containerization**](#containerization)
     - [**What are containers**](#what-are-containers)
     - [**Why containers**](#why-containers)
+    - [**Benifits of using containers**](#benifits-of-using-containers)
 
 
 
@@ -29,3 +30,9 @@ Setting up a project locally isn't easy, depending on the operating system used 
 That to not, event after the project gets completed most of these dependencies will still be in the system. 
 That where containers comes into action, a container create an isolate environment to run the project with all the neccesary dependencies. With a single command the project is up and running regardless of the operating system you are using.
 
+#### Benifits of using containers
+![](images/containers-benifits.png)
+- We can describe all the configurations in a single file.
+- We can run our projects in an isolated environment.
+- Setting projects locally a breeze and with a single command.
+- Makes installing auxiliary services/DBs easy
