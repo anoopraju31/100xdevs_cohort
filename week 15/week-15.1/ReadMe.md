@@ -103,3 +103,5 @@ docker run -p 27017:27017 mongo
 7. Push an image to a registry: `docker push <image-name>`
 8. Kill a container: `docker kill <container-id>`
 9. Remove an Image `docker rmi <image-name>`
+
+### Pushing to Docker
