@@ -21,6 +21,7 @@
     - [**Understand the common commands**](#understand-the-common-commands)
 - [**Building images**](#building-images)
 - [**Running images**](#running-images)
+- [**Passing in env variables**](#passing-in-env-variables)
 
 
 ### Why Docker?
@@ -158,8 +159,16 @@ Now lets look at our images, we should notice a new image created.
 ![](images/showing-docker-images-after-docker-build.png)
 
 ### Running images
-```
+``` bash
 docker run -p 3000:3000 -d image_name
 ```
 ![](images/docker-container-running.png)
+
+### Passing in env variables
+
+```bash
+docker run -p 3000:3000 -e DATABASE_URL="postgres://avnadmin:AVNS_EeDiMIdW-dNT4Ox9l1n@pg-35339ab4-harkirat-d1b9.a.aivencloud.com:25579/defaultdb?sslmode=require" image_name
+```
+The -e argument let’s us send in environment variables to your node.js app.
+
 ### Pushing to Docker
