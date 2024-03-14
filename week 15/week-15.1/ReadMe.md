@@ -23,6 +23,7 @@
 - [**Running images**](#running-images)
 - [**Passing in env variables**](#passing-in-env-variables)
 - [**More Commands**](#more-commands)
+- [**Pushing to dockerhub**](#pushing-to-dockerhub)
 
 ### Why Docker?
 Docker is a powerful platform that serves several purposes in the development, deployment, and running of applications. Below are the reasons why it is used:
@@ -189,3 +190,15 @@ docker exec <container_name_or_id> ls
 docker exec -it <container_name_or_id> /bin/bash
 ```
 
+### Pushing to dockerhub
+Once we have created an image, we can push it to `dockerhub` to share it with the world. 
+1. Sign Up/In to `dockerhub`
+2. create a new repository.
+![](images/docker-hub.png)
+3. Login to docker cli
+    1. docker login
+    2. we might have to create an access token - https://docs.docker.com/security/for-developers/access-tokens/
+4. Push to the repository
+```bash
+docker push your_username/your_reponame:tagname
+```
