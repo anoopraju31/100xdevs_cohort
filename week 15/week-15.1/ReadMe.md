@@ -22,7 +22,7 @@
 - [**Building images**](#building-images)
 - [**Running images**](#running-images)
 - [**Passing in env variables**](#passing-in-env-variables)
-
+- [**More Commands**](#more-commands)
 
 ### Why Docker?
 Docker is a powerful platform that serves several purposes in the development, deployment, and running of applications. Below are the reasons why it is used:
@@ -171,4 +171,21 @@ docker run -p 3000:3000 -e DATABASE_URL="postgres://avnadmin:AVNS_EeDiMIdW-dNT4O
 ```
 The -e argument let’s us send in environment variables to your node.js app.
 
-### Pushing to Docker
+### More Commands
+1. `docker kill`: to kill a container
+``` bash
+docker kill <container_id>
+```
+2. `docker exec`: to execute a command inside a container
+
+lets look at some examples
+- List all the contents of a container folder:
+```bash
+docker exec <container_name_or_id> ls
+```
+![](images/docker-exec.png)
+- Running an Interactive Shell
+```bash
+docker exec -it <container_name_or_id> /bin/bash
+```
+
