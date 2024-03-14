@@ -16,6 +16,9 @@
     - [**Docker Container**](#docker-container)
 - [**Port Mapping**](#port-mapping)
 - [**Common Docker Commands**](#common-docker-commands)
+- [**Dockerfile**](#dockerfile)
+    - [**How to write a dockerfile**](#how-to-write-a-dockerfile)
+    - [**Understand the common commands**](#understand-the-common-commands)
 
 ### Why Docker?
 Docker is a powerful platform that serves several purposes in the development, deployment, and running of applications. Below are the reasons why it is used:
@@ -103,5 +106,42 @@ docker run -p 27017:27017 mongo
 7. Push an image to a registry: `docker push <image-name>`
 8. Kill a container: `docker kill <container-id>`
 9. Remove an Image `docker rmi <image-name>`
+
+### Dockerfile
+- Docker builds images automatically by reading the instructions from a dockerfile which is a text file that contains all the commands, in order, needed to build a given image.
+- A Docker image consists of read-only layers each of which represents a Dockerfile instruction. The layers are stacked and each one is a delta of the changes from the previous layer.
+
+#### How to write a dockerfile
+A dockerfile consists of 2 parts:
+1. Base Image
+2. Bunch of commands that we run on the base image (to install dependencies like Node.js).
+This is an example of a dockerfile.
+![](images/dockerfile.png)
+
+Let's write our own Dockerfile
+```dockerfile
+FROM  node:20-alpine
+
+WORKDIR /app
+
+COPY . .
+
+RUN npm install
+RUN npm run build
+RUN npx prisma generate
+
+EXPOSE 3000
+
+# commands before this runs we starts the container
+
+CMD ["node", "dist/index.js"]
+```
+#### Understand the common commands
+1. `WORKDIR`: Sets the working directory for any `RUN`, `CMD`, `ENTRYPOINT`, `COPY` instructions that follow it.
+2. `RUN`: Executes any commands in a new layer on top of the current image and commits the results.
+3. `CMD`: Provides default for executing a container. There can only be one CMD instruction in a Dockerfile.
+4. `EXPOSE`: Informs Docker that the container listens on the specified network ports at runtime.
+5. `ENV`: Set the environmental variables.
+6. `COPY`: Allow files from the docker host to be added to the docker image.
 
 ### Pushing to Docker
