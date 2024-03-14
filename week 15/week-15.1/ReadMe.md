@@ -20,6 +20,7 @@
     - [**How to write a dockerfile**](#how-to-write-a-dockerfile)
     - [**Understand the common commands**](#understand-the-common-commands)
 - [**Building images**](#building-images)
+- [**Running images**](#running-images)
 
 
 ### Why Docker?
@@ -156,4 +157,9 @@ the dot (.) at the end represents where to build the images from.
 Now lets look at our images, we should notice a new image created.
 ![](images/showing-docker-images-after-docker-build.png)
 
+### Running images
+```
+docker run -p 3000:3000 -d image_name
+```
+![](images/docker-container-running.png)
 ### Pushing to Docker
