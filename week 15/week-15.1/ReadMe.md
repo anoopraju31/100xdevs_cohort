@@ -19,6 +19,8 @@
 - [**Dockerfile**](#dockerfile)
     - [**How to write a dockerfile**](#how-to-write-a-dockerfile)
     - [**Understand the common commands**](#understand-the-common-commands)
+- [**Building images**](#building-images)
+
 
 ### Why Docker?
 Docker is a powerful platform that serves several purposes in the development, deployment, and running of applications. Below are the reasons why it is used:
@@ -143,5 +145,15 @@ CMD ["node", "dist/index.js"]
 4. `EXPOSE`: Informs Docker that the container listens on the specified network ports at runtime.
 5. `ENV`: Set the environmental variables.
 6. `COPY`: Allow files from the docker host to be added to the docker image.
+
+### Building images
+Since we have already added a dockerfile in our project, try building a `docker iamge` from it.
+```bash
+docker build -t image_name .
+```
+the dot (.) at the end represents where to build the images from.
+![](images/docker-build.png)
+Now lets look at our images, we should notice a new image created.
+![](images/showing-docker-images-after-docker-build.png)
 
 ### Pushing to Docker
