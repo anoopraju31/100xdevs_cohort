@@ -12,4 +12,6 @@
     - You want to autoscale with some simple constructs.
     - You want to observe your complete system in a simple dashboard.
 
-**Note:** **Kubernetes** is also known as **k8s**. *K_ _ _ _ _ _ _ _ s*
+![](images/Screenshot_2024-06-01_at_1.54.06_AM.png)
+
+**Note:** **Kubernetes** is also known as **k8s**. **K_ _ _ _ _ _ _ _ s**
