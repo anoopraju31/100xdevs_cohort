@@ -2,6 +2,7 @@
 
 ### contents:
 - [**What is kubernetes**](#what-is-kubernetes)
+- [**Before kubernetes**](#before-kubernetes)
 
 ### What is kubernetes
 
@@ -15,3 +16,9 @@
 ![](images/Screenshot_2024-06-01_at_1.54.06_AM.png)
 
 **Note:** **Kubernetes** is also known as **k8s**. **K_ _ _ _ _ _ _ _ s**
+
+### Before kubernetes
+
+![](images/before-kubernetes-backend.png)
+![](images/before-kubernetes-frontend-nextjs.png)
+![](images/before-kubernetes-frontend-reactjs.png)
