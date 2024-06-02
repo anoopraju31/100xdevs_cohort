@@ -66,3 +66,10 @@ a pod is an abstraction over a container.
             - **Node Controller:** Responsible for noticing and responding when nodes go down.
             - **Deployment Controller:** Watches for newly created or updated deployments and manages the creation and updating of RelpicaSets based on the deployment specifications. It ensures that the desired state of the deployment is maintained by creating or scaling ReplicaSets as needed.
             - **ReplicaSet Controller:** Wataches for newly created or updated ReplicaSets and ensures that the desired number of pods replicas are running at any given time. It creates or deletes pods as necessary to maintain the specified number of replicas in the RelplciaSet's configuration.
+
+
+##### Worker Nodes
+- The worker nodes actually runs the pods. 
+- ![Worker Node](images/woker-node.png)
+- It consists of three components:
+    
