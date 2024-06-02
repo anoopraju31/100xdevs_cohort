@@ -59,3 +59,10 @@ a pod is an abstraction over a container.
     3. **Kube Scheduler:**
         - It is a control pane component that **watches for newly created Pods** with no assigned nodes and selects a node for them to run on.
         - It is responsible for pod placement and deciding which pod goes on which node.
+    4. **Kube Controller Manager:**
+        - The **kube-controller-manager** is a component of the Kubernetes control plane that runs a set of controllers. 
+        - Each controller is responsible for managing a specific aspect of the cluster's state.
+        - There are many different types of controllers. Some examples of them are:
+            - **Node Controller:** Responsible for noticing and responding when nodes go down.
+            - **Deployment Controller:** Watches for newly created or updated deployments and manages the creation and updating of RelpicaSets based on the deployment specifications. It ensures that the desired state of the deployment is maintained by creating or scaling ReplicaSets as needed.
+            - **ReplicaSet Controller:** Wataches for newly created or updated ReplicaSets and ensures that the desired number of pods replicas are running at any given time. It creates or deletes pods as necessary to maintain the specified number of replicas in the RelplciaSet's configuration.
