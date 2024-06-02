@@ -55,3 +55,6 @@ a pod is an abstraction over a container.
         - The API Server **authenicates** and **authorizes** all API requests. It ensures that only authenticated and authorized users or components can perform actions on the cluster. This involves validating user credentials and checking access control policies.
         - The API Server exposes metrics and health check endpoints that can be used for monitoring and diagnosing the health and performance of the control pane.
         - The API server acts as the **central communications hub** for the kubernetes control pane. Other components, such as the **Scheduler**, **controller manager** and **kubelet**, interact with the API server to retrieve or update the state of the cluster.
+    2. **ETCD:**
+        - etcd is a **consistent** and **highly-available key value store** used as Kubernetes' backing store for all cluster data.
+    
