@@ -5,6 +5,7 @@
 - [**Why Monorepos**](#why-monorepos)
 - [**Common monorepo framework in Node.js**](#common-monorepo-framework-in-nodejs)
 - [**Turborepo**](#turborepo)
+- [**Build system vs Build system orchestrator vs Monorepo framework**](#build-system-vs-build-system-orchestrator-vs-monorepo-framework)
 
 ### What are monorepos
 **Monorepos**, short for **monolithic repositories**, are a type of software development strategy where all source code for multiple projects or components is stored within *a single version control repository*. This is in contrast to the more traditional approach where each project or component is maintained in its own separate repository (often referred to as a "**polyrepo**" approach).
@@ -41,3 +42,16 @@ Despite these advantages, monorepos also come with challenges, such as the need 
 **Turborepo** is a high-performance build system for JavaScript and TypeScript monorepos. It is designed to make it easier to manage and build multiple packages or applications within a single repository. **Turborepo** aims to optimize the developer experience by providing features that speed up the development process, such as caching, parallel execution, and remote caching with **Turborepo**'s Cloud service.
 
 ![](images/turborepo.png)
+
+### Build system vs Build system orchestrator vs Monorepo framework
+Build systems, build system orchestrators, and monorepo frameworks are all tools or concepts related to software development, but they serve different purposes and operate at different levels of abstraction. Let's define each term and see how they relate to each other:
+
+##### Build System
+**Build system** automates the process of transforming source code written by developers into binary code that can be executed by a computer. For JavaScript and TypeScript projects, this process can include transpilation (converting TS to JS), bundling (combining multiple files into fewer files), minification (reducing file size), and more. A build system might also handle running tests, linting, and deploying applications.
+
+##### Build System Orchestrator
+**TurboRepo** acts more like a **build system orchestrator** rather than a direct build system itself. It doesn't directly perform tasks like transpilation, bundling, minification, or running tests. Instead, TurboRepo allows you to define tasks in your monorepo that call other tools (which are the actual build systems) to perform these actions. These tools can include anything from tsc, vite etc
+
+##### Monrepo
+A **monorepo framework** provides tools and conventions for managing projects that contain multiple packages or applications within a single repository (monorepo). This includes dependency management between packages, workspace configuration.
+ 
