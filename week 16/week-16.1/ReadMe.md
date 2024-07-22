@@ -4,8 +4,9 @@
 - [**What are monorepos**](#what-are-monorepos)
 - [**Why Monorepos**](#why-monorepos)
 - [**Common monorepo framework in Node.js**](#common-monorepo-framework-in-nodejs)
-- [**Turborepo**](#turborepo)
 - [**Build system vs Build system orchestrator vs Monorepo framework**](#build-system-vs-build-system-orchestrator-vs-monorepo-framework)
+- [**Turborepo**](#turborepo)
+- [**Let’s initialize a simple Turborepo**](#lets-initialize-a-simple-turborepo)
 
 ### What are monorepos
 **Monorepos**, short for **monolithic repositories**, are a type of software development strategy where all source code for multiple projects or components is stored within *a single version control repository*. This is in contrast to the more traditional approach where each project or component is maintained in its own separate repository (often referred to as a "**polyrepo**" approach).
@@ -38,11 +39,6 @@ Despite these advantages, monorepos also come with challenges, such as the need 
 4. [**YARN/NPM workspaces**](https://classic.yarnpkg.com/lang/en/docs/workspace)
 
 
-### Turborepo
-**Turborepo** is a high-performance build system for JavaScript and TypeScript monorepos. It is designed to make it easier to manage and build multiple packages or applications within a single repository. **Turborepo** aims to optimize the developer experience by providing features that speed up the development process, such as caching, parallel execution, and remote caching with **Turborepo**'s Cloud service.
-
-![](images/turborepo.png)
-
 ### Build system vs Build system orchestrator vs Monorepo framework
 Build systems, build system orchestrators, and monorepo frameworks are all tools or concepts related to software development, but they serve different purposes and operate at different levels of abstraction. Let's define each term and see how they relate to each other:
 
@@ -55,3 +51,34 @@ Build systems, build system orchestrators, and monorepo frameworks are all tools
 ##### Monrepo
 A **monorepo framework** provides tools and conventions for managing projects that contain multiple packages or applications within a single repository (monorepo). This includes dependency management between packages, workspace configuration.
  
+
+### Turborepo
+**Turborepo** is a high-performance build system for JavaScript and TypeScript monorepos. It is designed to make it easier to manage and build multiple packages or applications within a single repository. **Turborepo** aims to optimize the developer experience by providing features that speed up the development process, such as caching, parallel execution, and remote caching with **Turborepo**'s Cloud service.
+
+![](images/turborepo.png)
+
+### Let’s initialize a simple Turborepo
+**Note:** for reference go to tuborepo [docs](https://turbo.build/repo/docs)
+
+1. Initialize a Turborepo
+```bash
+npx create-turbo@latest
+```
+2. Select `npm workspaces` as the monorepo framework.
+
+By the end, you will notice a folder structure that looks like this -
+![](images/turborepo-folder-structure.jpg)
+
+### Explore the folder structure
+There are 5 modules in our project:
+
+- End user apps (Websites / Core Backend)
+    1. `apps/web` - A next.js website
+    2. `apps/docs` - A docs website that has all the documentation related to your project.
+
+- Helper packages
+    1. `packages/ui` - UI packages
+    2. `packages/typescript-config` - Shareable TS Configuration
+    3. `packages/eslint-config` - Shareable ESLint configuration
+
+![](images/turborepo-folder-structure-explore.jpg)
