@@ -4,6 +4,7 @@
 - [**What are monorepos**](#what-are-monorepos)
 - [**Why Monorepos**](#why-monorepos)
 - [**Common monorepo framework in Node.js**](#common-monorepo-framework-in-nodejs)
+- [**Turborepo**](#turborepo)
 
 ### What are monorepos
 **Monorepos**, short for **monolithic repositories**, are a type of software development strategy where all source code for multiple projects or components is stored within *a single version control repository*. This is in contrast to the more traditional approach where each project or component is maintained in its own separate repository (often referred to as a "**polyrepo**" approach).
@@ -34,3 +35,9 @@ Despite these advantages, monorepos also come with challenges, such as the need 
 2. [**NX**](https://github.com/nrwlnx)
 3. [**Turborepo**](https://turbo.build) - Not exactly a monorepo framework
 4. [**YARN/NPM workspaces**](https://classic.yarnpkg.com/lang/en/docs/workspace)
+
+
+### Turborepo
+**Turborepo** is a high-performance build system for JavaScript and TypeScript monorepos. It is designed to make it easier to manage and build multiple packages or applications within a single repository. **Turborepo** aims to optimize the developer experience by providing features that speed up the development process, such as caching, parallel execution, and remote caching with **Turborepo**'s Cloud service.
+
+![](images/turborepo.png)
