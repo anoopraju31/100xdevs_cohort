@@ -72,4 +72,6 @@ a pod is an abstraction over a container.
 - The worker nodes actually runs the pods. 
 - ![Worker Node](images/woker-node.png)
 - It consists of three components:
-    
+    1. **Kubelet:** 
+        - Kubelet is an agent that runs on each node in the cluster.
+        - It makes sure that containers are running in a Pod.
