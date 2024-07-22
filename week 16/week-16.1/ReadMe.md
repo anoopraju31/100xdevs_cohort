@@ -7,6 +7,9 @@
 - [**Build system vs Build system orchestrator vs Monorepo framework**](#build-system-vs-build-system-orchestrator-vs-monorepo-framework)
 - [**Turborepo**](#turborepo)
 - [**Let’s initialize a simple Turborepo**](#lets-initialize-a-simple-turborepo)
+- [**Explore the folder structure**](#explore-the-folder-structure)
+- [**Let’s try to run the project**](#lets-try-to-run-the-project)
+
 
 ### What are monorepos
 **Monorepos**, short for **monolithic repositories**, are a type of software development strategy where all source code for multiple projects or components is stored within *a single version control repository*. This is in contrast to the more traditional approach where each project or component is maintained in its own separate repository (often referred to as a "**polyrepo**" approach).
@@ -82,3 +85,15 @@ There are 5 modules in our project:
     3. `packages/eslint-config` - Shareable ESLint configuration
 
 ![](images/turborepo-folder-structure-explore.jpg)
+
+
+### Let’s try to run the project
+In the root folder, run
+``` bash
+npm run dev
+```
+You will notice two websites running on
+1. `localhost:3000`
+2. `localhost:3001`
+
+This means we have a single `repo` which has multiple `projects` which share code from `packages/ui`.
